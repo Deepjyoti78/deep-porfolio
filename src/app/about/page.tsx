@@ -141,7 +141,6 @@ export default function About() {
             borderRadius: "24px",
             position: "relative"
           }}
-          s={{ direction: "column", padding: "16", gap: "16" }}
         >
           {/* Desktop: Schedule a call — absolute top-right corner */}
           {about.calendar.display && (
