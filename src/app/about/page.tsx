@@ -228,8 +228,12 @@ export default function About() {
 
           {/* --- MOBILE VIEW --- */}
           <Column className="hide-on-desktop" fillWidth gap="20">
-            {/* Name and Button column */}
-            <Column gap="12" align="start">
+            {/* Name left, Schedule button pinned to right */}
+            <div style={{ display: 'flex', width: '100%', justifyContent: 'space-between', alignItems: 'center' }}>
+              <Column gap="4">
+                <Heading variant="display-strong-s" style={{ whiteSpace: "nowrap", fontSize: "clamp(26px, 4vw, 32px)", lineHeight: "1.1" }}>{person.name}</Heading>
+                <Text variant="heading-default-s" onBackground="neutral-weak" style={{ fontSize: "clamp(15px, 2vw, 18px)" }}>{person.role}</Text>
+              </Column>
               {about.calendar.display && (
                 <a
                   href={about.calendar.link}
@@ -249,7 +253,9 @@ export default function About() {
                     border: "1px solid rgba(255,255,255,0.08)",
                     boxShadow: "inset 0 1px 0 rgba(255,255,255,0.10), inset 0 -1px 0 rgba(0,0,0,0.35), 0 2px 4px rgba(0,0,0,0.12)",
                     color: "#ffffff",
-                    whiteSpace: "nowrap"
+                    whiteSpace: "nowrap",
+                    flexShrink: 0,
+                    marginLeft: "12px"
                   }}
                 >
                   <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ opacity: 0.8 }}>
@@ -261,11 +267,7 @@ export default function About() {
                   Schedule a call
                 </a>
               )}
-              <Column gap="4">
-                <Heading variant="display-strong-s" style={{ whiteSpace: "nowrap", fontSize: "clamp(26px, 4vw, 32px)", lineHeight: "1.1" }}>{person.name}</Heading>
-                <Text variant="heading-default-s" onBackground="neutral-weak" style={{ fontSize: "clamp(15px, 2vw, 18px)" }}>{person.role}</Text>
-              </Column>
-            </Column>
+            </div>
 
 
             {about.avatar.display && (
