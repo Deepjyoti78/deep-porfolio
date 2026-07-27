@@ -408,7 +408,7 @@ export default function Home() {
         </Column>
       </GridSection>
       <GridSection paddingY="48" s={{ paddingTop: "12", paddingBottom: "0" }}>
-        <Column gap="16" fillWidth>
+        <Column gap="16" s={{ gap: "8" }} fillWidth>
           <Column fillWidth paddingX="l" gap="8" s={{ paddingX: "16" }}>
             <Row fillWidth vertical="center" horizontal="between" style={{ width: "100%" }}>
               <Heading as="h2" variant="heading-strong-xl">
@@ -451,7 +451,7 @@ export default function Home() {
         </Column>
       </GridSection>
       <GridSection paddingY="48" s={{ paddingTop: "0", paddingBottom: "12" }}>
-        <Column gap="16" fillWidth>
+        <Column gap="16" s={{ gap: "8" }} fillWidth>
           <Column fillWidth paddingX="l" gap="8" s={{ paddingX: "16" }}>
             <Heading as="h2" variant="heading-strong-xl">
               Education

@@ -199,7 +199,7 @@
 /* ===== MOBILE ONLY ===== */
 @media (max-width: 767px) {
   .card {
-    padding: 14px;
+    padding: 12px;
     border-radius: 16px;
   }
 
@@ -207,7 +207,7 @@
     flex-direction: row;
     align-items: flex-start;
     gap: 8px;
-    margin-bottom: 12px;
+    margin-bottom: 8px;
   }
 
   .meta h3 {
@@ -245,8 +245,8 @@
 
   .bottomSplit {
     flex-direction: column;
-    gap: 16px;
-    padding-top: 14px;
+    gap: 12px;
+    padding-top: 10px;
   }
 
   .techPill {

@@ -132,9 +132,8 @@ export default async function Blog({ params }: { params: Promise<{ slug: string 
             radius="l" 
             border="neutral-medium" 
             gap="32"
-            className="premium-shadow"
+            className="premium-shadow blog-hero-mobile-padding"
             position="relative"
-            s={{ paddingX: "24", paddingY: "32" }}
           >
             {/* Background Gradient */}
             <div style={{
@@ -170,23 +169,25 @@ export default async function Blog({ params }: { params: Promise<{ slug: string 
 
             {/* Article Titles */}
             <Column gap="24" style={{ zIndex: 1 }}>
-              <Row gap="16" vertical="center" wrap>
+              <Row gap="16" vertical="center" wrap className="blog-metadata">
                 {post.metadata.tag && (
-                  <Row vertical="center" gap="8">
+                  <Row vertical="center" gap="8" className="hide-on-mobile">
                     <div style={{ width: "8px", height: "8px", borderRadius: "50%", backgroundColor: "var(--brand-solid-strong)" }} />
                     <Text variant="label-default-s" onBackground="neutral-strong">{post.metadata.tag}</Text>
                   </Row>
                 )}
                 {post.metadata.publishedAt && (
                   <>
-                    <Text variant="body-default-xs" onBackground="neutral-weak">•</Text>
-                    <Text variant="body-default-s" onBackground="neutral-strong">
-                      {formatDate(post.metadata.publishedAt)}
-                    </Text>
+                    <Text variant="body-default-xs" onBackground="neutral-weak" className="hide-on-mobile">•</Text>
+                    <Row vertical="center" className="mobile-date-button">
+                      <Text variant="body-default-s" onBackground="neutral-strong" className="mobile-date-text">
+                        {formatDate(post.metadata.publishedAt)}
+                      </Text>
+                    </Row>
                   </>
                 )}
-                <Text variant="body-default-xs" onBackground="neutral-weak">•</Text>
-                <Text variant="body-default-s" onBackground="neutral-strong">
+                <Text variant="body-default-xs" onBackground="neutral-weak" className="hide-on-mobile">•</Text>
+                <Text variant="body-default-s" onBackground="neutral-strong" className="hide-on-mobile">
                   {Math.max(1, Math.ceil(post.content.split(/\s+/).length / 200))} min read
                 </Text>
               </Row>
@@ -196,7 +197,7 @@ export default async function Blog({ params }: { params: Promise<{ slug: string 
               </Heading>
 
               {post.metadata.summary && (
-                <Text variant="body-default-m" onBackground="neutral-weak" style={{ maxWidth: "80%" }}>
+                <Text variant="body-default-m" onBackground="neutral-weak" className="blog-post-summary">
                   {post.metadata.summary}
                 </Text>
               )}

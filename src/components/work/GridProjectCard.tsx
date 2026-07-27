@@ -102,7 +102,7 @@ export const GridProjectCard: React.FC<GridProjectCardProps> = ({
 
         <div className={styles.actions}>
           <a href={href} className={styles.caseStudyLink}>
-            Case Study →
+            GitHub →
           </a>
           {(githubUrl || demoUrl) && (
             <a

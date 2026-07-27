@@ -363,17 +363,17 @@ a.cal-btn-secondary * {
     white-space: nowrap;
   }
   .blog-card-mobile .mobile-blog-date {
-    font-size: 9px !important;
+    font-size: 11px !important;
     line-height: 1 !important;
     white-space: nowrap;
     margin-top: 2px;
   }
   .blog-card-mobile .mobile-blog-title {
-    font-size: 13px !important;
+    font-size: 19px !important;
     line-height: 1.25 !important;
   }
   .blog-card-mobile .mobile-blog-summary {
-    font-size: 11px !important;
+    font-size: 13px !important;
     line-height: 1.4 !important;
     -webkit-line-clamp: 3 !important;
   }
@@ -418,9 +418,56 @@ a.cal-btn-secondary * {
   letter-spacing: 0.01em;
 }
 
-/* Hero description — make more visible (whitish) on mobile dark mode only */
+/* Hero description — make more visible on mobile */
 @media (max-width: 768px) {
   [data-theme="dark"] .hero-description {
     color: #e4e4e4 !important;
+  }
+  [data-theme="light"] .hero-description {
+    color: #4a4a4a !important;
+  }
+
+  /* Move blog metadata to bottom of the card */
+  .blog-metadata {
+    order: 3;
+    margin-top: 8px;
+  }
+
+  /* (Redundant mobile-blog blocks removed to resolve specificity conflicts) */
+
+  .hide-on-mobile {
+    display: none !important;
+  }
+
+  .mobile-date-button {
+    padding: 1px 6px;
+    border-radius: 9999px;
+    border: 1px solid var(--neutral-alpha-weak);
+    background-color: var(--neutral-alpha-weak);
+    margin-left: auto;
+  }
+  
+  .mobile-date-text,
+  .mobile-date-text * {
+    font-size: 9px !important;
+    line-height: 1 !important;
+  }
+  
+  .blog-post-summary {
+    max-width: 100% !important;
+  }
+
+  .blog-hero-mobile-padding {
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+    padding-top: 16px !important;
+    padding-bottom: 12px !important;
+    gap: 16px !important;
+  }
+}
+
+@media (min-width: 769px) {
+  .blog-post-summary {
+    max-width: 80%;
   }
 }
