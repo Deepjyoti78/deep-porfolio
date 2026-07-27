@@ -385,9 +385,10 @@ export default function Home() {
               <a
                 href={work.path}
                 className="hide-on-desktop"
-                style={{ borderRadius: '9999px', fontSize: '11px', fontWeight: '600', padding: '6px 12px', flexShrink: 0, marginLeft: 'auto', backgroundColor: '#1a1a1a', color: '#ffffff', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', whiteSpace: 'nowrap', lineHeight: 1, border: '1px solid rgba(255,255,255,0.15)' }}
+                style={{ borderRadius: '9999px', fontSize: '12px', fontWeight: '500', padding: '6px 12px', flexShrink: 0, marginLeft: 'auto', background: 'linear-gradient(to bottom, #2a2a2a 0%, #1f1f1f 100%)', color: '#ffffff', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', whiteSpace: 'nowrap', border: '1px solid rgba(255,255,255,0.1)', boxShadow: '0 1px 2px rgba(0,0,0,0.2)' }}
               >
                 View All Projects
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ marginLeft: "4px", position: "relative", top: "1px" }}><path d="m9 18 6-6-6-6" /></svg>
               </a>
             </Row>
             <Text
@@ -427,9 +428,10 @@ export default function Home() {
               <a
                 href={about.path}
                 className="hide-on-desktop"
-                style={{ borderRadius: '9999px', fontSize: '11px', fontWeight: '600', padding: '6px 12px', flexShrink: 0, marginLeft: 'auto', backgroundColor: '#1a1a1a', color: '#ffffff', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', whiteSpace: 'nowrap', lineHeight: 1, border: '1px solid rgba(255,255,255,0.15)' }}
+                style={{ borderRadius: '9999px', fontSize: '12px', fontWeight: '500', padding: '6px 12px', flexShrink: 0, marginLeft: 'auto', background: 'linear-gradient(to bottom, #2a2a2a 0%, #1f1f1f 100%)', color: '#ffffff', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', whiteSpace: 'nowrap', border: '1px solid rgba(255,255,255,0.1)', boxShadow: '0 1px 2px rgba(0,0,0,0.2)' }}
               >
                 View full experience
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ marginLeft: "4px", position: "relative", top: "1px" }}><path d="m9 18 6-6-6-6" /></svg>
               </a>
             </Row>
             <Text
