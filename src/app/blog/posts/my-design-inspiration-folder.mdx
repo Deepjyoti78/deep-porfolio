@@ -1,0 +1,97 @@
+---
+title: "My Design Inspiration Folder"
+publishedAt: "2024-03-28"
+summary: "A curated gallery of the websites, typography, and micro-interactions that heavily influence my design philosophy. Here is what I study when I need inspiration."
+image: "/images/gallery/horizontal-1.jpg"
+tag: "Design"
+---
+
+Every developer and designer needs an inspiration folder. When you are staring at a blank `index.tsx` file trying to figure out why your hero section looks amateurish, you shouldn't just guess. You should look at what the best in the industry are doing.
+
+Over the years, I've curated a digital folder of bookmarks, screenshots, and screen recordings of websites that have stopped me in my tracks. 
+
+Here is a look inside my design inspiration folder, organized by category, and exactly what I learn from each of them.
+
+---
+
+## 1. Masterclasses in Typography
+
+Typography is the absolute foundation of web design. If your text looks bad, no amount of CSS animations will save you.
+
+### Paco Coursey’s Personal Site
+Paco Coursey (formerly of Vercel, now Linear) has a personal site that is a testament to the power of brutalist minimalism. 
+- **Why it inspires me:** There are almost no borders, no cards, and no drop shadows. The entire layout relies on a strict, mathematically perfect typography scale and precise indentation. 
+- **The Lesson:** If your content cannot stand on its own using only black text on a white background, your design is fundamentally flawed.
+
+### The New York Times
+You might think a 170-year-old newspaper isn't relevant to modern web design, but their digital typography is unparalleled.
+- **Why it inspires me:** They masterfully mix a traditional serif font for body text (creating high readability for long-form content) with a geometric sans-serif for UI elements (like "Share" buttons and metadata). 
+- **The Lesson:** Font pairing is an art. A workhorse serif paired with a crisp sans-serif is a timeless combination that immediately conveys authority.
+
+---
+
+## 2. The Art of the Grid
+
+A strong grid system makes an interface feel secure and intentional.
+
+### Vercel's Landing Pages
+Vercel is the king of the exposed grid.
+- **Why it inspires me:** They often use faint, 1px vertical lines (`rgba(255, 255, 255, 0.1)`) that run completely down the page, framing the content. 
+- **The Lesson:** Exposing your grid system slightly can make a digital interface feel like physical, engineered architecture. It gives the user a subconscious sense of order.
+
+### Diagram.com (Now part of Figma)
+Before they were acquired by Figma, Diagram's website was legendary in the frontend community.
+- **Why it inspires me:** They used a dense, complex bento-box grid that felt chaotic yet perfectly balanced. Every square inch of the screen was utilized, but because the padding inside each "box" was perfectly consistent, it never felt overwhelming.
+- **The Lesson:** High-density UI requires perfect padding. If your padding is off by even 2px, a dense grid becomes an unreadable mess.
+
+---
+
+## 3. Groundbreaking Micro-Interactions
+
+Micro-interactions are the tiny animations that happen when a user interacts with your site (e.g., hovering over a button or clicking a link). 
+
+### Stripe's Navigation Menu
+We can't talk about micro-interactions without mentioning Stripe.
+- **Why it inspires me:** When you hover over different items in Stripe's navigation, the dropdown menu doesn't just fade in and out; it dynamically resizes (morphs) to fit the new content, while the contents cross-fade. 
+- **The Lesson:** Fluid layout animations (where the container animates simultaneously with the content) are the hallmark of a premium, app-like experience.
+
+### Family.co
+Family is a crypto wallet with a marketing site that feels like a Pixar movie.
+- **Why it inspires me:** Every element on their site has a subtle, spring-based physics animation. If you click a button, it scales down realistically. If you swipe a card, it snaps back with a slight bounce.
+- **The Lesson:** Stop using linear CSS transitions. Use spring physics (via Framer Motion or react-spring) to make elements feel like they have physical mass and momentum.
+
+---
+
+## 4. Dark Mode Done Right
+
+Building a good dark mode is significantly harder than building a good light mode. You can't rely on shadows for depth.
+
+### Linear
+Linear is the gold standard for dark mode.
+- **Why it inspires me:** They use a base background color of incredibly dark gray (`#0A0A0A`), not pure black. To show depth (like a modal floating above the background), they don't use shadows. Instead, they use a slightly lighter shade of gray for the modal's background and add a 1px border of `rgba(255, 255, 255, 0.08)`. 
+- **The Lesson:** In dark mode, depth is created by elevating the background lightness and adding subtle, illuminated borders, not by casting shadows.
+
+### Raycast
+Raycast's web presence mirrors their macOS app perfectly.
+- **Why it inspires me:** They use vibrant, highly saturated colors (like neon pinks and electric blues) very sparingly against their dark canvas. 
+- **The Lesson:** In dark mode, desaturate your primary text (use off-white, not pure white), but *hyper-saturate* your accent colors. A neon accent color against a dark gray background pops beautifully.
+
+---
+
+## 5. Favorite UI Patterns
+
+Here are a few specific UI patterns I find myself constantly revisiting:
+
+- **The "Bento Box" Layout:** Pioneered by Apple's marketing pages, using a grid of rounded rectangles of varying sizes to display features. It’s the best way to present a lot of disparate information cleanly.
+- **Sticky Table of Contents:** For long-form articles, having a sidebar that highlights the current section as you scroll is incredibly helpful for user orientation.
+- **The Command Palette (⌘K):** Instead of complex mega-menus, hiding power-user actions behind a quick keyboard shortcut is the most elegant way to handle deep navigation.
+
+---
+
+## Summary
+
+Inspiration shouldn't just be about looking at pretty pictures on Dribbble. 
+
+When you find a website you love, open the developer tools. Inspect the CSS. Look at the exact `box-shadow` values they are using. Check the `font-weight` and `line-height` of their `<h2>` tags. 
+
+Great design isn't magic. It's just math, physics, and a relentless obsession with the details. Build your own folder, study the masters, and apply their logic to your own codebase.

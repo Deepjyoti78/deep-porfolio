@@ -1,0 +1,60 @@
+@use "./breakpoints.scss" as breakpoints;
+
+.mask {
+    pointer-events: none;
+    backdrop-filter: blur(0.5rem);
+    background: linear-gradient(to bottom, var(--page-background), var(--static-transparent));
+    mask-image: linear-gradient(rgba(0,0,0) 25%, rgba(0, 0, 0, 0) 100%);
+    mask-size: 100% 100%;
+}
+
+@media (max-width: breakpoints.$s) {
+    .position {
+        top: auto;
+        bottom: 24px;
+        /* Hide the side text (location, time) rows on mobile — only show the center pill */
+        padding: 0;
+        justify-content: center !important;
+    }
+
+    .mask {
+        transform: rotate(180deg);
+        bottom: 0;
+    }
+
+    /* Hide the left (location) and right (time) flex sections — only keep center pill */
+    .position > div:first-child,
+    .position > div:last-child {
+        display: none !important;
+    }
+
+    /* Make the center pill wider and more prominent */
+    .position > div:nth-child(2) {
+        width: auto !important;
+        flex: 0 0 auto !important;
+    }
+
+    .position > div:nth-child(2) > div {
+        padding: 6px 16px !important;
+        border-radius: 9999px !important;
+        gap: 8px !important;
+    }
+
+    /* Bigger icon buttons */
+    .position button,
+    .position a[role="button"],
+    .position [data-type="toggle-button"] {
+        padding: 10px 12px !important;
+        min-width: 40px !important;
+        min-height: 40px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+
+    /* Bigger icons */
+    .position svg {
+        width: 20px !important;
+        height: 20px !important;
+    }
+}

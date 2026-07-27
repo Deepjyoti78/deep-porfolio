@@ -1,0 +1,92 @@
+---
+title: "What I Learned from Recreating Modern SaaS Interfaces"
+publishedAt: "2024-04-10"
+summary: "An in-depth analysis of the design languages of Vercel, Stripe, Raycast, and Linear. What do they do perfectly, and what happens when you try to recreate them from scratch?"
+image: "/images/gallery/horizontal-4.jpg"
+tag: "Design"
+---
+
+The quickest way to get better at UI engineering isn't to read textbooks on color theory; it's to find a website you think is breathtaking and try to build it from scratch without looking at their source code.
+
+Over the past few months, I spent my weekends recreating landing pages, dashboards, and complex UI components from some of the most respected tech companies in the world: Vercel, Cal.com, Stripe, Linear, Raycast, and Clerk. 
+
+Here is what I learned from studying their design systems, what I borrowed for my own projects, and what I intentionally left behind.
+
+---
+
+## 1. Vercel: The Masters of Contrast and Hierarchy
+
+Vercel has arguably set the standard for developer-focused design for the last five years. When you recreate a Vercel page, the first thing you notice is how aggressive they are with contrast.
+
+### What they do well:
+- **Monochrome Dominance:** They rely almost entirely on black, white, and grays, using color (usually their brand blue) *only* for the absolute most important call-to-action (CTA). 
+- **The "Geist" Typeface:** Their custom typeface is sharp and legible, perfectly suited for dense technical interfaces.
+- **Card Design:** Their cards use a classic `1px` border of a very faint gray (e.g., `#EAEAEA` in light mode, `#333` in dark mode) which makes them pop off the background without needing heavy shadows.
+
+### What I borrowed:
+I completely adopted their approach to borders and card layouts. My portfolio's grid system and the 1px boundary lines are heavily inspired by Vercel’s landing page geometry. It makes a page feel engineered rather than painted.
+
+---
+
+## 2. Stripe: The Pioneers of Fluid Motion
+
+Stripe didn't just change payments; they changed web design. Their 2017 homepage redesign introduced the "Slanted Background" and the "Morphing Dropdown Menu" that every startup spent the next three years trying to copy.
+
+### What they do well:
+- **Motion:** Stripe's animations are buttery smooth. When you hover over a nav item, the dropdown background doesn't just fade out and fade in—it *physically morphs* to the new width and height. 
+- **Gradients:** They use complex, animated mesh gradients that feel organic and alive.
+
+### What I changed:
+Recreating Stripe’s morphing dropdown is incredibly difficult to do performantly. I realized that while it looks amazing, it introduces a lot of state-management overhead for a personal portfolio. I opted for simpler, instantaneous popovers with a slight `fade-in-up` animation instead. It’s 90% as satisfying with 10% of the code.
+
+---
+
+## 3. Linear: The Pinnacle of Dark Mode
+
+Linear feels like software from the future. Their app is notoriously keyboard-centric and heavily optimized for speed, but their marketing site is a masterclass in dark-mode aesthetics.
+
+### What they do well:
+- **Glow Effects:** Instead of standard box-shadows, Linear uses radial gradients behind their product shots to create a "bloom" effect, making the UI look like it's emitting physical light.
+- **Keyboard Affordances:** Everywhere you look, there are small `⌘K` or `Esc` badges. The UI constantly communicates that it's built for power users.
+- **Sub-pixel Borders:** They combine a dark background with an inset `1px` white border at 10% opacity. It catches the light just right.
+
+### What I borrowed:
+I stole their glow effect. On my project cards, when you hover, a subtle purple radial gradient tracks your mouse cursor underneath the card border. It instantly transforms a static card into a physical object.
+
+---
+
+## 4. Raycast: The Beauty of Density
+
+Raycast is a macOS launcher, but their web presence and extension store are beautiful examples of high-density UI.
+
+### What they do well:
+- **Information Density:** Most modern design tells you to use massive amounts of whitespace. Raycast proves that you can pack a ton of information (icons, shortcuts, metadata) into a small space if your alignment is mathematically perfect.
+- **Iconography:** Their use of consistent, monochromatic icons with highly specific corner radii makes the dense lists readable.
+
+### What I borrowed:
+When building the "Work Experience" timeline on my site, I looked at Raycast's extension lists. I tightened up the spacing, reduced the font size of the metadata (dates, locations), and aligned everything perfectly to the left axis to allow the user to scan the information rapidly.
+
+---
+
+## 5. Clerk: Trust Through Typography
+
+Clerk provides authentication for React apps. Because they handle security, their UI needs to scream "We are trustworthy and secure."
+
+### What they do well:
+- **Button Anatomy:** Their buttons are thick, substantial, and often feature a subtle gradient and inner shadow. They don't look like flat web elements; they look like physical hardware buttons you want to push.
+- **Focus States:** They don't rely on the browser default focus rings. Every input and button has a highly visible, branded focus state, making keyboard navigation a first-class citizen.
+
+### What I borrowed:
+I rebuilt my entire button component based on Clerk’s approach. I added the inner bevel, the subtle drop shadow, and a highly distinct focus ring that uses `outline-offset`. It makes forms feel drastically more professional.
+
+---
+
+## The Ultimate Lesson: Consistency is King
+
+When I first started recreating these interfaces, my own projects looked like Frankenstein's monster. I had Stripe's colorful gradients, Vercel's harsh borders, and Linear's dark mode glows all layered on top of each other. **It looked terrible.**
+
+The most important lesson I learned was that premium design requires restraint. 
+
+Vercel’s harsh borders work *because* they lack colorful gradients. Stripe’s gradients work *because* their typography is incredibly restrained. Linear’s glows work *because* the rest of the interface is pitch black.
+
+You can't just take the best features of five different companies and mash them together. You have to pick a design language and stick to it obsessively, down to the very last pixel. 

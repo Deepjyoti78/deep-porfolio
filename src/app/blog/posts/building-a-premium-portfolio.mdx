@@ -1,0 +1,178 @@
+---
+title: "Building a Premium Portfolio Inspired by Vercel & Cal.com"
+publishedAt: "2024-07-20"
+summary: "A deep dive into the design decisions, technical tradeoffs, and engineering lessons behind rebuilding my portfolio to feel like a top-tier SaaS product."
+image: "/images/gallery/horizontal-1.jpg"
+tag: "Design"
+---
+
+As developers, our portfolios are often the most accurate reflection of our current skill level. For years, I had a standard portfolio: a navbar, a hero section, a grid of projects, and a contact form. It worked, but it didn't *feel* special. It felt like another template. 
+
+When I decided to rebuild it, I didn't want it to look like a personal blog. I wanted it to look and feel like a premium, modern SaaS product—something that would sit comfortably alongside the landing pages of Vercel, Cal.com, and Linear.
+
+In this article, I'll walk you through the entire process: the research, the typography decisions, the grid systems, the micro-interactions, and the technical challenges of bringing a premium design system to life.
+
+---
+
+## The Research Phase
+
+Before writing a single line of code, I spent a week just looking at websites. I created a massive mood board and analyzed what exactly made these sites feel "premium".
+
+I realized that premium design isn't about flashy 3D graphics or complex scroll-jacking. It's actually about **restraint and precision**. 
+
+1. **Vercel** taught me about the power of stark contrast, minimal palettes, and exact typography. Their use of subtle borders and deep shadows creates incredible depth.
+2. **Cal.com** showed me how to make a dense UI feel accessible and friendly through generous padding, consistent corner radii, and slightly softer text colors.
+3. **Linear** demonstrated the absolute pinnacle of micro-interactions and dark mode execution.
+
+The common thread? **Obsessive attention to detail.** Every pixel has a purpose. Every animation feels intentional.
+
+---
+
+## Designing the System
+
+I started by defining the core design tokens. Without a strict token system, a website quickly degrades into a mess of hardcoded hex values and inconsistent padding.
+
+### 1. Typography Decisions
+
+Typography is 90% of web design. If your typography is off, nothing else works.
+
+I moved away from standard system fonts and chose a geometric sans-serif that balances modern starkness with readability. But it's not just about the font family; it's about the scale and weight.
+
+I implemented a strict fluid typography scale. Headings needed to feel monumental on desktop but gracefully scale down on mobile without causing awkward line breaks. 
+
+```css
+:root {
+  --font-size-base: 16px;
+  --font-scale: 1.25;
+
+  --text-body: 1rem;
+  --text-h3: calc(var(--text-body) * var(--font-scale));
+  --text-h2: calc(var(--text-h3) * var(--font-scale));
+  --text-h1: calc(var(--text-h2) * var(--font-scale));
+}
+```
+
+I also made a conscious decision to almost never use pure black (`#000000`) or pure white (`#FFFFFF`) for text. Pure contrast causes eye strain. Instead, my primary text is a very dark gray (`#111111`) in light mode, and a soft off-white (`#EDEDED`) in dark mode. Secondary text gets knocked back even further to create a clear visual hierarchy.
+
+### 2. The Grid System
+
+If you look at Vercel's or Stripe's pages, there is an invisible structure holding everything together. I decided to expose that structure slightly.
+
+I implemented a custom 12-column CSS Grid layout that serves as the backbone of the site. But I took it a step further: I added subtle, 1px borders that run vertically down the page, framing the main content area.
+
+This was surprisingly tricky to implement across responsive breakpoints without causing horizontal scrolling or overlapping content.
+
+```tsx
+const GridSection = ({ children, isFirst }) => (
+  <section className="relative w-full flex justify-center">
+    {/* Subtle boundary lines */}
+    <div className="absolute left-0 top-0 bottom-0 w-px bg-neutral-border-medium" />
+    <div className="absolute right-0 top-0 bottom-0 w-px bg-neutral-border-medium" />
+    
+    <div className="max-w-6xl w-full px-4">
+      {children}
+    </div>
+  </section>
+);
+```
+
+By ensuring every card, text block, and image aligns perfectly to this grid, the site instantly felt more structured and professional.
+
+### 3. Shadows and Depth
+
+Flat design is out. Depth is back, but it's subtle.
+
+I spent hours crafting the perfect shadow system. A good shadow doesn't look like a dark smudge; it looks like real light interacting with an object. I layered multiple box-shadows to achieve a smooth, realistic diffusion.
+
+```css
+.premium-shadow {
+  box-shadow: 
+    0 1px 2px rgba(0, 0, 0, 0.04), 
+    0 4px 8px rgba(0, 0, 0, 0.04), 
+    0 8px 16px rgba(0, 0, 0, 0.04), 
+    0 16px 32px rgba(0, 0, 0, 0.04);
+}
+```
+
+I applied these shadows selectively—mostly on interactive elements like buttons and hovering over project cards, pulling them closer to the user in the Z-axis.
+
+---
+
+## Crafting the Details
+
+With the foundation in place, I focused on the UI details that elevate a site from "good" to "premium."
+
+### Button Styling
+
+Buttons are the primary way users interact with your site. They need to invite interaction. 
+
+Inspired by Cal.com, I gave my primary buttons a slight inner shadow (to simulate a physical bevel) and a subtle gradient background. On hover, the gradient shifts slightly, and the button scales down by 2% to simulate being pressed.
+
+<Feedback variant="info">
+  **Pro Tip:** Never rely solely on color changes for hover states. Incorporate subtle physical movements (like a `transform: scale(0.98)`) to make elements feel tactile.
+</Feedback>
+
+### Section Separators
+
+Instead of hard `<hr />` lines, I used radial gradients to create dividers that fade out at the edges. It’s a tiny detail, but it prevents the visual flow of the page from being abruptly halted, guiding the user's eye smoothly down the content.
+
+### Dark Mode
+
+Dark mode isn't just about inverting colors. If you just flip `#FFF` to `#000`, your site will look terrible. 
+
+In dark mode, shadows become invisible. So, how do you show depth? **Borders and backgrounds.**
+
+In light mode, my cards rely on drop shadows to stand out. In dark mode, I remove the shadows entirely and instead use a lighter shade of gray for the card background, combined with a 1px border of `rgba(255, 255, 255, 0.1)`. This creates a crisp, illuminated edge that separates the card from the deep black background.
+
+---
+
+## Adding Motion
+
+Animations are dangerous. Too many, and your site feels like a chaotic PowerPoint presentation. Too few, and it feels dead.
+
+I aimed for functional motion. I used Framer Motion to orchestrate everything.
+
+1. **Reveal Animations:** As you scroll, elements gently slide up and fade in. The timing is crucial. If it's too slow, the user is waiting for content. If it's too fast, it feels jerky. I settled on a `400ms` duration with a custom cubic-bezier easing `(0.16, 1, 0.3, 1)` that starts fast and decelerates smoothly.
+2. **Layout Animations:** When filtering projects or expanding accordion menus, the surrounding content smoothly adjusts its position rather than snapping instantly.
+
+```tsx
+<motion.div
+  initial={{ opacity: 0, y: 12 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  viewport={{ once: true, margin: "-50px" }}
+  transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+>
+  {children}
+</motion.div>
+```
+
+---
+
+## Challenges and Lessons Learned
+
+Building this wasn't entirely smooth sailing. 
+
+### The Performance Cost of Blur
+I love the frosted glass effect (`backdrop-filter: blur()`). I used it on my sticky header and on various cards. However, I quickly noticed that rendering multiple large, blurred elements absolutely tanks scrolling performance on lower-end devices. 
+
+**The Fix:** I learned to use `backdrop-filter` sparingly, heavily optimizing the blur radius, and ensuring it only applied to small, specific UI elements rather than massive background layers.
+
+### Managing Z-Index Hell
+When you start combining absolute positioning (for the grid lines), sticky headers, modal overlays, and complex background gradients, `z-index` bugs are inevitable. At one point, my background grid lines were rendering *over* my project images.
+
+**The Fix:** I established a strict, documented Z-index scale in my CSS variables (e.g., `--z-background: -1`, `--z-content: 10`, `--z-overlay: 100`) and strictly enforced it, rather than throwing `z-index: 9999` at problems.
+
+---
+
+## Conclusion: Before vs. After
+
+Looking back at my old portfolio, it feels flat. The typography was haphazard, the spacing was inconsistent, and it lacked any real personality. 
+
+The new portfolio feels like a cohesive product. The spacing is mathematically sound, the typography scales beautifully, and the micro-interactions make the site feel alive.
+
+**Key Takeaways for your next rebuild:**
+1. **Steal like an artist:** Study the best SaaS companies. Inspect their CSS. Understand *why* they use certain paddings and colors.
+2. **Less is more:** Don't add an animation just because you can. Add it because it improves the user experience.
+3. **Typography and Spacing > Everything Else:** You don't need complex graphics if your text is beautifully set and perfectly spaced.
+
+Your portfolio is your digital handshake. Make it a firm, confident one.

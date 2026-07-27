@@ -1,0 +1,90 @@
+---
+title: "Things I Learned While Practicing DSA Alongside Development"
+publishedAt: "2024-01-05"
+summary: "How to balance building full-stack projects with grinding LeetCode, and why treating them as opposing disciplines is a massive mistake."
+image: "/images/gallery/horizontal-3.jpg"
+tag: "Engineering"
+---
+
+In the computer science world, there is a legendary, ongoing battle between two camps: the "LeetCode Grinders" and the "Project Builders." 
+
+One side argues that Data Structures and Algorithms (DSA) are the only things that matter for passing interviews at FAANG companies. The other side argues that knowing how to invert a binary tree is useless if you don't know how to deploy a basic REST API.
+
+For a long time, I treated them as separate, competing disciplines. I would spend a month doing nothing but LeetCode, completely forgetting my React skills. Then I'd switch to building a web app, and my algorithm skills would atrophy. 
+
+Here is what I learned when I finally figured out how to practice DSA *alongside* full-stack development, and why they actually complement each other perfectly.
+
+---
+
+## 1. The Context Switching Penalty is Real
+
+When I tried to alternate days (Monday: DSA, Tuesday: Web Dev, Wednesday: DSA), I made zero progress in either.
+
+**The Problem:** The mental model required to traverse a graph using Depth First Search is entirely different from the mental model required to debug a CSS Flexbox layout. When you alternate days, you spend the first two hours of your study session just remembering where you left off.
+
+**The Solution:** Time-blocking by weeks or phases. I found success in doing "Two Weeks of Building" followed by "One Week of Grinding." During the build phase, I focused 100% on shipping a project. During the grind phase, I lived on LeetCode. The longer unbroken blocks allowed me to actually enter a flow state.
+
+---
+
+## 2. DSA Actually Makes You a Better Developer
+
+There is a myth that DSA is just "interview trivia." This is entirely false.
+
+Before I took algorithms seriously, my frontend code was full of nested `for` loops. If I needed to find a specific user in an array of 1,000 objects, I would use `.find()` inside of a `.map()`. It worked, but it was `O(N^2)` complexity.
+
+Once I understood Hash Maps, my development approach changed completely. I started transforming arrays of objects into dictionaries (hash maps) keyed by the object ID. 
+
+```javascript
+// The Old Way O(N^2)
+const user = usersArray.find(u => u.id === targetId);
+
+// The New Way O(1)
+const usersMap = {
+  "id_1": { name: "Alice" },
+  "id_2": { name: "Bob" }
+};
+const user = usersMap[targetId]; // Instant lookup
+```
+
+Understanding time and space complexity stopped being an academic exercise and started being a practical tool for ensuring my web apps didn't freeze when the database returned 10,000 rows.
+
+---
+
+## 3. Development Makes DSA Easier to Understand
+
+Conversely, building real-world projects made abstract algorithms suddenly click.
+
+I struggled to understand Graph traversal (BFS/DFS) when it was just circles and lines on a whiteboard. But when I was building a social media clone and needed to implement a "Suggested Friends" feature (finding friends of friends), I suddenly realized: *Oh, this is just a graph. Users are nodes, and friendships are edges.*
+
+Trees made sense when I had to build a nested comment section (like Reddit). 
+Queues made sense when I had to build a background job processor for sending emails.
+
+When you tie abstract math to a concrete product feature, your brain retains the information ten times better.
+
+---
+
+## 4. Mistakes Beginners Make (That I Also Made)
+
+### Mistake 1: Memorizing Solutions
+I used to look at a LeetCode Hard, stare blankly for 5 minutes, look at the solution, and then type it out, thinking I "learned" it. I didn't. 
+**Fix:** You have to struggle. If you can't solve it after 30 minutes, look at the *hints*, not the code. If you have to look at the code, don't just copy it. Close the tab and try to write it from memory.
+
+### Mistake 2: Building "To-Do" Apps Forever
+In development, the equivalent of memorizing LeetCode solutions is following YouTube tutorials line-by-line. You end up with a beautiful To-Do app, but you have no idea how the authentication actually works.
+**Fix:** Tutorial hell is real. Follow a tutorial to learn a concept, but then build something completely different without the tutorial.
+
+---
+
+## 5. My Learning Strategy Today
+
+If I had to start over and prepare for interviews while building my portfolio, here is the exact schedule I would use:
+
+1. **Morning (1 Hour):** One LeetCode Medium problem. Do it with your morning coffee. Your brain is fresh, and algorithm puzzles are great for waking up your logic centers.
+2. **Evening (2 Hours):** Project building. Work on your React/Node app. 
+3. **Weekends:** Deep dives. Use Saturdays to learn a completely new concept (like Dynamic Programming or Docker) and Sundays to rest or read documentation.
+
+## Conclusion
+
+Stop treating DSA and Development as enemies. They are the two legs you need to walk as a software engineer. DSA teaches you *how to think efficiently*, and development teaches you *how to build things people actually want to use*. 
+
+If you can do both, you aren't just an engineer who can pass an interview, and you aren't just a hacker who can duct-tape a website together. You become a truly dangerous, well-rounded software engineer.

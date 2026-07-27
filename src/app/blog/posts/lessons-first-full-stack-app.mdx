@@ -1,0 +1,103 @@
+---
+title: "Lessons From Building My First Full Stack Application"
+publishedAt: "2024-02-14"
+summary: "A painfully honest look back at the mistakes, architectural blunders, and invaluable lessons I learned while deploying my first real full-stack web application."
+image: "/images/gallery/horizontal-2.jpg"
+tag: "Engineering"
+---
+
+Everyone remembers their first full-stack application. It usually starts with a burst of inspiration, follows with three weeks of frantic coding, and ends in a messy, bug-ridden deployment that you are simultaneously incredibly proud of and deeply ashamed of.
+
+When I built my first serious full-stack app (a project management tool for student organizations), I made nearly every mistake in the book. 
+
+Here is a painfully honest look at the architectural blunders, Git catastrophes, and invaluable lessons I learned along the way.
+
+---
+
+## 1. Feature Creep is the Enemy of Shipping
+
+When I started the project, the scope was simple: *A dashboard where students can assign tasks to each other.*
+
+By week two, I had convinced myself that it also needed real-time chat, a calendar integration with Google Workspace, role-based access control with 7 different permission levels, and a dark mode toggle. 
+
+**The Mistake:** I spent 80% of my time building features that nobody asked for, instead of polishing the core feature (task assignment) that the app actually needed to function.
+
+**The Lesson:** Ruthlessly cut scope. Build the Minimum Viable Product (MVP) first. If a feature isn't absolutely critical to the core user journey, put it in a backlog. Shipping a fast, beautiful app with 3 features is infinitely better than shipping a broken, confusing app with 15 features.
+
+---
+
+## 2. API Design Matters (Don't Wing It)
+
+In the beginning, my API endpoints were a chaotic mess. I had endpoints like:
+- `POST /updateTaskStatus`
+- `GET /getAllUsersForProject`
+- `POST /sendEmailToUser`
+
+This is known as RPC (Remote Procedure Call) style routing, and while it works, it scales terribly. 
+
+**The Mistake:** I didn't plan my data model before writing my routes. I ended up with massive JSON payloads being sent back and forth because I didn't know how to query specific relations.
+
+**The Lesson:** Stick to RESTful conventions. 
+- `GET /api/projects/:id/tasks` 
+- `PATCH /api/tasks/:id`
+
+Design your database schema *first*, then design your API contracts (using something like Postman or Swagger) *second*, and only write the actual backend code *third*. It will save you weeks of refactoring.
+
+---
+
+## 3. The Git Catastrophes
+
+Before this project, I used Git as a fancy "Save" button. I would do three days of work and then run:
+```bash
+git add .
+git commit -m "updates"
+git push
+```
+
+**The Mistake:** I decided to refactor the entire authentication flow. I broke the app completely. Because my last commit was simply "updates" from three days ago, I had no way to roll back to a working state without losing all my UI work. I had to manually untangle the code for 12 hours.
+
+**The Lesson:** Commit small, commit often, and write descriptive commit messages. I now follow the Conventional Commits specification (`feat:`, `fix:`, `refactor:`). Furthermore, I learned to use branching properly. The `main` branch should always be deployable. All work happens on feature branches.
+
+---
+
+## 4. Database Design: The "Store Everything in One Table" Anti-pattern
+
+Because I was using PostgreSQL but thinking like it was a NoSQL database, my initial schema was terrible. I had a `Projects` table that had a column called `team_members` containing a comma-separated string of user IDs. 
+
+**The Mistake:** When I needed to query "Which projects is User X a part of?", I had to do expensive string-matching queries across the entire database. It was incredibly slow.
+
+**The Lesson:** Learn database normalization. If you have a many-to-many relationship (Users to Projects), you need a junction table (e.g., `ProjectMembers`). Let the SQL engine do the heavy lifting with `JOIN` operations. Relational databases are optimized for relations; use them properly.
+
+---
+
+## 5. Debugging in Production is a Nightmare
+
+I deployed the app using Heroku. On my local machine, everything worked perfectly. On production, users were reporting that they couldn't upload profile pictures.
+
+**The Mistake:** I had no logging in place. When the upload failed, the frontend just showed a generic "Something went wrong" alert. I had to guess what was breaking. I eventually realized that Heroku's ephemeral file system was wiping out the images every time a new dyno spun up.
+
+**The Lesson:** Two things:
+1. **Never store user uploads on your application server.** Always use a dedicated object storage service like AWS S3 or Cloudinary.
+2. **Implement proper logging and error tracking.** Setting up Sentry or Datadog takes 10 minutes, but it saves you hours of blind debugging. When an error happens, you need a stack trace, not a generic alert.
+
+---
+
+## 6. The Premature Optimization Trap
+
+I spent three days trying to implement Redis caching for my API because I read a blog post saying it was necessary for "web-scale" applications. 
+
+**The Mistake:** I had exactly 12 users. The database queries were taking 15 milliseconds. Redis added immense complexity to my deployment and development environment, and provided absolutely zero noticeable benefit to the users.
+
+**The Lesson:** Don't optimize until you have a bottleneck. Write clean, readable code first. If a specific query or endpoint becomes slow as you gain users, *then* introduce caching or indexes. Premature optimization is the root of all evil.
+
+---
+
+## Conclusion
+
+Looking back at the codebase of my first full-stack app is an exercise in humility. It is a spaghetti-code mess of mixed concerns, tightly coupled components, and questionable architectural decisions.
+
+But I wouldn't change a thing. 
+
+You can read all the system design books in the world, but nothing teaches you the value of a clean architecture faster than having to maintain your own terrible code for six months. 
+
+Build things. Break them. Learn from the mess. That's how you become an engineer.
