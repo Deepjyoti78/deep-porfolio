@@ -1,8 +1,7 @@
 "use client";
 
-import { Card, Column, Media, Row, Avatar, Text } from "@once-ui-system/core";
+import { Card, Column, Media, Row, Text } from "@once-ui-system/core";
 import { formatDate } from "@/utils/formatDate";
-import { person } from "@/resources";
 
 interface PostProps {
   post: any;
@@ -18,10 +17,10 @@ export default function Post({ post, thumbnail, direction }: PostProps) {
       href={`/blog/${post.slug}`}
       transition="micro-medium"
       direction={direction}
-      padding="24"
-      radius="l"
+      padding="12"
+      radius="m"
       className="premium-shadow blog-card-mobile"
-      gap={direction === "column" ? "16" : "24"}
+      gap={direction === "column" ? "8" : "12"}
       s={{ direction: "column", padding: "8" }}
       background="surface"
       border="neutral-medium"
@@ -32,38 +31,34 @@ export default function Post({ post, thumbnail, direction }: PostProps) {
           sizes="(max-width: 768px) 100vw, 640px"
           border="neutral-alpha-weak"
           cursor="interactive"
-          radius="l"
+          radius="m"
           src={post.metadata.image}
           alt={"Thumbnail of " + post.metadata.title}
           aspectRatio="16 / 9"
         />
       )}
-      <Row fillWidth>
-        <Column fillWidth paddingY="16" paddingX="16" gap="16" vertical="center" align="start" s={{ paddingX: "0", paddingY: "0", gap: "4" }}>
-          <Row gap="8" vertical="center" className="mobile-meta-row">
-            <Avatar src={person.avatar} size="xs" className="mobile-blog-avatar" />
-            <Column gap="2">
-              <Text variant="label-default-xs" className="mobile-blog-author">{person.name}</Text>
-              <Text variant="body-default-xs" onBackground="neutral-weak" className="mobile-blog-date">
-                {post.metadata.publishedAt ? formatDate(post.metadata.publishedAt, false) : ""}
-              </Text>
-            </Column>
-          </Row>
-          <Text variant="heading-strong-s" wrap="balance" className="mobile-blog-title">
-            {post.metadata.title}
+      <Column fillWidth paddingY="4" paddingX="4" gap="8" align="start" style={{ flex: 1 }} s={{ paddingX: "0", paddingY: "0", gap: "4" }}>
+        <Text variant="heading-strong-s" wrap="balance" className="mobile-blog-title">
+          {post.metadata.title}
+        </Text>
+        {post.metadata.summary && (
+          <Text variant="body-default-s" onBackground="neutral-weak" className="line-clamp-2 mobile-blog-summary" style={{ marginTop: '4px' }}>
+            {post.metadata.summary}
           </Text>
-          {post.metadata.summary && (
-            <Text variant="body-default-s" onBackground="neutral-weak" className="line-clamp-2 mobile-blog-summary">
-              {post.metadata.summary}
-            </Text>
-          )}
-          {post.metadata.tag && (
-            <Text variant="label-strong-xs" onBackground="neutral-weak" className="hide-on-mobile">
-              {post.metadata.tag}
-            </Text>
-          )}
-        </Column>
-      </Row>
+        )}
+        {post.metadata.tag && (
+          <Text variant="label-strong-xs" onBackground="neutral-weak" className="hide-on-mobile">
+            {post.metadata.tag}
+          </Text>
+        )}
+        {/* Date + time pinned to bottom-right */}
+        <Row fillWidth horizontal="end" style={{ marginTop: 'auto', paddingTop: '3px' }}>
+          <Text variant="body-default-xs" onBackground="neutral-weak" className="mobile-blog-date blog-date-text">
+            {post.metadata.publishedAt ? formatDate(post.metadata.publishedAt, false) : ""}
+          </Text>
+        </Row>
+      </Column>
     </Card>
   );
 }
+

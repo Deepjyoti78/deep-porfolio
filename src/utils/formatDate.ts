@@ -34,8 +34,14 @@ export function formatDate(date: string, includeRelative = false) {
     year: "numeric",
   });
 
+  const timeStr = targetDate.toLocaleString("en-us", {
+    hour: "numeric",
+    minute: "2-digit",
+    hour12: true,
+  });
+
   if (!includeRelative) {
-    return fullDate;
+    return `${fullDate} · ${timeStr}`;
   }
 
   return `${fullDate} (${formattedDate})`;

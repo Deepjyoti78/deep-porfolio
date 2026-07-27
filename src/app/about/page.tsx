@@ -128,7 +128,7 @@ export default function About() {
           <TableOfContents structure={structure} about={about} />
         </Column>
       )}
-      <GridSection isFirst paddingTop="8" paddingBottom="32">
+      <GridSection isFirst paddingTop="32" paddingBottom="32">
         <Row 
           fillWidth 
           s={{ direction: "column", padding: "16", gap: "16" }} 
@@ -138,23 +138,52 @@ export default function About() {
           style={{
             backgroundColor: "var(--surface-background)",
             border: "1px solid var(--neutral-border-strong)",
-            borderRadius: "24px"
+            borderRadius: "24px",
+            position: "relative"
           }}
+          s={{ direction: "column", padding: "16", gap: "16" }}
         >
+          {/* Desktop: Schedule a call — absolute top-right corner */}
+          {about.calendar.display && (
+            <a
+              className="hide-on-mobile"
+              href={about.calendar.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                position: "absolute",
+                top: "16px",
+                right: "16px",
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "5px",
+                padding: "5px 13px",
+                borderRadius: "9999px",
+                fontSize: "12px",
+                fontWeight: 600,
+                letterSpacing: "-0.01em",
+                textDecoration: "none",
+                background: "linear-gradient(to bottom, #2f2f2f 0%, #1e1e1e 100%)",
+                border: "1px solid rgba(255,255,255,0.08)",
+                boxShadow: "inset 0 1px 0 rgba(255,255,255,0.10), inset 0 -1px 0 rgba(0,0,0,0.35), 0 1px 2px rgba(0,0,0,0.12)",
+                color: "#ffffff",
+                whiteSpace: "nowrap",
+                zIndex: 10
+              }}
+            >
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ opacity: 0.8 }}>
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                <line x1="16" y1="2" x2="16" y2="6"/>
+                <line x1="8" y1="2" x2="8" y2="6"/>
+                <line x1="3" y1="10" x2="21" y2="10"/>
+              </svg>
+              Schedule a call
+            </a>
+          )}
           {/* --- DESKTOP VIEW --- */}
           <Row className="hide-on-mobile" fillWidth gap="24" vertical="center" paddingX="16" paddingY="16">
             {/* Left Column */}
             <Column flex={6} gap="24" horizontal="start">
-              {about.calendar.display && (
-                <Row
-                  fitWidth border="brand-alpha-medium" background="brand-alpha-weak" radius="full" padding="2" gap="4" vertical="center"
-                  style={{ backdropFilter: "blur(var(--static-space-1))" }}
-                >
-                  <Icon paddingLeft="8" name="calendar" onBackground="brand-weak" />
-                  <Row paddingX="8" style={{ whiteSpace: "nowrap", fontSize: "14px" }}>Schedule a call</Row>
-                  <IconButton href={about.calendar.link} data-border="rounded" variant="secondary" icon="chevronRight" size="s" />
-                </Row>
-              )}
               <Column gap="8" horizontal="start">
                 <Heading variant="display-strong-s" style={{ whiteSpace: "nowrap", fontSize: "40px" }}>{person.name}</Heading>
                 <Text variant="heading-default-m" onBackground="neutral-weak">{person.role}</Text>
@@ -202,25 +231,48 @@ export default function About() {
           </Row>
 
           {/* --- MOBILE VIEW --- */}
-          <Column className="hide-on-desktop" fillWidth gap="24">
-            <Column fillWidth gap="16">
+          <Column className="hide-on-desktop" fillWidth gap="20">
+            {/* Name left, Schedule button pinned to right */}
+            <div style={{ display: 'flex', width: '100%', justifyContent: 'space-between', alignItems: 'center' }}>
+              <Column gap="4">
+                <Heading variant="display-strong-s" style={{ whiteSpace: "nowrap", fontSize: "clamp(26px, 4vw, 32px)" }}>{person.name}</Heading>
+                <Text variant="heading-default-s" onBackground="neutral-weak" style={{ fontSize: "clamp(15px, 2vw, 18px)" }}>{person.role}</Text>
+              </Column>
               {about.calendar.display && (
-                <Row
-                  fitWidth border="brand-alpha-medium" background="brand-alpha-weak" radius="full" padding="2" gap="4" vertical="center"
-                  style={{ backdropFilter: "blur(var(--static-space-1))" }}
+                <a
+                  href={about.calendar.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: "4px",
+                    padding: "5px 11px",
+                    borderRadius: "9999px",
+                    fontSize: "11px",
+                    fontWeight: 600,
+                    letterSpacing: "-0.01em",
+                    textDecoration: "none",
+                    background: "linear-gradient(to bottom, #2f2f2f 0%, #1e1e1e 100%)",
+                    border: "1px solid rgba(255,255,255,0.08)",
+                    boxShadow: "inset 0 1px 0 rgba(255,255,255,0.10), inset 0 -1px 0 rgba(0,0,0,0.35), 0 1px 2px rgba(0,0,0,0.12)",
+                    color: "#ffffff",
+                    whiteSpace: "nowrap",
+                    flexShrink: 0,
+                    marginLeft: "12px"
+                  }}
                 >
-                  <Icon paddingLeft="8" name="calendar" onBackground="brand-weak" />
-                  <Row paddingX="8" style={{ whiteSpace: "nowrap", fontSize: "13px" }}>Schedule a call</Row>
-                  <IconButton href={about.calendar.link} data-border="rounded" variant="secondary" icon="chevronRight" size="s" />
-                </Row>
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ opacity: 0.8 }}>
+                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                    <line x1="16" y1="2" x2="16" y2="6"/>
+                    <line x1="8" y1="2" x2="8" y2="6"/>
+                    <line x1="3" y1="10" x2="21" y2="10"/>
+                  </svg>
+                  Schedule a call
+                </a>
               )}
-              <Row fillWidth horizontal="start" vertical="center">
-                <Column gap="4">
-                  <Heading variant="display-strong-s" style={{ whiteSpace: "nowrap", fontSize: "clamp(26px, 4vw, 32px)" }}>{person.name}</Heading>
-                  <Text variant="heading-default-s" onBackground="neutral-weak" style={{ fontSize: "clamp(15px, 2vw, 18px)" }}>{person.role}</Text>
-                </Column>
-              </Row>
-            </Column>
+            </div>
+
 
             {about.avatar.display && (
               <div style={{ 

@@ -3,7 +3,6 @@ import {
   Text,
   Button,
   Avatar,
-  RevealFx,
   Column,
   Badge,
   Row,
@@ -224,7 +223,7 @@ export default function Home() {
               
               <div style={{ zIndex: 1 }}>
                 {home.featured.display && (
-                  <RevealFx translateY="4" fillWidth>
+                  <div className="animate-fade-up animate-delay-1" style={{ width: '100%' }}>
                     <a
                       href={home.featured.href}
                       style={{
@@ -247,9 +246,9 @@ export default function Home() {
                     >
                       {home.featured.title} <span style={{ color: "var(--neutral-on-background-weak)" }}>›</span>
                     </a>
-                  </RevealFx>
+                  </div>
                 )}
-                <RevealFx translateY="4" fillWidth>
+                <div className="animate-fade-up animate-delay-2" style={{ width: '100%' }}>
                   <Heading
                     align="start"
                     variant="display-strong-xl"
@@ -264,16 +263,16 @@ export default function Home() {
                   >
                     {home.headline}
                   </Heading>
-                </RevealFx>
+                </div>
 
                 {/* Mobile Terminal */}
                 <div className="hide-on-desktop" style={{ width: "100%", marginTop: "12px", marginBottom: "12px" }}>
-                  <RevealFx translateY="12" delay={0.1} fillWidth>
+                  <div className="animate-fade-up animate-delay-3" style={{ width: '100%' }}>
                     <TerminalWindow />
-                  </RevealFx>
+                  </div>
                 </div>
 
-                <RevealFx translateY="8" delay={0.2} fillWidth>
+                <div className="animate-fade-up animate-delay-3" style={{ width: '100%' }}>
                   <Text
                     wrap="balance"
                     onBackground="neutral-weak"
@@ -288,14 +287,14 @@ export default function Home() {
                   >
                     {home.subline}
                   </Text>
-                </RevealFx>
-                <RevealFx paddingTop="24" delay={0.4} fillWidth>
+                </div>
+                <div className="animate-fade-up animate-delay-4" style={{ paddingTop: '24px', width: '100%' }}>
                   <Row gap="16" horizontal="start" fillWidth s={{ gap: "8" }}>
                     <Button
                       id="about"
-                      className="hover-btn cal-btn-primary"
+                      className="hover-btn hero-about-btn"
                       href={about.path}
-                      variant="primary"
+                      variant="secondary"
                       size="s"
                       style={{
                         borderRadius: "9999px",
@@ -324,17 +323,17 @@ export default function Home() {
                       <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="arrow-icon" style={{ marginLeft: "4px", position: "relative", top: "1px" }}><path d="m9 18 6-6-6-6" /></svg>
                     </Button>
                   </Row>
-                </RevealFx>
+                </div>
               </div>
             </Column>
 
             {/* Right Column (Terminal) */}
             <Column className="hide-on-mobile" style={{ flex: 1.1 }} fillWidth position="relative" horizontal="end" align="end" s={{ align: "center" }}>
-              <RevealFx translateY="12" delay={0.3} fillWidth>
+              <div className="animate-fade-up animate-delay-3" style={{ width: '100%' }}>
                 <div style={{ width: "100%", maxWidth: "480px", marginLeft: "auto" }}>
                   <TerminalWindow />
                 </div>
-              </RevealFx>
+              </div>
             </Column>
           </Row>
         </Row>
@@ -372,7 +371,7 @@ export default function Home() {
               </Heading>
               {/* Desktop Button */}
               <Button
-                className="hover-btn cal-btn-primary hide-on-mobile"
+                className="hover-btn section-primary-btn hide-on-mobile"
                 href={work.path}
                 variant="primary"
                 size="s"
@@ -399,11 +398,11 @@ export default function Home() {
               A selection of my most recent and impactful work.
             </Text>
           </Column>
-          <RevealFx translateY="16" delay={0.6} fillWidth>
+          <div className="animate-fade-up animate-delay-5" style={{ width: '100%' }}>
             <Row paddingX="s" fillWidth>
               <GridProjects />
             </Row>
-          </RevealFx>
+          </div>
         </Column>
       </GridSection>
       <GridSection paddingY="48" s={{ paddingTop: "12", paddingBottom: "0" }}>
@@ -415,7 +414,7 @@ export default function Home() {
               </Heading>
               {/* Desktop Button */}
               <Button
-                className="hover-btn cal-btn-primary hide-on-mobile"
+                className="hover-btn section-primary-btn hide-on-mobile"
                 href={about.path}
                 variant="primary"
                 size="s"
@@ -441,11 +440,11 @@ export default function Home() {
               My leadership experience collaborating with teams and designing user experiences.
             </Text>
           </Column>
-          <RevealFx translateY="16" delay={0.6} fillWidth>
+          <div className="animate-fade-up animate-delay-5" style={{ width: '100%' }}>
             <Row paddingX="s" fillWidth>
               <ExperienceCard />
             </Row>
-          </RevealFx>
+          </div>
         </Column>
       </GridSection>
       <GridSection paddingY="48" s={{ paddingTop: "0", paddingBottom: "12" }}>
@@ -462,20 +461,20 @@ export default function Home() {
               My academic background and the foundation of my software engineering journey.
             </Text>
           </Column>
-          <RevealFx translateY="16" delay={0.6} fillWidth>
+          <div className="animate-fade-up animate-delay-5" style={{ width: '100%' }}>
             <Row paddingX="s" fillWidth>
               <EducationCard />
             </Row>
-          </RevealFx>
+          </div>
         </Column>
       </GridSection>
       <GridSection hideBottomBorder paddingY="48" s={{ paddingTop: "0", paddingBottom: "12" }}>
         <Column fillWidth>
-          <RevealFx translateY="16" delay={0.2} fillWidth>
+          <div className="animate-fade-up animate-delay-6" style={{ width: '100%' }}>
             <Row paddingX="s" fillWidth>
               <Mailchimp />
             </Row>
-          </RevealFx>
+          </div>
         </Column>
       </GridSection>
     </Column>
