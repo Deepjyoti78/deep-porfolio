@@ -385,7 +385,7 @@ export default function Home() {
               <a
                 href={work.path}
                 className="hide-on-desktop"
-                style={{ borderRadius: '9999px', fontSize: '9px', fontWeight: '600', padding: '4px 8px', flexShrink: 0, marginLeft: 'auto', backgroundColor: '#1a1a1a', color: '#ffffff', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', whiteSpace: 'nowrap', lineHeight: 1, border: '1px solid rgba(255,255,255,0.15)' }}
+                style={{ borderRadius: '9999px', fontSize: '11px', fontWeight: '600', padding: '6px 12px', flexShrink: 0, marginLeft: 'auto', backgroundColor: '#1a1a1a', color: '#ffffff', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', whiteSpace: 'nowrap', lineHeight: 1, border: '1px solid rgba(255,255,255,0.15)' }}
               >
                 View All Projects
               </a>
@@ -427,7 +427,7 @@ export default function Home() {
               <a
                 href={about.path}
                 className="hide-on-desktop"
-                style={{ borderRadius: '9999px', fontSize: '9px', fontWeight: '600', padding: '4px 8px', flexShrink: 0, marginLeft: 'auto', backgroundColor: '#1a1a1a', color: '#ffffff', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', whiteSpace: 'nowrap', lineHeight: 1, border: '1px solid rgba(255,255,255,0.15)' }}
+                style={{ borderRadius: '9999px', fontSize: '11px', fontWeight: '600', padding: '6px 12px', flexShrink: 0, marginLeft: 'auto', backgroundColor: '#1a1a1a', color: '#ffffff', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', whiteSpace: 'nowrap', lineHeight: 1, border: '1px solid rgba(255,255,255,0.15)' }}
               >
                 View full experience
               </a>
