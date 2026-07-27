@@ -416,4 +416,11 @@ a.cal-btn-secondary * {
   font-size: 9px !important;
   opacity: 0.6;
   letter-spacing: 0.01em;
+}
+
+/* Hero description — make more visible (whitish) on mobile dark mode only */
+@media (max-width: 768px) {
+  [data-theme="dark"] .hero-description {
+    color: #e4e4e4 !important;
+  }
 }

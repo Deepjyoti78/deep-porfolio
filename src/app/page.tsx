@@ -276,6 +276,7 @@ export default function Home() {
                   <Text
                     wrap="balance"
                     onBackground="neutral-weak"
+                    className="hero-description"
                     style={{
                       fontSize: "clamp(0.8rem, 0.9vw, 0.875rem)",
                       lineHeight: "1.6",
