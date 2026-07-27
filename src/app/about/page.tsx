@@ -19,6 +19,7 @@ import styles from "@/components/about/about.module.scss";
 import React from "react";
 import { ExperienceCard } from "@/components/work/ExperienceCard";
 import { EducationCard } from "@/components/work/EducationCard";
+import Image from "next/image";
 
 export async function generateMetadata() {
   return Meta.generate({
@@ -87,6 +88,21 @@ export default function About() {
       maxWidth="m"
       style={{}}
     >
+      <style>{`
+        .mobile-about-card {
+          width: calc(100% - 32px);
+          margin: 0 auto;
+        }
+        @media (max-width: 768px) {
+          .mobile-about-card {
+            width: calc(100% - 16px) !important;
+          }
+          .mobile-about-card-padding {
+            padding-left: 12px !important;
+            padding-right: 12px !important;
+          }
+        }
+      `}</style>
       <Schema
         as="webPage"
         baseURL={baseURL}
@@ -118,211 +134,138 @@ export default function About() {
           s={{ direction: "column", padding: "16", gap: "16" }} 
           horizontal="center" 
           padding="24"
+          className="mobile-about-card mobile-about-card-padding"
           style={{
             backgroundColor: "var(--surface-background)",
             border: "1px solid var(--neutral-border-strong)",
-            borderRadius: "24px",
-            width: "calc(100% - 32px)",
-            margin: "0 auto"
+            borderRadius: "24px"
           }}
         >
           {/* --- DESKTOP VIEW --- */}
-          <Column className={`${styles.blockAlign} hide-on-mobile`} flex={9} maxWidth={40}>
-          <Column
-            id={about.intro.title}
-            fillWidth
-            minHeight={120}
-            vertical="center"
-            marginBottom="24"
-          >
-            {about.calendar.display && (
-              <Row
-                fitWidth
-                border="brand-alpha-medium"
-                background="brand-alpha-weak"
-                radius="full"
-                padding="4"
-                gap="8"
-                marginBottom="m"
-                vertical="center"
-                className={styles.blockAlign}
-                style={{
-                  backdropFilter: "blur(var(--static-space-1))",
-                }}
-              >
-                <Icon paddingLeft="12" name="calendar" onBackground="brand-weak" />
-                <Row paddingX="8">Schedule a call</Row>
-                <IconButton
-                  href={about.calendar.link}
-                  data-border="rounded"
-                  variant="secondary"
-                  icon="chevronRight"
-                />
-              </Row>
-            )}
-            <Heading className={styles.textAlign} variant="display-strong-s">
-              {person.name}
-            </Heading>
-            <Text
-              className={styles.textAlign}
-              variant="heading-default-m"
-              onBackground="neutral-weak"
-            >
-              {person.role}
-            </Text>
-            {social.length > 0 && (
-              <Row
-                className={styles.blockAlign}
-                paddingTop="20"
-                paddingBottom="8"
-                gap="8"
-                wrap
-                horizontal="center"
-                fitWidth
-                data-border="rounded"
-              >
-                {social
-                      .filter((item) => item.essential)
-                      .map(
-                  (item) =>
-                    item.link && (
-                      <React.Fragment key={item.name}>
-                        <Row s={{ hide: true }}>
-                          <Button
-                            key={item.name}
-                            className="hover-btn cal-btn-secondary"
-                            href={item.link}
-                            prefixIcon={item.icon}
-                            label={item.name}
-                            size="s"
-                            weight="default"
-                            variant="secondary"
-                          />
-                        </Row>
-                        <Row hide s={{ hide: false }}>
-                          <IconButton
-                            size="l"
-                            key={`${item.name}-icon`}
-                            href={item.link}
-                            icon={item.icon}
-                            variant="secondary"
-                          />
-                        </Row>
-                      </React.Fragment>
-                    ),
-                )}
-              </Row>
-            )}
-          </Column>
-
-          {about.intro.display && (
-            <Column
-              textVariant="body-default-m"
-              fillWidth
-              gap="m"
-              marginBottom="m"
-            >
-              {about.intro.description}
-            </Column>
-          )}
-        </Column>
-        {about.avatar.display && (
-          <Column
-            className={`${styles.avatar} hide-on-mobile`}
-            top="64"
-            position="sticky"
-            minWidth="160"
-            paddingX="l"
-            paddingBottom="m"
-            gap="m"
-            flex={3}
-            horizontal="center"
-          >
-            <Avatar src={person.avatar} size="xl" />
-            <Row gap="8" vertical="center">
-              <Icon onBackground="accent-weak" name="globe" />
-              Delhi, India
-            </Row>
-            {person.languages && person.languages.length > 0 && (
-              <Row wrap gap="8">
-                {person.languages.map((language, index) => (
-                  <Tag 
-                    key={index} 
-                    size="l" 
-                    style={{ 
-                      background: 'var(--page-background)', 
-                      border: '1px solid var(--neutral-border-strong)' 
-                    }}
-                  >
-                    {language}
-                  </Tag>
-                ))}
-              </Row>
-            )}
-          </Column>
-        )}
-
-        {/* --- MOBILE VIEW --- */}
-        <Column className="hide-on-desktop" fillWidth gap="16">
-          <Column fillWidth gap="16">
-            {about.calendar.display && (
-              <Row
-                fitWidth border="brand-alpha-medium" background="brand-alpha-weak" radius="full" padding="2" gap="4" vertical="center"
-                style={{ backdropFilter: "blur(var(--static-space-1))" }}
-              >
-                <Icon paddingLeft="8" name="calendar" onBackground="brand-weak" />
-                <Row paddingX="4" style={{ whiteSpace: "nowrap", fontSize: "12px" }}>Schedule a call</Row>
-                <IconButton href={about.calendar.link} data-border="rounded" variant="secondary" icon="chevronRight" size="s" />
-              </Row>
-            )}
-            <Row fillWidth horizontal="between" vertical="center">
-              <Column gap="4">
-                <Heading variant="display-strong-s" style={{ whiteSpace: "nowrap", fontSize: "28px" }}>{person.name}</Heading>
-                <Text variant="heading-default-s" onBackground="neutral-weak">{person.role}</Text>
-              </Column>
-              {about.avatar.display && (
-                <Avatar src={person.avatar} size="l" style={{ width: "80px", height: "80px", marginLeft: "16px", flexShrink: 0 }} />
+          <Row className="hide-on-mobile" fillWidth gap="24" vertical="center" paddingX="16" paddingY="16">
+            {/* Left Column */}
+            <Column flex={6} gap="24" horizontal="start">
+              {about.calendar.display && (
+                <Row
+                  fitWidth border="brand-alpha-medium" background="brand-alpha-weak" radius="full" padding="2" gap="4" vertical="center"
+                  style={{ backdropFilter: "blur(var(--static-space-1))" }}
+                >
+                  <Icon paddingLeft="8" name="calendar" onBackground="brand-weak" />
+                  <Row paddingX="8" style={{ whiteSpace: "nowrap", fontSize: "14px" }}>Schedule a call</Row>
+                  <IconButton href={about.calendar.link} data-border="rounded" variant="secondary" icon="chevronRight" size="s" />
+                </Row>
               )}
-            </Row>
-          </Column>
+              <Column gap="8" horizontal="start">
+                <Heading variant="display-strong-s" style={{ whiteSpace: "nowrap", fontSize: "40px" }}>{person.name}</Heading>
+                <Text variant="heading-default-m" onBackground="neutral-weak">{person.role}</Text>
+              </Column>
+              {about.intro.display && (
+                <Text variant="body-default-s" onBackground="neutral-weak" style={{ lineHeight: '1.6', textAlign: 'left', fontSize: '15px' }}>
+                  {about.intro.description}
+                </Text>
+              )}
+              {social.length > 0 && (
+                <Row gap="16" wrap horizontal="start" fitWidth data-border="rounded">
+                  {social.filter((item) => item.essential).map((item) => item.link && (
+                    <IconButton size="m" key={`${item.name}-icon-desktop`} href={item.link} icon={item.icon} variant="secondary" />
+                  ))}
+                </Row>
+              )}
+            </Column>
 
-          <Column gap="12">
-            <Row gap="8" vertical="center">
-              <Icon onBackground="accent-weak" name="globe" />
-              <Text variant="body-default-s">Delhi, India</Text>
-            </Row>
-            {person.languages && person.languages.length > 0 && (
-              <Row gap="8" style={{ flexWrap: "nowrap", overflowX: "auto", width: "100%" }}>
-                {person.languages.map((language, index) => (
-                  <Tag key={index} size="m" style={{ background: 'var(--page-background)', border: '1px solid var(--neutral-border-strong)', padding: '2px 8px', fontSize: '11px', flexShrink: 0 }}>
-                    {language}
-                  </Tag>
+            {/* Right Column */}
+            <Column flex={5} gap="16" horizontal="center" align="center">
+              {about.avatar.display && (
+                <div style={{ 
+                  position: "relative",
+                  borderRadius: "20px", 
+                  border: "1px solid var(--neutral-border-medium)",
+                  padding: "4px",
+                  boxShadow: "0 4px 14px rgba(0,0,0,0.06)",
+                  backgroundColor: "var(--surface-background)",
+                  width: "100%",
+                  maxWidth: "320px",
+                  aspectRatio: "1/1"
+                }}>
+                  <div style={{ position: "relative", width: "100%", height: "100%", borderRadius: "16px", overflow: "hidden" }}>
+                    <Image
+                      src={person.avatar}
+                      alt={person.name}
+                      fill
+                      style={{ objectFit: "cover" }}
+                      priority
+                    />
+                  </div>
+                </div>
+              )}
+            </Column>
+          </Row>
+
+          {/* --- MOBILE VIEW --- */}
+          <Column className="hide-on-desktop" fillWidth gap="24">
+            <Column fillWidth gap="16">
+              {about.calendar.display && (
+                <Row
+                  fitWidth border="brand-alpha-medium" background="brand-alpha-weak" radius="full" padding="2" gap="4" vertical="center"
+                  style={{ backdropFilter: "blur(var(--static-space-1))" }}
+                >
+                  <Icon paddingLeft="8" name="calendar" onBackground="brand-weak" />
+                  <Row paddingX="8" style={{ whiteSpace: "nowrap", fontSize: "13px" }}>Schedule a call</Row>
+                  <IconButton href={about.calendar.link} data-border="rounded" variant="secondary" icon="chevronRight" size="s" />
+                </Row>
+              )}
+              <Row fillWidth horizontal="start" vertical="center">
+                <Column gap="4">
+                  <Heading variant="display-strong-s" style={{ whiteSpace: "nowrap", fontSize: "clamp(26px, 4vw, 32px)" }}>{person.name}</Heading>
+                  <Text variant="heading-default-s" onBackground="neutral-weak" style={{ fontSize: "clamp(15px, 2vw, 18px)" }}>{person.role}</Text>
+                </Column>
+              </Row>
+            </Column>
+
+            {about.avatar.display && (
+              <div style={{ 
+                position: "relative",
+                borderRadius: "20px", 
+                border: "1px solid var(--neutral-border-medium)",
+                padding: "4px",
+                boxShadow: "0 4px 14px rgba(0,0,0,0.06)",
+                backgroundColor: "var(--surface-background)",
+                width: "100%",
+                maxWidth: "100%",
+                aspectRatio: "16/9",
+                margin: "0 auto"
+              }}>
+                <div style={{ position: "relative", width: "100%", height: "100%", borderRadius: "16px", overflow: "hidden" }}>
+                  <Image
+                    src={person.avatar}
+                    alt={person.name}
+                    fill
+                    style={{ objectFit: "cover", objectPosition: "center 20%" }}
+                    priority
+                  />
+                </div>
+              </div>
+            )}
+
+            {about.intro.display && (
+              <Column fillWidth gap="m" style={{ fontSize: 'clamp(14px, 2vw, 15px)', lineHeight: '1.6', color: "var(--neutral-weak)" }}>
+                {about.intro.description}
+              </Column>
+            )}
+
+            {social.length > 0 && (
+              <Row gap="16" wrap horizontal="center" fitWidth data-border="rounded" style={{ alignSelf: "center", marginBottom: "0" }}>
+                {social.filter((item) => item.essential).map((item) => item.link && (
+                  <IconButton size="m" key={`${item.name}-icon`} href={item.link} icon={item.icon} variant="secondary" />
                 ))}
               </Row>
             )}
           </Column>
-
-          <div style={{ height: "1px", backgroundColor: "var(--neutral-border-medium)", width: "100%" }} />
-
-          {about.intro.display && (
-            <Column fillWidth gap="m" style={{ fontSize: '14px', lineHeight: '1.6', color: "var(--neutral-weak)" }}>
-              {about.intro.description}
-            </Column>
-          )}
-
-          {social.length > 0 && (
-            <Row gap="16" wrap horizontal="center" fitWidth data-border="rounded" style={{ alignSelf: "center", marginBottom: "0" }}>
-              {social.filter((item) => item.essential).map((item) => item.link && (
-                <IconButton size="m" key={`${item.name}-icon-mobile`} href={item.link} icon={item.icon} variant="secondary" />
-              ))}
-            </Row>
-          )}
-        </Column>
         </Row>
       </GridSection>
 
       <GridSection paddingY="32" className="mobile-tight-section">
-        <Column className={styles.blockAlign} fillWidth style={{ width: "calc(100% - 32px)", margin: "0 auto" }}>
+        <Column className={`${styles.blockAlign} mobile-about-card`} fillWidth>
           {about.work.display && (
             <>
               <Heading as="h2" id={about.work.title} variant="display-strong-s" marginBottom="s">
@@ -337,7 +280,7 @@ export default function About() {
       </GridSection>
 
       <GridSection paddingY="32" className="mobile-tight-section">
-        <Column className={styles.blockAlign} fillWidth style={{ width: "calc(100% - 32px)", margin: "0 auto" }}>
+        <Column className={`${styles.blockAlign} mobile-about-card`} fillWidth>
           {about.studies.display && (
             <>
               <Heading as="h2" id={about.studies.title} variant="display-strong-s" marginBottom="s">
@@ -352,7 +295,7 @@ export default function About() {
       </GridSection>
 
       <GridSection paddingY="32" className="mobile-tight-section">
-        <Column className={styles.blockAlign} fillWidth style={{ width: "calc(100% - 32px)", margin: "0 auto" }}>
+        <Column className={`${styles.blockAlign} mobile-about-card`} fillWidth>
           <Heading as="h2" id="hackathons" variant="display-strong-s" marginBottom="m">
             Hackathons
           </Heading>
@@ -366,7 +309,7 @@ export default function About() {
       </GridSection>
 
       <GridSection paddingY="32" className="mobile-tight-section">
-        <Column className={styles.blockAlign} fillWidth style={{ width: "calc(100% - 32px)", margin: "0 auto" }}>
+        <Column className={`${styles.blockAlign} mobile-about-card`} fillWidth>
           <Heading as="h2" id="skills-certifications" variant="display-strong-s" marginBottom="m">
             Skills & Certifications
           </Heading>
@@ -380,7 +323,7 @@ export default function About() {
       </GridSection>
 
       <GridSection paddingY="48" hideBottomBorder>
-        <Column className={styles.blockAlign} fillWidth style={{ width: "calc(100% - 32px)", margin: "0 auto" }}>
+        <Column className={`${styles.blockAlign} mobile-about-card`} fillWidth>
           {about.technical.display && (
             <>
             <Heading

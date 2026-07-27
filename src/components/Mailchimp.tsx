@@ -53,7 +53,7 @@ export const Mailchimp: React.FC<React.ComponentProps<typeof Column>> = ({ ...fl
     <Column
       overflow="hidden"
       fillWidth
-      paddingY="48"
+      paddingY="32"
       paddingX="l"
       radius="xl"
       className="premium-shadow"
@@ -62,6 +62,7 @@ export const Mailchimp: React.FC<React.ComponentProps<typeof Column>> = ({ ...fl
       align="center"
       background="surface"
       border="neutral-medium"
+      s={{ paddingY: "24", paddingX: "16" }}
       {...flex}
     >
       <Background
@@ -106,11 +107,21 @@ export const Mailchimp: React.FC<React.ComponentProps<typeof Column>> = ({ ...fl
           color: mailchimp.effects.lines.color,
         }}
       />
-      <Column style={{ maxWidth: '400px' }} horizontal="center" align="center" position="relative" zIndex={1}>
-        <Heading marginBottom="8" variant="heading-strong-xl" align="center">
+      <Column className="mailchimp-text-container" horizontal="center" align="center" position="relative" zIndex={1}>
+        <style>{`
+          .mailchimp-text-container { max-width: 800px; }
+          .desktop-auto-btn { width: auto !important; }
+          .desktop-auto-btn-wrapper { width: auto; }
+          @media (max-width: 768px) {
+            .mailchimp-text-container { max-width: 400px; }
+            .desktop-auto-btn { width: 100% !important; }
+            .desktop-auto-btn-wrapper { width: 100%; }
+          }
+        `}</style>
+        <Heading marginBottom="8" variant="heading-strong-l" align="center">
           {newsletter.title}
         </Heading>
-        <Text wrap="balance" marginBottom="32" variant="body-default-m" onBackground="neutral-weak" align="center">
+        <Text wrap="balance" marginBottom="24" variant="body-default-s" onBackground="neutral-weak" align="center">
           {newsletter.description}
         </Text>
       </Column>
@@ -177,9 +188,9 @@ export const Mailchimp: React.FC<React.ComponentProps<typeof Column>> = ({ ...fl
               value=""
             />
           </div>
-          <div className="clear">
-            <Button id="mc-embedded-subscribe" value="Subscribe" size="m" fillWidth>
-              Subscribe
+          <div className="clear desktop-auto-btn-wrapper">
+            <Button variant="primary" className="cal-btn-primary desktop-auto-btn" id="mc-embedded-subscribe" value="Subscribe" size="m">
+              <span style={{ color: "#ffffff" }}>Subscribe</span>
             </Button>
           </div>
         </Row>

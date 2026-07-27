@@ -12,6 +12,10 @@ import {
   HiOutlineDocument,
   HiOutlineGlobeAsiaAustralia,
   HiOutlineRocketLaunch,
+  HiOutlineBriefcase,
+  HiOutlineFolder,
+  HiOutlineCodeBracket,
+  HiOutlineMapPin,
 } from "react-icons/hi2";
 
 import {
@@ -32,6 +36,10 @@ import {
 import { FaDiscord, FaGithub, FaLinkedin, FaX, FaThreads, FaInstagram, FaXTwitter, FaFacebook, FaPinterest, FaWhatsapp, FaReddit, FaTelegram, } from "react-icons/fa6";
 
 export const iconLibrary: Record<string, IconType> = {
+  briefcase: HiOutlineBriefcase,
+  folder: HiOutlineFolder,
+  code: HiOutlineCodeBracket,
+  mapPin: HiOutlineMapPin,
   arrowUpRight: HiArrowUpRight,
   arrowRight: HiArrowRight,
   email: HiEnvelope,
