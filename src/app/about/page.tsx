@@ -142,50 +142,47 @@ export default function About() {
             position: "relative"
           }}
         >
-          {/* Desktop: Schedule a call — absolute top-right corner */}
-          {about.calendar.display && (
-            <a
-              className="hide-on-mobile"
-              href={about.calendar.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{
-                position: "absolute",
-                top: "16px",
-                right: "16px",
-                display: "inline-flex",
-                alignItems: "center",
-                gap: "5px",
-                padding: "5px 13px",
-                borderRadius: "9999px",
-                fontSize: "12px",
-                fontWeight: 600,
-                letterSpacing: "-0.01em",
-                textDecoration: "none",
-                background: "linear-gradient(to bottom, #2f2f2f 0%, #1e1e1e 100%)",
-                border: "1px solid rgba(255,255,255,0.08)",
-                boxShadow: "inset 0 1px 0 rgba(255,255,255,0.10), inset 0 -1px 0 rgba(0,0,0,0.35), 0 1px 2px rgba(0,0,0,0.12)",
-                color: "#ffffff",
-                whiteSpace: "nowrap",
-                zIndex: 10
-              }}
-            >
-              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ opacity: 0.8 }}>
-                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
-                <line x1="16" y1="2" x2="16" y2="6"/>
-                <line x1="8" y1="2" x2="8" y2="6"/>
-                <line x1="3" y1="10" x2="21" y2="10"/>
-              </svg>
-              Schedule a call
-            </a>
-          )}
+          {/* Desktop absolute button removed */}
           {/* --- DESKTOP VIEW --- */}
           <Row className="hide-on-mobile" fillWidth gap="24" vertical="center" paddingX="16" paddingY="16">
             {/* Left Column */}
             <Column flex={6} gap="24" horizontal="start">
-              <Column gap="8" horizontal="start">
-                <Heading variant="display-strong-s" style={{ whiteSpace: "nowrap", fontSize: "40px" }}>{person.name}</Heading>
-                <Text variant="heading-default-m" onBackground="neutral-weak">{person.role}</Text>
+              <Column gap="12" horizontal="start">
+                {about.calendar.display && (
+                  <a
+                    href={about.calendar.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{
+                      display: "inline-flex",
+                      alignItems: "center",
+                      gap: "6px",
+                      padding: "8px 16px",
+                      borderRadius: "9999px",
+                      fontSize: "13px",
+                      fontWeight: 600,
+                      letterSpacing: "-0.01em",
+                      textDecoration: "none",
+                      background: "linear-gradient(to bottom, #2f2f2f 0%, #1e1e1e 100%)",
+                      border: "1px solid rgba(255,255,255,0.08)",
+                      boxShadow: "inset 0 1px 0 rgba(255,255,255,0.10), inset 0 -1px 0 rgba(0,0,0,0.35), 0 2px 4px rgba(0,0,0,0.15)",
+                      color: "#ffffff",
+                      whiteSpace: "nowrap"
+                    }}
+                  >
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ opacity: 0.8 }}>
+                      <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                      <line x1="16" y1="2" x2="16" y2="6"/>
+                      <line x1="8" y1="2" x2="8" y2="6"/>
+                      <line x1="3" y1="10" x2="21" y2="10"/>
+                    </svg>
+                    Schedule a call
+                  </a>
+                )}
+                <Column gap="4">
+                  <Heading variant="display-strong-s" style={{ whiteSpace: "nowrap", fontSize: "40px", lineHeight: "1.1" }}>{person.name}</Heading>
+                  <Text variant="heading-default-m" onBackground="neutral-weak">{person.role}</Text>
+                </Column>
               </Column>
               {about.intro.display && (
                 <Text variant="body-default-s" onBackground="neutral-weak" style={{ lineHeight: '1.6', textAlign: 'left', fontSize: '15px' }}>
@@ -231,12 +228,8 @@ export default function About() {
 
           {/* --- MOBILE VIEW --- */}
           <Column className="hide-on-desktop" fillWidth gap="20">
-            {/* Name left, Schedule button pinned to right */}
-            <div style={{ display: 'flex', width: '100%', justifyContent: 'space-between', alignItems: 'center' }}>
-              <Column gap="4">
-                <Heading variant="display-strong-s" style={{ whiteSpace: "nowrap", fontSize: "clamp(26px, 4vw, 32px)" }}>{person.name}</Heading>
-                <Text variant="heading-default-s" onBackground="neutral-weak" style={{ fontSize: "clamp(15px, 2vw, 18px)" }}>{person.role}</Text>
-              </Column>
+            {/* Name and Button column */}
+            <Column gap="12" align="start">
               {about.calendar.display && (
                 <a
                   href={about.calendar.link}
@@ -245,23 +238,21 @@ export default function About() {
                   style={{
                     display: "inline-flex",
                     alignItems: "center",
-                    gap: "4px",
-                    padding: "5px 11px",
+                    gap: "5px",
+                    padding: "7px 14px",
                     borderRadius: "9999px",
-                    fontSize: "11px",
+                    fontSize: "12px",
                     fontWeight: 600,
                     letterSpacing: "-0.01em",
                     textDecoration: "none",
                     background: "linear-gradient(to bottom, #2f2f2f 0%, #1e1e1e 100%)",
                     border: "1px solid rgba(255,255,255,0.08)",
-                    boxShadow: "inset 0 1px 0 rgba(255,255,255,0.10), inset 0 -1px 0 rgba(0,0,0,0.35), 0 1px 2px rgba(0,0,0,0.12)",
+                    boxShadow: "inset 0 1px 0 rgba(255,255,255,0.10), inset 0 -1px 0 rgba(0,0,0,0.35), 0 2px 4px rgba(0,0,0,0.12)",
                     color: "#ffffff",
-                    whiteSpace: "nowrap",
-                    flexShrink: 0,
-                    marginLeft: "12px"
+                    whiteSpace: "nowrap"
                   }}
                 >
-                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ opacity: 0.8 }}>
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ opacity: 0.8 }}>
                     <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
                     <line x1="16" y1="2" x2="16" y2="6"/>
                     <line x1="8" y1="2" x2="8" y2="6"/>
@@ -270,7 +261,11 @@ export default function About() {
                   Schedule a call
                 </a>
               )}
-            </div>
+              <Column gap="4">
+                <Heading variant="display-strong-s" style={{ whiteSpace: "nowrap", fontSize: "clamp(26px, 4vw, 32px)", lineHeight: "1.1" }}>{person.name}</Heading>
+                <Text variant="heading-default-s" onBackground="neutral-weak" style={{ fontSize: "clamp(15px, 2vw, 18px)" }}>{person.role}</Text>
+              </Column>
+            </Column>
 
 
             {about.avatar.display && (
