@@ -66,7 +66,7 @@ export const Header = () => {
         </Row>
         <Row fillWidth horizontal="center">
           <Row
-            style={{ backgroundColor: "var(--surface-background)", border: "1px solid var(--neutral-border-strong)" }}
+            className="nav-pill"
             radius="m-4"
             shadow="l"
             padding="4"

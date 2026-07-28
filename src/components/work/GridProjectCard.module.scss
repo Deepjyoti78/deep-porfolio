@@ -3,7 +3,7 @@
   flex-direction: column;
   background-color: var(--surface-background);
   border: 1px solid var(--neutral-border-strong);
-  border-radius: 14px;
+  border-radius: 8px;
   overflow: hidden;
   height: 100%;
   transition: all 0.25s ease;
@@ -11,7 +11,6 @@
   text-decoration: none;
 
   &:hover {
-    transform: translateY(-4px);
     border-color: var(--neutral-border-strong);
 
     .imageContainer img {
@@ -221,7 +220,7 @@
 /* ===== MOBILE ONLY ===== */
 @media (max-width: 767px) {
   .card {
-    border-radius: 10px !important;
+    border-radius: 8px !important;
   }
 
   .mobileDemoBadge {

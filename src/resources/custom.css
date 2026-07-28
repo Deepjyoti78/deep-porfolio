@@ -17,35 +17,42 @@ html, body {
 }
 
 [data-theme="dark"] {
-  /* Vercel/Cal.com dark mode backgrounds */
-  --page-background: #000000;
-  --surface-background: #111111;
+  /* Cursor style dark mode backgrounds */
+  --page-background: #0B0B0B;
+  --surface-background: #151515;
   --center-background: transparent;
 
   /* Very subtle borders */
-  --surface-border: rgba(255, 255, 255, 0.1);
-  --neutral-border-medium: rgba(255, 255, 255, 0.1);
-  --neutral-border-strong: rgba(255, 255, 255, 0.15);
-  --neutral-alpha-weak: rgba(255, 255, 255, 0.06);
-  --brand-alpha-weak: rgba(255, 255, 255, 0.04);
-  --brand-alpha-medium: rgba(255, 255, 255, 0.1);
+  --surface-border: rgba(255, 255, 255, 0.07);
+  --neutral-border-medium: rgba(255, 255, 255, 0.07);
+  --neutral-border-strong: rgba(255, 255, 255, 0.1);
+  --neutral-alpha-weak: rgba(255, 255, 255, 0.04);
+  --neutral-alpha-medium: rgba(255, 255, 255, 0.035);
+  --brand-alpha-weak: rgba(255, 255, 255, 0.03);
+  --brand-alpha-medium: rgba(255, 255, 255, 0.06);
 
   /* High contrast text */
-  --neutral-on-background-strong: #ffffff;
-  --neutral-on-background-medium: #a3a3a3;
-  --neutral-on-background-weak: #737373;
+  --neutral-on-background-strong: rgba(255, 255, 255, 0.94);
+  --neutral-on-background-medium: rgba(255, 255, 255, 0.62);
+  --neutral-on-background-weak: rgba(255, 255, 255, 0.42);
 
-  /* Cal.com style border radii */
-  --radius-l: 18px;
-  --radius-m: 14px;
-  --radius-s: 10px;
+  /* Cursor style border radii */
+  --radius-l: 12px;
+  --radius-m: 8px;
+  --radius-s: 6px;
 
   /* Premium Shadow */
-  --premium-shadow: 0 1px 2px rgba(0,0,0,0.5), 0 8px 30px rgba(0,0,0,0.8);
+  --premium-shadow: 0 20px 80px rgba(0,0,0,0.35);
 
   /* Strip gradients globally */
-  --brand-background-strong: #ffffff;
-  --brand-on-background-strong: #000000;
+  --brand-background-strong: rgba(255, 255, 255, 0.94);
+  --brand-on-background-strong: #0B0B0B;
+
+  /* Desaturated Purple Accent */
+  --accent-solid-strong: #7C3AED;
+  --brand-solid-strong: #7C3AED;
+  --accent-alpha-weak: rgba(124, 58, 237, 0.1);
+  --accent-alpha-medium: rgba(124, 58, 237, 0.2);
 }
 
 [data-theme="light"] {
@@ -58,7 +65,12 @@ html, body {
 
 .premium-shadow {
   box-shadow: var(--premium-shadow) !important;
-  transition: box-shadow 0.2s ease-in-out;
+  transition: box-shadow 350ms ease-out !important;
+}
+
+/* Global Transitions */
+a, button, [role="button"], .hover-badge {
+  transition: all 350ms ease-out !important;
 }
 
 .hover-badge:hover {
@@ -102,13 +114,18 @@ button {
 }
 
 [data-theme="dark"] .cal-btn-secondary {
-  background: linear-gradient(to bottom, #2a2a2a 0%, #1f1f1f 100%) !important;
-  border: 1px solid rgba(255,255,255,0.1) !important;
-  box-shadow: 0 1px 2px rgba(0,0,0,0.2) !important;
-  color: #ffffff !important;
+  background: #1C1C1C !important;
+  border: 1px solid rgba(255,255,255,0.07) !important;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2) !important;
+  color: rgba(255,255,255,0.94) !important;
+  transition: all 0.2s ease !important;
+}
+[data-theme="dark"] .cal-btn-secondary:hover {
+  background: #242424 !important;
+  border: 1px solid rgba(255,255,255,0.12) !important;
 }
 [data-theme="dark"] .cal-btn-secondary * {
-  color: #ffffff !important;
+  color: rgba(255,255,255,0.94) !important;
 }
 
 /* =========================================
@@ -131,7 +148,6 @@ button {
   color: #ffffff !important;
 }
 
-/* Dark mode: exact replica of light-mode secondary (gray gradient, dark text) */
 [data-theme="dark"] .hero-about-btn {
   background: linear-gradient(to bottom, #f3f4f6 0%, #e5e7eb 100%) !important;
   border: 1px solid rgba(0,0,0,0.12) !important;
@@ -161,6 +177,12 @@ button {
 .section-primary-btn * {
   color: #ffffff !important;
 }
+
+[data-theme="dark"] .section-primary-btn,
+[data-theme="dark"] .section-primary-btn * {
+  color: #ffffff !important;
+}
+
 [data-theme="light"] .section-primary-btn {
   background: linear-gradient(to bottom, #2f2f2f 0%, #262626 100%) !important;
   color: #ffffff !important;
@@ -181,14 +203,17 @@ h1, h2, h3, h4, h5, h6, p, span, div, a, button, small, li, label, input {
 
 /* 1. Hero Headlines */
 h1, .font-heading[class*="display-"] {
-  font-weight: 700 !important;
-  letter-spacing: -0.06em !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.045em !important;
   line-height: 0.95 !important;
   color: #171717 !important;
   font-size: clamp(2rem, 3.5vw, 3.5rem) !important;
+  text-rendering: geometricPrecision !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
 }
 [data-theme="dark"] h1, [data-theme="dark"] .font-heading[class*="display-"] {
-  color: #ffffff !important;
+  color: #F3F3F3 !important;
 }
 
 /* 2. Section Headings */
@@ -200,7 +225,7 @@ h2, .font-heading[class*="heading-strong-xl"], .font-heading[class*="heading-str
   font-size: clamp(2rem, 3vw + 1rem, 3rem) !important;
 }
 [data-theme="dark"] h2, [data-theme="dark"] .font-heading[class*="heading-strong-xl"], [data-theme="dark"] .font-heading[class*="heading-strong-l"] {
-  color: #ffffff !important;
+  color: rgba(255, 255, 255, 0.85) !important;
 }
 
 /* 3. Card Titles */
@@ -211,7 +236,7 @@ h3, .font-heading[class*="heading-strong-m"], .font-heading[class*="heading-stro
   color: #171717 !important;
 }
 [data-theme="dark"] h3, [data-theme="dark"] .font-heading[class*="heading-strong-m"], [data-theme="dark"] .font-heading[class*="heading-strong-s"] {
-  color: #ffffff !important;
+  color: rgba(255, 255, 255, 0.85) !important;
 }
 
 /* 4. Body Text */
@@ -220,6 +245,9 @@ p, .font-body:not(button):not(a) {
   line-height: 1.6 !important;
   letter-spacing: -0.01em !important;
   color: #6B7280 !important;
+}
+[data-theme="dark"] p, [data-theme="dark"] .font-body:not(button):not(a) {
+  color: rgba(255, 255, 255, 0.58) !important;
 }
 .font-body[class*="-l"]:not(button):not(a) {
   font-size: clamp(1.125rem, 1.5vw + 0.5rem, 1.375rem) !important;
@@ -470,4 +498,87 @@ a.cal-btn-secondary * {
   .blog-post-summary {
     max-width: 80%;
   }
+}
+
+/* Hero spacing classes */
+.hero-desc-wrapper {
+  padding-top: 12px;
+}
+.hero-btn-wrapper {
+  padding-top: 12px;
+}
+
+@media (max-width: 768px) {
+  .hero-desc-wrapper {
+    padding-top: 0px !important;
+  }
+  .hero-btn-wrapper {
+    padding-top: 24px !important;
+  }
+  .mobile-tight-experience {
+    padding-bottom: 0px !important;
+  }
+  .mobile-tight-education {
+    padding-top: 16px !important;
+  }
+}
+
+/* =========================================
+   CURSOR-STYLE CARDS
+   ========================================= */
+[data-theme="dark"] [data-background="surface"],
+[data-theme="dark"] .premium-shadow {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.02) 0%, rgba(255, 255, 255, 0.0) 100%), var(--surface-background) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03), 0 20px 80px rgba(0, 0, 0, 0.35) !important;
+  border: 1px solid rgba(255, 255, 255, 0.07) !important;
+}
+
+/* =========================================
+   NAVIGATION (NAV PILL)
+   ========================================= */
+.nav-pill {
+  background-color: rgba(255, 255, 255, 0.8) !important;
+  border: 1px solid rgba(0, 0, 0, 0.08) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+}
+
+[data-theme="dark"] .nav-pill {
+  background-color: rgba(24, 24, 24, 0.72) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15) !important;
+}
+
+/* =========================================
+   FILM GRAIN
+   ========================================= */
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 9999;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.018;
+  mix-blend-mode: soft-light;
+}
+
+/* =========================================
+   OVERRIDE FIXES
+   ========================================= */
+
+/* Force project section description size */
+.mobile-subtitle {
+  font-size: 1.25rem !important; /* 20px */
+}
+
+/* Force specific span elements inside dark mode buttons to be white */
+[data-theme="dark"] button.section-primary-btn span,
+[data-theme="dark"] a.section-primary-btn span,
+[data-theme="dark"] button.section-primary-btn div,
+[data-theme="dark"] a.section-primary-btn div {
+  color: #ffffff !important;
 }

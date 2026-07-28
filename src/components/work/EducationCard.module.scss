@@ -3,7 +3,7 @@
   flex-direction: column;
   background-color: var(--surface-background);
   border: 1px solid var(--neutral-border-strong);
-  border-radius: 24px;
+  border-radius: 12px;
   overflow: hidden;
   transition: all 0.25s ease;
   position: relative;
@@ -15,7 +15,6 @@
   }
 
   &:hover {
-    transform: translateY(-4px);
     border-color: var(--neutral-border-strong);
   }
 }
@@ -142,8 +141,8 @@
 /* ===== MOBILE ONLY ===== */
 @media (max-width: 767px) {
   .card {
-    padding: 12px;
-    border-radius: 16px;
+    padding: 16px;
+    border-radius: 12px;
   }
 
   .timelineItem {

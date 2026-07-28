@@ -138,7 +138,7 @@ export default function About() {
           style={{
             backgroundColor: "var(--surface-background)",
             border: "1px solid var(--neutral-border-strong)",
-            borderRadius: "24px",
+            borderRadius: "12px",
             position: "relative"
           }}
         >
@@ -185,7 +185,7 @@ export default function About() {
                 </Column>
               </Column>
               {about.intro.display && (
-                <Text variant="body-default-s" onBackground="neutral-weak" style={{ lineHeight: '1.6', textAlign: 'left', fontSize: '15px' }}>
+                <Text onBackground="neutral-weak" style={{ fontSize: "clamp(0.9375rem, 1.1vw, 1rem)", lineHeight: '1.6', textAlign: 'left', marginTop: '12px', marginBottom: '8px' }}>
                   {about.intro.description}
                 </Text>
               )}
@@ -203,7 +203,7 @@ export default function About() {
               {about.avatar.display && (
                 <div style={{ 
                   position: "relative",
-                  borderRadius: "20px", 
+                  borderRadius: "12px", 
                   border: "1px solid var(--neutral-border-medium)",
                   padding: "4px",
                   boxShadow: "0 4px 14px rgba(0,0,0,0.06)",
@@ -212,7 +212,7 @@ export default function About() {
                   maxWidth: "320px",
                   aspectRatio: "1/1"
                 }}>
-                  <div style={{ position: "relative", width: "100%", height: "100%", borderRadius: "16px", overflow: "hidden" }}>
+                  <div style={{ position: "relative", width: "100%", height: "100%", borderRadius: "8px", overflow: "hidden" }}>
                     <Image
                       src={person.avatar}
                       alt={person.name}
@@ -273,7 +273,7 @@ export default function About() {
             {about.avatar.display && (
               <div style={{ 
                 position: "relative",
-                borderRadius: "20px", 
+                borderRadius: "12px", 
                 border: "1px solid var(--neutral-border-medium)",
                 padding: "4px",
                 boxShadow: "0 4px 14px rgba(0,0,0,0.06)",
@@ -283,7 +283,7 @@ export default function About() {
                 aspectRatio: "16/9",
                 margin: "0 auto"
               }}>
-                <div style={{ position: "relative", width: "100%", height: "100%", borderRadius: "16px", overflow: "hidden" }}>
+                <div style={{ position: "relative", width: "100%", height: "100%", borderRadius: "8px", overflow: "hidden" }}>
                   <Image
                     src={person.avatar}
                     alt={person.name}
@@ -296,7 +296,7 @@ export default function About() {
             )}
 
             {about.intro.display && (
-              <Column fillWidth gap="m" style={{ fontSize: 'clamp(14px, 2vw, 15px)', lineHeight: '1.6', color: "var(--neutral-weak)" }}>
+              <Column fillWidth gap="m" style={{ fontSize: "clamp(0.9375rem, 1.1vw, 1rem)", lineHeight: "1.6", color: "var(--neutral-weak)", marginTop: "8px" }}>
                 {about.intro.description}
               </Column>
             )}

@@ -37,19 +37,30 @@
 .badge {
   background-color: var(--surface-background);
   border: 1px solid var(--neutral-border-strong);
-  padding: 8px 16px;
+  padding: 6px 14px;
   border-radius: 9999px;
   display: flex;
   align-items: center;
   gap: 8px;
   margin: 0 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-  transition: all 0.2s ease;
+  transition: all 0.35s ease-out;
   cursor: default;
 
+  :global([data-theme="dark"]) & {
+    background-color: #181818;
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  }
+
   &:hover {
-    transform: translateY(-2px);
-    border-color: rgba(255, 255, 255, 0.3);
+    transform: translateY(-1px);
+    border-color: rgba(0, 0, 0, 0.2);
+    
+    :global([data-theme="dark"]) & {
+      border-color: rgba(255, 255, 255, 0.15);
+      background-color: #1c1c1c;
+    }
   }
 }
 

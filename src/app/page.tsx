@@ -60,8 +60,8 @@ const TerminalWindow = () => (
   <div className={`terminal-wrapper terminal-bg ${jetbrainsMono.className}`} style={{
     width: "100%",
     borderRadius: "12px",
-    border: "1px solid #30363d",
-    boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 40px rgba(139, 92, 246, 0.2)",
+    border: "1px solid rgba(255,255,255,0.03)",
+    boxShadow: "0 8px 32px rgba(0, 0, 0, 0.2)",
     overflow: "hidden",
     fontSize: "13px",
     color: "#E6EDF3",
@@ -78,7 +78,7 @@ const TerminalWindow = () => (
         background-color: #0d1117;
       }
       [data-theme="dark"] .terminal-bg {
-        background-color: #17171B !important;
+        background-color: #121212 !important;
       }
       @media (max-width: 768px) {
         .terminal-wrapper {
@@ -157,8 +157,8 @@ const TerminalWindow = () => (
           </div>
           <div style={{ display: "flex", flex: 1, flexDirection: "row", flexWrap: "nowrap", gap: "0" }}>
             <div className="terminal-label-col" style={{ display: "flex", alignItems: "flex-start", width: "135px", flexShrink: 0 }}>
-              <span style={{ color: "#67E480", marginRight: "10px" }}>{">"}</span>
-              <span style={{ color: "#67E480" }}>{item.key}</span>
+              <span style={{ color: "#5CC97B", marginRight: "10px" }}>{">"}</span>
+              <span style={{ color: "#5CC97B" }}>{item.key}</span>
             </div>
             <div style={{ display: "flex", flex: 1, minWidth: 0 }}>
               <span style={{ marginRight: "12px", color: "rgba(255,255,255,0.55)" }}>:</span>
@@ -199,7 +199,7 @@ export default function Home() {
             fillWidth 
             background="surface" 
             paddingX="32"
-            paddingY="48" 
+            paddingY="32" 
             radius="l" 
             border="neutral-medium" 
             gap="24"
@@ -216,7 +216,7 @@ export default function Home() {
                 transform: "translate(-50%, -50%)",
                 width: "150%",
                 height: "150%",
-                background: "radial-gradient(circle, rgba(128, 90, 213, 0.2) 0%, rgba(128, 90, 213, 0.05) 40%, rgba(128, 90, 213, 0) 70%)",
+                background: "none",
                 zIndex: 0,
                 pointerEvents: "none"
               }} />
@@ -272,16 +272,17 @@ export default function Home() {
                   </div>
                 </div>
 
-                <div className="animate-fade-up animate-delay-3" style={{ width: '100%' }}>
+                <div className="animate-fade-up animate-delay-3 hero-desc-wrapper" style={{ width: '100%' }}>
                   <Text
                     wrap="balance"
                     onBackground="neutral-weak"
                     className="hero-description"
                     style={{
-                      fontSize: "clamp(0.8rem, 0.9vw, 0.875rem)",
-                      lineHeight: "1.6",
+                      fontSize: "clamp(0.875rem, 1vw, 0.9375rem)",
+                      lineHeight: "1.65",
                       fontWeight: "400",
-                      marginTop: "0.5rem",
+                      marginTop: "20px",
+                      marginBottom: "8px",
                       maxWidth: "800px",
                       textAlign: "left",
                     }}
@@ -289,7 +290,7 @@ export default function Home() {
                     {home.subline}
                   </Text>
                 </div>
-                <div className="animate-fade-up animate-delay-4" style={{ paddingTop: '24px', width: '100%' }}>
+                <div className="animate-fade-up animate-delay-4 hero-btn-wrapper" style={{ width: '100%' }}>
                   <Row gap="16" horizontal="start" fillWidth s={{ gap: "8" }}>
                     <Button
                       id="about"
@@ -368,7 +369,7 @@ export default function Home() {
           <Column fillWidth paddingX="l" gap="8" s={{ paddingX: "16" }}>
             <Row fillWidth vertical="center" horizontal="between" style={{ width: "100%" }}>
               <Heading as="h2" variant="heading-strong-xl">
-                Projects
+                Featured Work
               </Heading>
               {/* Desktop Button */}
               <Button
@@ -377,7 +378,7 @@ export default function Home() {
                 variant="primary"
                 size="s"
                 arrowIcon
-                style={{ borderRadius: '9999px', fontSize: '12px', fontWeight: '500', padding: '0 12px', marginLeft: 'auto' }}
+                style={{ borderRadius: '9999px', fontSize: '12px', fontWeight: '500', padding: '0 12px', marginLeft: 'auto', color: '#ffffff' }}
               >
                 View All Projects
               </Button>
@@ -393,11 +394,19 @@ export default function Home() {
               </a>
             </Row>
             <Text
-              variant="body-default-m"
-              onBackground="neutral-weak"
-              className="mobile-subtitle"
+              variant="body-default-l"
+              style={{ 
+                fontSize: "clamp(22px, 2vw, 28px)", 
+                fontWeight: "500", 
+                lineHeight: "1.2", 
+                letterSpacing: "-0.03em", 
+                maxWidth: "620px", 
+                color: "rgba(255, 255, 255, 0.62)", 
+                marginTop: "20px",
+                textShadow: "none"
+              }}
             >
-              A selection of my most recent and impactful work.
+              Built to solve real problems
             </Text>
           </Column>
           <div className="animate-fade-up animate-delay-5" style={{ width: '100%' }}>
@@ -407,9 +416,9 @@ export default function Home() {
           </div>
         </Column>
       </GridSection>
-      <GridSection paddingY="48" s={{ paddingTop: "12", paddingBottom: "0" }}>
+      <GridSection className="mobile-tight-experience" paddingY="48" s={{ paddingTop: "12", paddingBottom: "0" }}>
         <Column gap="16" s={{ gap: "8" }} fillWidth>
-          <Column fillWidth paddingX="l" gap="8" s={{ paddingX: "16" }}>
+          <Column fillWidth paddingX="l" s={{ paddingX: "16" }}>
             <Row fillWidth vertical="center" horizontal="between" style={{ width: "100%" }}>
               <Heading as="h2" variant="heading-strong-xl">
                 Experience
@@ -421,7 +430,7 @@ export default function Home() {
                 variant="primary"
                 size="s"
                 arrowIcon
-                style={{ borderRadius: '9999px', fontSize: '12px', fontWeight: '500', padding: '0 12px', marginLeft: 'auto' }}
+                style={{ borderRadius: '9999px', fontSize: '12px', fontWeight: '500', padding: '0 12px', marginLeft: 'auto', color: '#ffffff' }}
               >
                 View full experience
               </Button>
@@ -436,21 +445,29 @@ export default function Home() {
               </a>
             </Row>
             <Text
-              variant="body-default-m"
-              onBackground="neutral-weak"
-              className="mobile-subtitle"
+              as="p"
+              style={{ 
+                fontSize: "clamp(22px, 2vw, 28px)", 
+                fontWeight: "500", 
+                lineHeight: "1.2", 
+                letterSpacing: "-0.03em", 
+                maxWidth: "620px", 
+                color: "rgba(255, 255, 255, 0.62)", 
+                marginTop: "20px",
+                textShadow: "none"
+              }}
             >
-              My leadership experience collaborating with teams and designing user experiences.
+              Leading design initiatives.
             </Text>
           </Column>
-          <div className="animate-fade-up animate-delay-5" style={{ width: '100%' }}>
+          <div className="animate-fade-up animate-delay-5" style={{ width: '100%', marginTop: '16px' }}>
             <Row paddingX="s" fillWidth>
               <ExperienceCard />
             </Row>
           </div>
         </Column>
       </GridSection>
-      <GridSection paddingY="48" s={{ paddingTop: "0", paddingBottom: "12" }}>
+      <GridSection className="mobile-tight-education" paddingY="48" s={{ paddingTop: "0", paddingBottom: "12" }}>
         <Column gap="16" s={{ gap: "8" }} fillWidth>
           <Column fillWidth paddingX="l" gap="8" s={{ paddingX: "16" }}>
             <Heading as="h2" variant="heading-strong-xl">

@@ -65,11 +65,11 @@ const home: Home = {
     <>
       <span className="hide-on-desktop">
         {/* Mobile View */}
-        Building scalable <br /> web experiences with <br /> <Text as="span" style={{ color: "#8a2be2" }}>clean code.</Text>
+        Building scalable <br /> web experiences with <br /> <Text as="span" style={{ color: "#0B0B0B", backgroundImage: "linear-gradient(transparent 20%, #C9D64A 20%, #C9D64A 85%, transparent 85%)", backgroundSize: "92% 100%", backgroundRepeat: "no-repeat", padding: "0 4px" }}>clean code.</Text>
       </span>
       <span className="hide-on-mobile">
         {/* Desktop View */}
-        Building&nbsp;scalable&nbsp;web <br /> experiences with <br /> <Text as="span" style={{ color: "#8a2be2" }}>clean code.</Text>
+        Building&nbsp;scalable&nbsp;web <br /> experiences with <br /> <Text as="span" style={{ color: "#0B0B0B", backgroundImage: "linear-gradient(transparent 20%, #C9D64A 20%, #C9D64A 85%, transparent 85%)", backgroundSize: "92% 100%", backgroundRepeat: "no-repeat", padding: "0 4px" }}>clean code.</Text>
       </span>
     </>
   ),
