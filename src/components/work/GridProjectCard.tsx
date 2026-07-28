@@ -58,7 +58,7 @@ export const GridProjectCard: React.FC<GridProjectCardProps> = ({
   demoUrl,
 }) => {
   return (
-    <div className={styles.card}>
+    <div className={`${styles.card} premium-shadow`}>
       <div className={styles.imageContainer}>
         <img src={image} alt={title} />
         {(demoUrl || githubUrl) && (

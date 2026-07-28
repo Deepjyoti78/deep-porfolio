@@ -135,18 +135,6 @@ export default async function Blog({ params }: { params: Promise<{ slug: string 
             className="premium-shadow blog-hero-mobile-padding"
             position="relative"
           >
-            {/* Background Gradient */}
-            <div style={{
-              position: "absolute",
-              top: "0%",
-              left: "50%",
-              transform: "translate(-50%, -20%)",
-              width: "100%",
-              height: "100%",
-              background: "radial-gradient(circle, rgba(128, 90, 213, 0.15) 0%, rgba(128, 90, 213, 0.05) 40%, rgba(128, 90, 213, 0) 70%)",
-              zIndex: 0,
-              pointerEvents: "none"
-            }} />
 
             {/* Top Row: Back Button + Author & Share */}
             <Row fillWidth horizontal="between" vertical="center" style={{ zIndex: 1, flexWrap: "nowrap" }} gap="16">

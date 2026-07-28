@@ -61,6 +61,11 @@ html, body {
   --center-background: transparent;
   --neutral-border-strong: #e4e4e7;
   --premium-shadow: 0 1px 2px rgba(0,0,0,0.03), 0 8px 30px rgba(0,0,0,0.05);
+  
+  /* Cursor style border radii */
+  --radius-l: 12px;
+  --radius-m: 8px;
+  --radius-s: 6px;
 }
 
 .premium-shadow {
@@ -127,6 +132,7 @@ button {
 [data-theme="dark"] .cal-btn-secondary * {
   color: rgba(255,255,255,0.94) !important;
 }
+
 
 /* =========================================
    HERO + SECTION BUTTON DARK MODE FIXES
@@ -581,4 +587,23 @@ body::after {
 [data-theme="dark"] button.section-primary-btn div,
 [data-theme="dark"] a.section-primary-btn div {
   color: #ffffff !important;
+}
+
+/* Force premium subtitle sizes for featured sections */
+.premium-subtitle {
+  font-size: clamp(22px, 2vw, 28px) !important;
+}
+
+/* Force white button text specifically for the Message button */
+a.force-white-btn,
+[data-theme="dark"] a.force-white-btn,
+a.force-white-btn *,
+[data-theme="dark"] a.force-white-btn * {
+  background: #ffffff !important;
+  border: 1px solid rgba(0,0,0,0.15) !important;
+  color: #000000 !important;
+}
+a.force-white-btn:hover,
+[data-theme="dark"] a.force-white-btn:hover {
+  background: #f7f7f7 !important;
 }

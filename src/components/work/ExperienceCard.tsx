@@ -39,7 +39,7 @@ const experiences = [
 
 export function ExperienceCard() {
   return (
-    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gap: '32px', width: '100%' }}>
+    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gap: '16px', width: '100%' }}>
       {experiences.map((exp, index) => (
         <div key={index} className={`${styles.card} premium-shadow`}>
           <div className={styles.header}>

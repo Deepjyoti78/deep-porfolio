@@ -6,7 +6,7 @@ const person: Person = {
   lastName: "Das",
   name: `Deepjyoti Das`,
   role: "Full Stack Developer",
-  avatar: "/images/gallery/Screenshot 2026-07-25 233136.png",
+  avatar: "/images/gallery/ChatGPT Image Jul 26, 2026, 03_26_05 PM.png",
   email: "example@gmail.com",
   location: "Asia/Kolkata", // Used for time display logic. The UI will explicitly say "Delhi, India"
   languages: ["Assamese", "English", "Hindi", "Bengali"],
@@ -47,6 +47,19 @@ const social: Social = [
     link: "https://www.threads.com/@once_ui",
     essential: true,
   },
+
+  {
+    name: "Discord",
+    icon: "discord",
+    link: "https://discord.com",
+    essential: true,
+  },
+  {
+    name: "Telegram",
+    icon: "telegram",
+    link: "https://telegram.org",
+    essential: true,
+  },
   {
     name: "Email",
     icon: "email",
@@ -65,18 +78,18 @@ const home: Home = {
     <>
       <span className="hide-on-desktop">
         {/* Mobile View */}
-        Building scalable <br /> web experiences with <br /> <Text as="span" style={{ color: "#0B0B0B", backgroundImage: "linear-gradient(transparent 20%, #C9D64A 20%, #C9D64A 85%, transparent 85%)", backgroundSize: "92% 100%", backgroundRepeat: "no-repeat", padding: "0 4px" }}>clean code.</Text>
+        Building scalable <br /> web experiences with <br /> <Text as="span" style={{ color: "#0B0B0B", backgroundImage: "linear-gradient(transparent 20%, #DDF82A 20%, #DDF82A 85%, transparent 85%)", backgroundSize: "100% 100%", backgroundRepeat: "no-repeat", padding: "0 4px" }}>clean code.</Text>
       </span>
       <span className="hide-on-mobile">
         {/* Desktop View */}
-        Building&nbsp;scalable&nbsp;web <br /> experiences with <br /> <Text as="span" style={{ color: "#0B0B0B", backgroundImage: "linear-gradient(transparent 20%, #C9D64A 20%, #C9D64A 85%, transparent 85%)", backgroundSize: "92% 100%", backgroundRepeat: "no-repeat", padding: "0 4px" }}>clean code.</Text>
+        Building&nbsp;scalable&nbsp;web <br /> experiences with <br /> <Text as="span" style={{ color: "#0B0B0B", backgroundImage: "linear-gradient(transparent 20%, #DDF82A 20%, #DDF82A 85%, transparent 85%)", backgroundSize: "100% 100%", backgroundRepeat: "no-repeat", padding: "0 4px" }}>clean code.</Text>
       </span>
     </>
   ),
   featured: {
     display: true,
     title: "Available for work",
-    href: "/work/building-once-ui-a-customizable-design-system",
+    href: "/about",
   },
   subline: (
     <>
@@ -173,7 +186,7 @@ const about: About = {
     ],
   },
   technical: {
-    display: true, // set to false to hide this section
+    display: false, // set to false to hide this section
     title: "Technical skills",
     skills: [
       {

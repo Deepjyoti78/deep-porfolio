@@ -395,14 +395,13 @@ export default function Home() {
             </Row>
             <Text
               variant="body-default-l"
+              className="premium-subtitle"
               style={{ 
-                fontSize: "clamp(22px, 2vw, 28px)", 
                 fontWeight: "500", 
                 lineHeight: "1.2", 
                 letterSpacing: "-0.03em", 
                 maxWidth: "620px", 
                 color: "rgba(255, 255, 255, 0.62)", 
-                marginTop: "20px",
                 textShadow: "none"
               }}
             >
@@ -418,7 +417,7 @@ export default function Home() {
       </GridSection>
       <GridSection className="mobile-tight-experience" paddingY="48" s={{ paddingTop: "12", paddingBottom: "0" }}>
         <Column gap="16" s={{ gap: "8" }} fillWidth>
-          <Column fillWidth paddingX="l" s={{ paddingX: "16" }}>
+          <Column fillWidth paddingX="l" gap="8" s={{ paddingX: "16" }}>
             <Row fillWidth vertical="center" horizontal="between" style={{ width: "100%" }}>
               <Heading as="h2" variant="heading-strong-xl">
                 Experience
@@ -445,22 +444,21 @@ export default function Home() {
               </a>
             </Row>
             <Text
-              as="p"
+              variant="body-default-l"
+              className="premium-subtitle"
               style={{ 
-                fontSize: "clamp(22px, 2vw, 28px)", 
                 fontWeight: "500", 
                 lineHeight: "1.2", 
                 letterSpacing: "-0.03em", 
                 maxWidth: "620px", 
                 color: "rgba(255, 255, 255, 0.62)", 
-                marginTop: "20px",
                 textShadow: "none"
               }}
             >
               Leading design initiatives.
             </Text>
           </Column>
-          <div className="animate-fade-up animate-delay-5" style={{ width: '100%', marginTop: '16px' }}>
+          <div className="animate-fade-up animate-delay-5" style={{ width: '100%' }}>
             <Row paddingX="s" fillWidth>
               <ExperienceCard />
             </Row>

@@ -179,19 +179,22 @@ export default function About() {
                     Schedule a call
                   </a>
                 )}
-                <Column gap="4">
+                <Column gap="12">
                   <Heading variant="display-strong-s" style={{ whiteSpace: "nowrap", fontSize: "40px", lineHeight: "1.1" }}>{person.name}</Heading>
                   <Text variant="heading-default-m" onBackground="neutral-weak">{person.role}</Text>
                 </Column>
               </Column>
               {about.intro.display && (
-                <Text onBackground="neutral-weak" style={{ fontSize: "clamp(0.9375rem, 1.1vw, 1rem)", lineHeight: '1.6', textAlign: 'left', marginTop: '12px', marginBottom: '8px' }}>
+                <Text onBackground="neutral-weak" style={{ fontSize: "clamp(0.9375rem, 1.1vw, 1rem)", lineHeight: '1.6', textAlign: 'left', marginTop: '4px', marginBottom: '8px' }}>
                   {about.intro.description}
                 </Text>
               )}
               {social.length > 0 && (
-                <Row gap="16" wrap horizontal="start" fitWidth data-border="rounded">
-                  {social.filter((item) => item.essential).map((item) => item.link && (
+                <Row gap="12" wrap horizontal="start" vertical="center" fitWidth data-border="rounded">
+                  <a href={social.find(s => s.name === "LinkedIn")?.link} target="_blank" rel="noopener noreferrer" className="cal-btn-primary hover-badge" style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", gap: "8px", padding: "0px 16px", height: "32px", borderRadius: "9999px", fontSize: "13px", fontWeight: 600, textDecoration: "none" }}>Connect</a>
+                  <a href={`mailto:${person.email}`} className="cal-btn-secondary force-white-btn hover-badge" style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", gap: "8px", padding: "0px 16px", height: "32px", borderRadius: "9999px", fontSize: "13px", fontWeight: 600, textDecoration: "none" }}>Message</a>
+                  <div style={{ width: "1px", height: "24px", backgroundColor: "var(--neutral-border-strong)", margin: "0 4px" }} />
+                  {social.filter((item) => item.essential && item.name !== "LinkedIn" && item.name !== "Email").map((item) => item.link && (
                     <IconButton size="m" key={`${item.name}-icon-desktop`} href={item.link} icon={item.icon} variant="secondary" />
                   ))}
                 </Row>
@@ -230,7 +233,7 @@ export default function About() {
           <Column className="hide-on-desktop" fillWidth gap="20">
             {/* Name left, Schedule button pinned to right */}
             <div style={{ display: 'flex', width: '100%', justifyContent: 'space-between', alignItems: 'center' }}>
-              <Column gap="4">
+              <Column gap="12">
                 <Heading variant="display-strong-s" style={{ whiteSpace: "nowrap", fontSize: "clamp(26px, 4vw, 32px)", lineHeight: "1.1" }}>{person.name}</Heading>
                 <Text variant="heading-default-s" onBackground="neutral-weak" style={{ fontSize: "clamp(15px, 2vw, 18px)" }}>{person.role}</Text>
               </Column>
@@ -296,17 +299,23 @@ export default function About() {
             )}
 
             {about.intro.display && (
-              <Column fillWidth gap="m" style={{ fontSize: "clamp(0.9375rem, 1.1vw, 1rem)", lineHeight: "1.6", color: "var(--neutral-weak)", marginTop: "8px" }}>
+              <Column fillWidth gap="m" style={{ fontSize: "clamp(0.9375rem, 1.1vw, 1rem)", lineHeight: "1.6", color: "var(--neutral-weak)", marginTop: "0px" }}>
                 {about.intro.description}
               </Column>
             )}
 
             {social.length > 0 && (
-              <Row gap="16" wrap horizontal="center" fitWidth data-border="rounded" style={{ alignSelf: "center", marginBottom: "0" }}>
-                {social.filter((item) => item.essential).map((item) => item.link && (
-                  <IconButton size="m" key={`${item.name}-icon`} href={item.link} icon={item.icon} variant="secondary" />
-                ))}
-              </Row>
+              <Column gap="16" horizontal="center" vertical="center" fillWidth style={{ alignSelf: "center", marginBottom: "0" }}>
+                <Row gap="12" horizontal="center" vertical="center" fitWidth>
+                  <a href={social.find(s => s.name === "LinkedIn")?.link} target="_blank" rel="noopener noreferrer" className="cal-btn-primary hover-badge" style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", gap: "8px", padding: "0px 16px", height: "32px", borderRadius: "9999px", fontSize: "13px", fontWeight: 600, textDecoration: "none" }}>Connect</a>
+                  <a href={`mailto:${person.email}`} className="cal-btn-secondary force-white-btn hover-badge" style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", gap: "8px", padding: "0px 16px", height: "32px", borderRadius: "9999px", fontSize: "13px", fontWeight: 600, textDecoration: "none" }}>Message</a>
+                </Row>
+                <Row gap="12" horizontal="center" vertical="center" fitWidth>
+                  {social.filter((item) => item.essential && item.name !== "LinkedIn" && item.name !== "Email").map((item) => item.link && (
+                    <IconButton size="m" key={`${item.name}-icon`} href={item.link} icon={item.icon} variant="secondary" />
+                  ))}
+                </Row>
+              </Column>
             )}
           </Column>
         </Row>
