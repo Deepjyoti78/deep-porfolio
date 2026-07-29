@@ -12,7 +12,7 @@ import {
 
 interface ProjectCardProps {
   href: string;
-  priority?: boolean;
+  preload?: boolean;
   images: string[];
   title: string;
   content: string;

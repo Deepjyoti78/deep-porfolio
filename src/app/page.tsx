@@ -455,7 +455,7 @@ export default function Home() {
                 textShadow: "none"
               }}
             >
-              Leading design initiatives.
+              Where I've made an impact.
             </Text>
           </Column>
           <div className="animate-fade-up animate-delay-5" style={{ width: '100%' }}>
@@ -472,11 +472,18 @@ export default function Home() {
               Education
             </Heading>
             <Text
-              variant="body-default-m"
-              onBackground="neutral-weak"
-              className="mobile-subtitle"
+              variant="body-default-l"
+              className="premium-subtitle"
+              style={{ 
+                fontWeight: "500", 
+                lineHeight: "1.2", 
+                letterSpacing: "-0.03em", 
+                maxWidth: "620px", 
+                color: "rgba(255, 255, 255, 0.62)", 
+                textShadow: "none"
+              }}
             >
-              My academic background and the foundation of my software engineering journey.
+              The foundation of my journey.
             </Text>
           </Column>
           <div className="animate-fade-up animate-delay-5" style={{ width: '100%' }}>

@@ -221,7 +221,7 @@ export default function About() {
                       alt={person.name}
                       fill
                       style={{ objectFit: "cover" }}
-                      priority
+                      preload={true}
                     />
                   </div>
                 </div>
@@ -292,7 +292,7 @@ export default function About() {
                     alt={person.name}
                     fill
                     style={{ objectFit: "cover", objectPosition: "center 20%" }}
-                    priority
+                    preload={true}
                   />
                 </div>
               </div>
