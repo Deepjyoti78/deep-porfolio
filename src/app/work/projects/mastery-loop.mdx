@@ -1,0 +1,37 @@
+---
+title: "Mastery Loop"
+subtitle: "AI-Powered Adaptive Learning Platform"
+publishedAt: "2025-02-15"
+summary: "Adaptive educational platform integrating Google Gemini AI. Features automated syllabus PDF parsing, dynamic diagnostic quizzes, intelligent reteach flows, and offline-first IndexedDB persistence."
+images:
+  - "/images/projects/MasteryLoop.png"
+team:
+  - name: "Deepjyoti Das"
+    role: "Full Stack Developer"
+    avatar: "/images/avatar.jpg"
+    linkedIn: "https://www.linkedin.com/in/deep-jyoti-das-4148bb31a/"
+techs: ["React", "TypeScript", "Tailwind CSS", "Vite"]
+githubUrl: "https://github.com/Deepjyoti78/mastery-loop"
+demoUrl: "https://mastery-loop.vercel.app/"
+---
+
+## Overview
+
+**Mastery Loop** is an intelligent, AI-guided learning platform designed to replace rigid study plans with personalized, feedback-driven learning loops. 
+
+By analyzing students' input materials—such as course syllabi, lecture notes, or textbooks—Mastery Loop constructs structured milestones and uses continuous diagnostic assessments to identify conceptual gaps in real time.
+
+## Key Features
+
+- **Document Ingestion & Resume/Syllabus Parsing**: Integrated PDF.js engine extracts text directly in the browser to instantly generate tailored learning roadmaps.
+- **Gemini AI Integration**: Uses Google Generative AI to break down complex academic domains into modular concepts, interactive flashcards, and drill questions.
+- **Adaptive Diagnostic Quizzes**: Evaluates student retention dynamically; wrong answers automatically trigger targeted "Reteach" explanations before allowing progression.
+- **Offline-First Architecture**: Built on Dexie (IndexedDB) for zero-latency local caching, persistent progress tracking, and offline study sessions.
+- **Focused Daily Dashboard**: "Today's Focus" planner organizes high-priority drills, upcoming deadlines, and topic-level mastery percentages.
+
+## Technology Stack
+
+- **Frontend**: React 19, Vite, Tailwind CSS v4, Lucide Icons, React Router 7
+- **AI & Processing**: Google Gemini API (`@google/generative-ai`), PDF.js (`pdfjs-dist`)
+- **Database & Storage**: IndexedDB with Dexie.js for client-side persistence
+- **State Management**: Reactive local store architecture
