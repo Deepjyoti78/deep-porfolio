@@ -2,7 +2,11 @@ import { getPosts } from "@/utils/utils";
 import { GridProjectCard } from "./GridProjectCard";
 import styles from "./GridProjects.module.scss";
 
-export function GridProjects() {
+interface GridProjectsProps {
+  limit?: number;
+}
+
+export function GridProjects({ limit }: GridProjectsProps = {}) {
   const allProjects = getPosts(["src", "app", "work", "projects"]);
 
   // Sort by published date descending, just like the old Projects component
@@ -10,7 +14,7 @@ export function GridProjects() {
     return new Date(b.metadata.publishedAt).getTime() - new Date(a.metadata.publishedAt).getTime();
   });
 
-  const displayedProjects = sortedProjects.slice(0, 6);
+  const displayedProjects = limit ? sortedProjects.slice(0, limit) : sortedProjects;
 
   return (
     <div className={styles.grid}>
