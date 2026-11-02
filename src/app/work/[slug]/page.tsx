@@ -7,12 +7,16 @@ import { Metadata } from "next";
 import styles from "./ProjectDetail.module.scss";
 import {
   FiArrowLeft,
-  FiExternalLink,
   FiGithub,
   FiArrowUpRight,
   FiCheckCircle,
   FiChevronLeft,
   FiChevronRight,
+  FiPlayCircle,
+  FiMic,
+  FiVolume2,
+  FiDatabase,
+  FiCode,
 } from "react-icons/fi";
 import {
   SiReact,
@@ -35,6 +39,8 @@ import {
 
 const techIconMap: Record<string, React.FC<any>> = {
   "React": SiReact,
+  "React 18": SiReact,
+  "React 19": SiReact,
   "Django": SiDjango,
   "PostgreSQL": SiPostgresql,
   "Docker": SiDocker,
@@ -51,10 +57,16 @@ const techIconMap: Record<string, React.FC<any>> = {
   "SQLite": SiSqlite,
   "Gemini AI": SiGoogle,
   "AI": SiGoogle,
+  "Web Speech API": FiMic,
+  "Web Audio API": FiVolume2,
+  "IndexedDB": FiDatabase,
+  "Lucide React": FiCode,
 };
 
 const techColorMap: Record<string, string> = {
   "React": "#61DAFB",
+  "React 18": "#61DAFB",
+  "React 19": "#61DAFB",
   "Django": "#092E20",
   "PostgreSQL": "#4169E1",
   "Docker": "#2496ED",
@@ -71,10 +83,14 @@ const techColorMap: Record<string, string> = {
   "SQLite": "#003B57",
   "Gemini AI": "#4285F4",
   "AI": "#4285F4",
+  "Web Speech API": "#A78BFA",
+  "Web Audio API": "#F59E0B",
+  "IndexedDB": "#38BDF8",
+  "Lucide React": "#F472B6",
 };
 
 function formatDisplayDate(dateStr?: string) {
-  if (!dateStr) return "2025";
+  if (!dateStr) return "Nov 2025";
   const date = new Date(dateStr);
   return date.toLocaleDateString("en-US", { month: "short", year: "numeric" });
 }
@@ -93,7 +109,7 @@ function parseProjectContent(rawContent: string, defaultSummary: string) {
     const lines = featuresMatch[1].split("\n").filter((l) => l.trim().startsWith("- "));
     for (const l of lines) {
       const cleanLine = l.trim().replace(/^- /, "");
-      const match = cleanLine.match(/^\*\*([^*]+)\*\*:\s*(.*)$/);
+      const match = cleanLine.match(/^\*\*([^*]+)\*\*[:—–-]\s*(.*)$/);
       if (match) {
         features.push({ title: match[1], desc: match[2] });
       } else {
@@ -306,7 +322,7 @@ export default async function Project({
                 rel="noopener noreferrer"
                 className={styles.primaryBtn}
               >
-                <FiExternalLink />
+                <FiPlayCircle className={styles.btnLeadingIcon} />
                 <span>Live Demo</span>
                 <FiArrowUpRight className={styles.btnArrow} />
               </a>
@@ -318,7 +334,7 @@ export default async function Project({
                 rel="noopener noreferrer"
                 className={styles.secondaryBtn}
               >
-                <FiGithub />
+                <FiGithub className={styles.btnLeadingIcon} />
                 <span>GitHub Repo</span>
                 <FiArrowUpRight className={styles.btnArrow} />
               </a>
