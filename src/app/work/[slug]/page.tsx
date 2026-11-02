@@ -5,6 +5,7 @@ import { Meta, Schema } from "@once-ui-system/core";
 import { baseURL, about, person, work } from "@/resources";
 import { Metadata } from "next";
 import styles from "./ProjectDetail.module.scss";
+import { ProjectMediaGallery } from "./ProjectMediaGallery";
 import {
   FiArrowLeft,
   FiGithub,
@@ -198,36 +199,13 @@ export default async function Project({
       />
 
       <div className={styles.splitGrid}>
-        {/* LEFT COLUMN: BIG THUMBNAIL PIC */}
+        {/* LEFT COLUMN: VERTICAL 3-IMAGE REEL */}
         <div className={styles.leftColumn}>
-          <div className={styles.imageWrapper}>
-            <img src={thumbnail} alt={post.metadata.title} loading="eager" />
-            {post.metadata.demoUrl && (
-              <a
-                href={post.metadata.demoUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={styles.liveBadge}
-                aria-label={`Open ${post.metadata.title} live demo`}
-              >
-                <span className={styles.liveDot} />
-                Live Demo
-              </a>
-            )}
-            <div className={styles.imageCaptionBar}>
-              <span className={styles.imageCaptionTitle}>{post.metadata.title}</span>
-              {post.metadata.demoUrl && (
-                <a
-                  href={post.metadata.demoUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={styles.imageCaptionLink}
-                >
-                  Visit Site <FiArrowUpRight />
-                </a>
-              )}
-            </div>
-          </div>
+          <ProjectMediaGallery
+            images={post.metadata.images || (thumbnail ? [thumbnail] : [])}
+            title={post.metadata.title}
+            demoUrl={post.metadata.demoUrl}
+          />
         </div>
 
         {/* RIGHT COLUMN: ALL INFORMATION & OVERVIEW */}
