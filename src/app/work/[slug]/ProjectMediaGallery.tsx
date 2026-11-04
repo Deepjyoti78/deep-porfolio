@@ -93,3 +93,4 @@ export function ProjectMediaGallery({ images, title, demoUrl }: ProjectMediaGall
     </div>
   );
 }
+
