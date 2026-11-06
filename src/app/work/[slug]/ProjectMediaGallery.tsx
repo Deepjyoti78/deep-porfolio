@@ -11,15 +11,21 @@ interface ProjectMediaGalleryProps {
 }
 
 export function ProjectMediaGallery({ images, title, demoUrl }: ProjectMediaGalleryProps) {
-  // If 3 images: [0: top, 1: center, 2: bottom]
+  // Default to index 0 (main featured home page)
   const hasMultiple = images.length >= 2;
-  const defaultCenter = images.length >= 3 ? 1 : 0;
+  const defaultCenter = 0;
   const [activeIdx, setActiveIdx] = useState(defaultCenter);
 
-  // Top image index is 0 unless 0 is active (then show 1)
-  const topIdx = images.length >= 3 ? (activeIdx === 0 ? 1 : 0) : (images.length === 2 && activeIdx !== 0 ? 0 : null);
-  // Bottom image index is 2 unless 2 is active (then show 1)
-  const bottomIdx = images.length >= 3 ? (activeIdx === 2 ? 1 : 2) : (images.length === 2 && activeIdx !== 1 ? 1 : null);
+  // When activeIdx is 0: top shows 1, bottom shows 2
+  // When activeIdx is 1: top shows 0, bottom shows 2
+  // When activeIdx is 2: top shows 0, bottom shows 1
+  const topIdx = images.length >= 3
+    ? (activeIdx === 0 ? 1 : 0)
+    : (images.length === 2 && activeIdx !== 0 ? 0 : null);
+
+  const bottomIdx = images.length >= 3
+    ? (activeIdx === 2 ? 1 : 2)
+    : (images.length === 2 && activeIdx !== 1 ? 1 : null);
 
   const topImg = topIdx !== null ? images[topIdx] : null;
   const centerImg = images[activeIdx] || images[0] || "";
