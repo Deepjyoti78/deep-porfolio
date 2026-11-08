@@ -1,0 +1,49 @@
+---
+title: "RelayForge"
+subtitle: "High-Throughput Webhook Delivery & Distributed Workflow Engine"
+publishedAt: "2026-11-08"
+summary: "High-throughput webhook delivery, retry engine, and distributed workflow orchestration system built with NestJS, BullMQ, Redis, and PostgreSQL. Features at-least-once delivery guarantees, monotonic lease tokens, SSRF protection, and developer management console."
+images:
+  - "/images/projects/relay-forge.png"
+  - "/images/projects/relay-forge-1.png"
+  - "/images/projects/relay-forge-2.png"
+team:
+  - name: "Deepjyoti Das"
+    role: "Full Stack Developer"
+    avatar: "/images/avatar.jpg"
+    linkedIn: "https://www.linkedin.com/in/deep-jyoti-das-4148bb31a/"
+techs: ["NestJS", "TypeScript", "PostgreSQL", "Redis", "BullMQ", "React", "Docker", "Prisma"]
+githubUrl: "https://github.com/Deepjyoti78/RelayForge"
+demoUrl: ""
+---
+
+## Overview
+
+**RelayForge** is an enterprise-grade webhook delivery platform and distributed workflow orchestration engine designed to provide resilient, observable, and concurrency-hardened event delivery at scale. Built with a decoupled architecture, RelayForge separates high-frequency ingestion APIs from asynchronous queue workers powered by Redis and BullMQ, backed by PostgreSQL for durable persistence.
+
+Designed with zero-tolerance for silent delivery failures, RelayForge enforces strict at-least-once delivery semantics, anti-DNS rebinding SSRF protection, optimistic worker concurrency with monotonic leasing, and cryptographic payload verification.
+
+## Architecture & Distributed Guarantees
+
+- **Decoupled API & Worker Runtimes**: Separate NestJS API and Worker background consumer processes built from a unified codebase, allowing independent auto-scaling based on ingestion volume vs. delivery queue depth.
+- **At-Least-Once Delivery Semantics**: Eliminates false "exactly-once" assumptions by generating deterministic `Idempotency-Key` and `x-relayforge-delivery` headers, enabling downstream receivers to deduplicate requests reliably.
+- **Optimistic Concurrency & Monotonic Leases**: Distributed workers claim execution batches using PostgreSQL row-level locks (`SKIP LOCKED`) and monotonic `lease_token UUID` claims. Stale or delayed workers cannot overwrite newer delivery state.
+- **SSRF Hardening & Anti-DNS Rebinding**: Custom HTTP transport layer enforcing anti-DNS rebinding via socket connection pinning, dual-homed multi-IP validation, private subnet/cloud metadata blocking (RFC 1918 / 169.254.x.x), and disabled automatic redirects (`redirect: 'manual'`).
+- **Resilient Retry Policy & Backoff**: Exponential backoff with additive uniform jitter (0–499ms), bounded at 5 minutes. Fully honors downstream `Retry-After` headers (both delta seconds and RFC 7231 HTTP dates).
+- **Ambiguous Outcome Tracking**: Transient network dropouts, socket resets, and gateway timeouts are classified as `UNKNOWN` rather than prematurely presumed failed, ensuring safe retry orchestration.
+
+## Key Features
+
+- **Multi-Tenant Organization Hierarchy**: Comprehensive RBAC supporting Owner, Developer, and Viewer roles with database-level Row-Level Security (RLS) and transaction-local tenant context isolation.
+- **Enterprise Identity & OAuth 2.0**: GitHub OAuth 2.0 integration with PKCE (S256), short-lived state replay protection, session token SHA-256 hashing, and secure HTTP-only cookies (`rf_session`).
+- **Developer Management Console**: Modern React + TypeScript management interface for organization administration, member invitations, API key management, and delivery telemetry.
+- **End-to-End Operational Health Probes**: Real-time readiness and liveness health checks with automated BullMQ round-trip worker verification.
+- **Containerized Infrastructure**: Production-ready Docker Compose orchestration with persistent PostgreSQL 17, Redis 7.4 (AOF persistence with `noeviction`), and isolated test environments.
+
+## Technology Stack
+
+- **Backend**: NestJS, Node.js, TypeScript, Express
+- **Distributed Queues**: Redis 7.4, BullMQ
+- **Database & Security**: PostgreSQL 17, Prisma ORM, Row-Level Security (RLS)
+- **Frontend**: React 19, TypeScript, Vite, Tailwind CSS
+- **Testing & Tooling**: Vitest, Jest, Supertest, Docker Compose, GitHub Actions CI

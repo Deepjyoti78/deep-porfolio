@@ -1,0 +1,48 @@
+---
+title: "Drivio"
+subtitle: "Modern Multi-Vendor Car Rental Marketplace"
+publishedAt: "2026-11-07"
+summary: "Full-stack multi-vendor self-drive car rental marketplace connecting customers with verified independent fleet operators across India. Engineered with a concurrency-safe availability engine, integer paise accounting, Razorpay checkout, and multi-tenant management portals."
+images:
+  - "/images/projects/drivio.png"
+  - "/images/projects/drivio-1.png"
+  - "/images/projects/drivio-2.png"
+team:
+  - name: "Deepjyoti Das"
+    role: "Full Stack Developer"
+    avatar: "/images/avatar.jpg"
+    linkedIn: "https://www.linkedin.com/in/deep-jyoti-das-4148bb31a/"
+techs: ["React 18", "Node.js", "TypeScript", "Express.js", "PostgreSQL", "Prisma", "Redis", "Tailwind CSS"]
+githubUrl: "https://github.com/Deepjyoti78/car-rental-platform"
+demoUrl: ""
+---
+
+## Overview
+
+**Drivio** is a multi-vendor self-drive car rental platform built with a modular monolith architecture. Uniting verified independent car rental companies with discerning travelers across major Indian metropolitan hubs (Delhi NCR, Gurgaon, Noida, Jaipur, and Chandigarh), Drivio delivers an end-to-end rental lifecycle: from faceted discovery and date filtering to multi-tenant fleet dispatch and administrative settlement.
+
+Engineered with high transactional rigor, Drivio eliminates double-booking race conditions through PostgreSQL row-level locks, computes all financial ledgers in integer minor units (paise), and protects transactions with HMAC payment signatures.
+
+## Concurrency-Safe Booking & Financial Precision
+
+- **Concurrency-Safe Availability Engine**: Prevents double-booking race conditions during simultaneous reservations using PostgreSQL row-level locks (`SELECT ... FOR UPDATE`) within Prisma transactions. Resolves overlapping temporal intervals with exact boundary validation:
+  $$\text{existingStart} < \text{requestedEnd} \quad\text{AND}\quad \text{existingEnd} > \text{requestedStart}$$
+- **Zero-Floating-Point Integer Accounting**: All daily rental rates, 18% GST calculations, security deposits, vendor earnings, and refund estimates are computed strictly in integer paise (INR cents) to eliminate cumulative floating-point errors.
+- **Cryptographic Payment Verification**: Seamless integration with Razorpay test mode utilizing HMAC-SHA256 signature verification for payment orders, authorizations, and webhook notifications.
+
+## Key Features
+
+- **Automotive Discovery Engine**: Faceted fleet search across Indian hubs with dynamic date/time interval filtering, transmission (Automatic/Manual), fuel type (Petrol/Diesel/EV), seating capacity, and interactive price range sliders.
+- **7-Step Verified Booking Checkout**: Transparent price breakdown (base fee, GST, refundable deposit, platform fee), primary driver license verification, and instant confirmation pass generation.
+- **Multi-Tenant Vendor Portal**: Isolated host portal where fleet operators manage vehicle inventory, image galleries, maintenance blockout dates, dispatch handovers with odometer logging, and damage inspection reports upon return.
+- **Host Earnings & Payout Ledger**: Automated 90% net host earnings calculation (10% platform commission), real-time available balance tracking, and bank payout requests.
+- **Platform Administration Console**: Comprehensive executive dashboard with GMV telemetry, fleet utilization analytics, vendor KYC verification gates, dispute resolution, and vehicle moderation.
+- **Customer Trip Management**: Lifecycle tracking (`CONFIRMED`, `ACTIVE`, `COMPLETED`, `CANCELLED`), tiered cancellation with automated refund estimation, downloadable printable tax invoices, and post-trip reviews.
+
+## Technology Stack
+
+- **Frontend**: React 18, TypeScript, Vite, Tailwind CSS, React Router v7, TanStack Query, Zustand, Lucide React
+- **Backend**: Node.js, Express.js REST API, TypeScript, Prisma ORM
+- **Database & Cache**: PostgreSQL 16, Redis 7
+- **Security & Payments**: JWT with HTTP-only cookies, Helmet, Express-Rate-Limit, Razorpay SDK, HMAC-SHA256
+- **Testing & DevOps**: Vitest, Docker & Docker Compose, Swagger/OpenAPI documentation
