@@ -48,13 +48,21 @@
   }
 }
 
-.liveBadge {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
+.badgeContainer {
   position: absolute;
   top: 8px;
   right: 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  z-index: 10;
+}
+
+.liveBadge,
+.githubBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
   background: rgba(15, 17, 23, 0.85);
   backdrop-filter: blur(8px);
   color: #ffffff !important;
@@ -65,14 +73,14 @@
   border: 1px solid rgba(255, 255, 255, 0.18);
   text-decoration: none !important;
   white-space: nowrap;
-  z-index: 10;
   letter-spacing: -0.01em;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-  transition: opacity 0.2s ease, transform 0.2s ease;
+  transition: opacity 0.2s ease, transform 0.2s ease, background 0.2s ease;
 
   &:hover {
     opacity: 0.9;
     transform: scale(1.02);
+    background: rgba(30, 32, 40, 0.95);
   }
 }
 
@@ -293,10 +301,15 @@
     border-radius: 8px !important;
   }
 
-  .liveBadge {
-    display: inline-flex !important;
+  .badgeContainer {
     top: 6px !important;
     right: 6px !important;
+    gap: 4px !important;
+  }
+
+  .liveBadge,
+  .githubBadge {
+    display: inline-flex !important;
     padding: 2px 7px !important;
     font-size: 9.5px !important;
   }

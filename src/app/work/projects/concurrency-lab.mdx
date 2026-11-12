@@ -1,0 +1,57 @@
+---
+title: "ConcurrencyLab"
+subtitle: "Deterministic C++20 Multithreading Engine & Interactive OS Simulator"
+publishedAt: "2026-11-10"
+summary: "High-performance operating systems simulation and multithreading visualization platform powered by an authoritative C++20 instruction-level simulation engine, child-process IPC, time-travel debugger with O(1) state restoration, and interactive React 19 visualizers."
+images:
+  - "/images/projects/concurrency-lab.png"
+  - "/images/projects/concurrency-lab-1.png"
+  - "/images/projects/concurrency-lab-2.png"
+team:
+  - name: "Deepjyoti Das"
+    role: "Full Stack & Systems Developer"
+    avatar: "/images/avatar.jpg"
+    linkedIn: "https://www.linkedin.com/in/deep-jyoti-das-4148bb31a/"
+techs: ["C++20", "React 19", "TypeScript", "Node.js", "Tailwind CSS", "Vite", "Docker", "Zustand"]
+githubUrl: "https://github.com/Deepjyoti78/concurrency-lab"
+demoUrl: ""
+---
+
+## Overview
+
+**ConcurrencyLab** is an interactive computer science workstation and systems simulation platform designed to demystify multithreading, concurrent instruction interleavings, and classical synchronization anomalies. Rather than presenting static diagrams or simulated frontend animations, ConcurrencyLab couples an authoritative, native compiled **C++20 instruction-level simulation engine** directly to an interactive developer-grade React/TypeScript debugger.
+
+Engineered with zero-drift determinism, ConcurrencyLab allows developers, students, and systems researchers to step through multi-core execution cycle by cycle, inspect shared memory variables and local register states, detect data races and circular wait deadlocks, and scrub backward and forward in time with snapshot-based state restoration.
+
+## Architecture & Simulation Engine
+
+- **Authoritative C++20 Simulation Core**: Full virtual thread manager, instruction stepper, virtual register allocation (`r0`, `r1`), shared memory variable store, and synchronization primitives. The native C++ engine is the single source of truth for all simulation states.
+- **Deterministic Time-Travel Debugging**: Scrub backward and forward one instruction at a time with $O(1)$ state snapshot restoration. The engine creates immutable snapshots at every discrete execution cycle, eliminating simulation replay drift.
+- **Pluggable Deterministic Schedulers**: Configurable CPU scheduling policies including preemptive Round Robin (custom time quantum), FIFO (run-to-completion), Seeded Pseudo-Random (`std::mt19937`), and Manual single-step stepping.
+- **Native Child-Process IPC Bridge**: Decoupled Node.js and Express IPC server executing the compiled C++ engine CLI via streaming child processes and bidirectional JSON protocols.
+- **Formal Deadlock Detection**: Real-time DFS cycle detection on bipartite Resource Allocation Graphs (RAG) and Wait-For Graphs (WFG), validating Coffman's condition #4 (circular wait).
+
+## Key Features & Visualizers
+
+- **10 Preconfigured Concurrency Experiments**:
+  - Two-Thread and Three-Thread Shared Counter Races (lost update demonstration).
+  - Mutex-Protected Counters (atomic critical sections and FIFO wait queue handoffs).
+  - Counting Semaphore Resource Limiter (Dijkstra's capacity-constrained resource pool).
+  - Producer-Consumer Bounded Buffer (dual counting semaphores and mutex coordination).
+  - Dining Philosophers Circular Deadlock (5-way circular wait) vs. Deadlock-Free asymmetric resource hierarchy.
+  - Two-Mutex Circular Wait Deadlock vs. Deadlock-Free global lock hierarchy.
+- **Interactive Execution Stage**:
+  - **Thread Execution Lanes**: Program counter indicators, register displays, thread lifecycle badges (`NEW`, `READY`, `RUNNING`, `BLOCKED`, `TERMINATED`), and disassembly trace.
+  - **Shared Memory Cards**: Live value display, delta glow animations, and read/write counters.
+  - **Resource Allocation Graph (RAG)**: Interactive SVG directed graph with circular wait cycle highlighting.
+  - **Dining Philosophers Round Table**: 5-philosopher visual table with state indicators (thinking, hungry, eating) and shared fork lock visualizers.
+  - **Bounded Buffer Arena**: 3-slot queue with empty/full semaphore gauges.
+  - **Race Condition Diagnostic Modal**: Decomposed read/increment/write timeline explaining why lost updates happen and how mutex locks resolve them.
+
+## Technology Stack
+
+- **Simulation Core**: C++20, CMake, Ninja, Modern Object-Oriented Architecture
+- **Bridge & IPC**: Node.js, Express, TypeScript, Child Process IPC
+- **Frontend Workstation**: React 19, TypeScript, Vite, Motion for React, Zustand
+- **Styling & UI**: Tailwind CSS v4, Lucide Icons, Custom Developer Dark Theme
+- **Testing & Verification**: Automated 10-point C++ unit test suite covering mutex non-reentrancy, semaphore invariants, and snapshot restoration

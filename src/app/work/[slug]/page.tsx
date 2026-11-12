@@ -36,6 +36,9 @@ import {
   SiVite,
   SiSqlite,
   SiGoogle,
+  SiCplusplus,
+  SiRedis,
+  SiPrisma,
 } from "react-icons/si";
 
 const techIconMap: Record<string, React.FC<any>> = {
@@ -58,6 +61,11 @@ const techIconMap: Record<string, React.FC<any>> = {
   "SQLite": SiSqlite,
   "Gemini AI": SiGoogle,
   "AI": SiGoogle,
+  "C++": SiCplusplus,
+  "C++20": SiCplusplus,
+  "Redis": SiRedis,
+  "BullMQ": SiRedis,
+  "Prisma": SiPrisma,
   "Web Speech API": FiMic,
   "Web Audio API": FiVolume2,
   "IndexedDB": FiDatabase,
@@ -84,6 +92,11 @@ const techColorMap: Record<string, string> = {
   "SQLite": "#003B57",
   "Gemini AI": "#4285F4",
   "AI": "#4285F4",
+  "C++": "#00599C",
+  "C++20": "#00599C",
+  "Redis": "#FF4438",
+  "BullMQ": "#FF4438",
+  "Prisma": "#2D3748",
   "Web Speech API": "#A78BFA",
   "Web Audio API": "#F59E0B",
   "IndexedDB": "#38BDF8",
@@ -205,6 +218,7 @@ export default async function Project({
             images={post.metadata.images || (thumbnail ? [thumbnail] : [])}
             title={post.metadata.title}
             demoUrl={post.metadata.demoUrl}
+            githubUrl={post.metadata.githubUrl}
           />
         </div>
 

@@ -155,10 +155,18 @@
   }
 }
 
-.liveBadge {
+.badgeRow {
   position: absolute;
   top: 14px;
   right: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  z-index: 10;
+}
+
+.liveBadge,
+.githubBadge {
   display: inline-flex;
   align-items: center;
   gap: 6px;
@@ -171,14 +179,20 @@
   border-radius: 9999px;
   border: 1px solid rgba(255, 255, 255, 0.18);
   text-decoration: none !important;
-  z-index: 10;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
-  transition: transform 0.2s ease, opacity 0.2s ease;
+  transition: transform 0.2s ease, opacity 0.2s ease, background 0.2s ease;
 
   &:hover {
     transform: scale(1.03);
     opacity: 0.95;
+    background: rgba(30, 32, 40, 0.95);
   }
+}
+
+.captionLinks {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .liveDot {

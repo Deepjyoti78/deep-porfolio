@@ -2,15 +2,16 @@
 
 import React, { useState } from "react";
 import styles from "./ProjectDetail.module.scss";
-import { FiArrowUpRight } from "react-icons/fi";
+import { FiArrowUpRight, FiGithub } from "react-icons/fi";
 
 interface ProjectMediaGalleryProps {
   images: string[];
   title: string;
   demoUrl?: string;
+  githubUrl?: string;
 }
 
-export function ProjectMediaGallery({ images, title, demoUrl }: ProjectMediaGalleryProps) {
+export function ProjectMediaGallery({ images, title, demoUrl, githubUrl }: ProjectMediaGalleryProps) {
   // Default to index 0 (main featured home page)
   const hasMultiple = images.length >= 2;
   const defaultCenter = 0;
@@ -53,31 +54,57 @@ export function ProjectMediaGallery({ images, title, demoUrl }: ProjectMediaGall
       <div className={styles.centerImageWrapper}>
         <img src={centerImg} alt={title} loading="eager" />
 
-        {demoUrl && (
-          <a
-            href={demoUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.liveBadge}
-            aria-label={`Open ${title} live demo`}
-          >
-            <span className={styles.liveDot} />
-            Live Demo
-          </a>
-        )}
-
-        <div className={styles.imageCaptionBar}>
-          <span className={styles.imageCaptionTitle}>{title}</span>
+        <div className={styles.badgeRow}>
           {demoUrl && (
             <a
               href={demoUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className={styles.imageCaptionLink}
+              className={styles.liveBadge}
+              aria-label={`Open ${title} live demo`}
             >
-              Visit Site <FiArrowUpRight />
+              <span className={styles.liveDot} />
+              Live Demo
             </a>
           )}
+          {githubUrl && (
+            <a
+              href={githubUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.githubBadge}
+              aria-label={`Open ${title} GitHub repository`}
+            >
+              <FiGithub style={{ fontSize: "11px" }} />
+              GitHub
+            </a>
+          )}
+        </div>
+
+        <div className={styles.imageCaptionBar}>
+          <span className={styles.imageCaptionTitle}>{title}</span>
+          <div className={styles.captionLinks}>
+            {demoUrl && (
+              <a
+                href={demoUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.imageCaptionLink}
+              >
+                Visit Site <FiArrowUpRight />
+              </a>
+            )}
+            {githubUrl && (
+              <a
+                href={githubUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.imageCaptionLink}
+              >
+                <FiGithub style={{ marginRight: '4px' }} /> GitHub <FiArrowUpRight />
+              </a>
+            )}
+          </div>
         </div>
       </div>
 

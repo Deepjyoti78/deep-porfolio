@@ -20,11 +20,16 @@ import {
   SiVite,
   SiSqlite,
   SiGoogle,
+  SiCplusplus,
+  SiRedis,
+  SiPrisma,
 } from "react-icons/si";
 import { FiGithub, FiExternalLink, FiArrowUpRight } from "react-icons/fi";
 
 const techIconMap: Record<string, React.FC<any>> = {
   "React": SiReact,
+  "React 18": SiReact,
+  "React 19": SiReact,
   "Django": SiDjango,
   "PostgreSQL": SiPostgresql,
   "Docker": SiDocker,
@@ -41,10 +46,17 @@ const techIconMap: Record<string, React.FC<any>> = {
   "SQLite": SiSqlite,
   "Gemini AI": SiGoogle,
   "AI": SiGoogle,
+  "C++": SiCplusplus,
+  "C++20": SiCplusplus,
+  "Redis": SiRedis,
+  "BullMQ": SiRedis,
+  "Prisma": SiPrisma,
 };
 
 const techColorMap: Record<string, string> = {
   "React": "#61DAFB",
+  "React 18": "#61DAFB",
+  "React 19": "#61DAFB",
   "Django": "#092E20",
   "PostgreSQL": "#4169E1",
   "Docker": "#2496ED",
@@ -61,6 +73,11 @@ const techColorMap: Record<string, string> = {
   "SQLite": "#003B57",
   "Gemini AI": "#4285F4",
   "AI": "#4285F4",
+  "C++": "#00599C",
+  "C++20": "#00599C",
+  "Redis": "#FF4438",
+  "BullMQ": "#FF4438",
+  "Prisma": "#2D3748",
 };
 
 interface GridProjectCardProps {
@@ -88,18 +105,32 @@ export const GridProjectCard: React.FC<GridProjectCardProps> = ({
         <Link href={href} className={styles.imageLink} aria-label={`View ${title} case study`}>
           <img src={image} alt={title} loading="lazy" />
         </Link>
-        {demoUrl && (
-          <a
-            href={demoUrl}
-            className={styles.liveBadge}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={`Open ${title} live demo`}
-          >
-            <span className={styles.liveDot} />
-            Live Demo
-          </a>
-        )}
+        <div className={styles.badgeContainer}>
+          {demoUrl && (
+            <a
+              href={demoUrl}
+              className={styles.liveBadge}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`Open ${title} live demo`}
+            >
+              <span className={styles.liveDot} />
+              Live Demo
+            </a>
+          )}
+          {githubUrl && !demoUrl && (
+            <a
+              href={githubUrl}
+              className={styles.githubBadge}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`Open ${title} GitHub repository`}
+            >
+              <FiGithub style={{ fontSize: "11px" }} />
+              GitHub
+            </a>
+          )}
+        </div>
       </div>
 
       <div className={styles.content}>
