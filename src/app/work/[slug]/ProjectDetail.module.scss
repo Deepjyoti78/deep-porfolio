@@ -23,13 +23,13 @@
   @media (min-width: 960px) {
     grid-template-columns: 1.8fr 1fr;
     gap: 28px;
-    align-items: center;
+    align-items: stretch;
   }
 
   @media (min-width: 1280px) {
     grid-template-columns: 1.95fr 1fr;
     gap: 32px;
-    align-items: center;
+    align-items: stretch;
   }
 }
 
@@ -201,22 +201,55 @@
 }
 
 /* ================= RIGHT COLUMN: PROJECT DETAILS CARD ================= */
+.rightColumnWrapper {
+  position: relative;
+  width: 100%;
+  min-height: 0;
+
+  @media (min-width: 960px) {
+    height: 100%;
+    align-self: stretch;
+  }
+
+  @media (max-width: 959px) {
+    height: auto;
+  }
+}
+
 .rightColumn {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
   width: 100%;
   border-radius: 24px;
   border: 1px solid rgba(255, 255, 255, 0.1);
   background-color: #111215;
-  padding: 24px 28px;
   box-sizing: border-box;
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
-  gap: 14px;
+
+  @media (min-width: 960px) {
+    position: absolute;
+    inset: 0;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    padding: 24px 28px;
+    gap: 16px;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+
+    &::-webkit-scrollbar {
+      display: none; /* Chrome, Safari, Opera */
+      width: 0;
+      height: 0;
+    }
+  }
 
   @media (max-width: 959px) {
+    position: relative;
     padding: 18px 20px;
-    gap: 16px;
+    gap: 14px;
+    height: auto;
+    overflow: visible;
   }
 }
 
@@ -227,6 +260,7 @@
   justify-content: space-between;
   width: 100%;
   padding-bottom: 2px;
+  flex-shrink: 0;
 }
 
 .backButton {
@@ -283,6 +317,7 @@
   display: flex;
   flex-direction: column;
   gap: 2px;
+  flex-shrink: 0;
 }
 
 .metaRow {
@@ -349,6 +384,7 @@
   display: flex;
   flex-direction: column;
   gap: 4px;
+  flex-shrink: 0;
 }
 
 .overviewText {
@@ -363,6 +399,7 @@
   display: flex;
   flex-direction: column;
   gap: 4px;
+  flex-shrink: 0;
 }
 
 .featuresList {
@@ -400,6 +437,7 @@
   display: flex;
   flex-direction: column;
   gap: 4px;
+  flex-shrink: 0;
 }
 
 .techsList {
@@ -441,6 +479,8 @@
   padding-top: 12px;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
   margin-top: auto;
+  flex-shrink: 0;
+  padding-bottom: 6px;
 }
 
 .primaryBtn {

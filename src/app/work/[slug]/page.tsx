@@ -223,114 +223,116 @@ export default async function Project({
         </div>
 
         {/* RIGHT COLUMN: ALL INFORMATION & OVERVIEW */}
-        <div className={styles.rightColumn}>
-          {/* Top navigation */}
-          <div className={styles.navHeader}>
-            <Link href="/work" className={styles.backButton}>
-              <FiArrowLeft />
-              <span>Back to Projects</span>
-            </Link>
-            <div className={styles.navArrows}>
-              <Link
-                href={`/work/${prevProject.slug}`}
-                className={styles.navArrowBtn}
-                title={`Previous: ${prevProject.metadata.title}`}
-                aria-label={`Previous project: ${prevProject.metadata.title}`}
-              >
-                <FiChevronLeft />
+        <div className={styles.rightColumnWrapper}>
+          <div className={styles.rightColumn}>
+            {/* Top navigation */}
+            <div className={styles.navHeader}>
+              <Link href="/work" className={styles.backButton}>
+                <FiArrowLeft />
+                <span>Back to Projects</span>
               </Link>
-              <Link
-                href={`/work/${nextProject.slug}`}
-                className={styles.navArrowBtn}
-                title={`Next: ${nextProject.metadata.title}`}
-                aria-label={`Next project: ${nextProject.metadata.title}`}
-              >
-                <FiChevronRight />
-              </Link>
-            </div>
-          </div>
-
-          {/* Project Header */}
-          <div className={styles.projectHeader}>
-            <div className={styles.metaRow}>
-              <span className={styles.tagBadge}>Featured Work</span>
-              <span className={styles.dateBadge}>{formatDisplayDate(post.metadata.publishedAt)}</span>
-            </div>
-            <h1 className={styles.title}>{post.metadata.title}</h1>
-            {post.metadata.subtitle && (
-              <p className={styles.subtitle}>{post.metadata.subtitle}</p>
-            )}
-          </div>
-
-          {/* Overview */}
-          <div className={styles.overviewBlock}>
-            <div className={styles.sectionHeading}>Overview</div>
-            <p className={styles.overviewText}>{overview}</p>
-          </div>
-
-          {/* Key Capabilities */}
-          {features.length > 0 && (
-            <div className={styles.featuresBlock}>
-              <div className={styles.sectionHeading}>Key Capabilities</div>
-              <div className={styles.featuresList}>
-                {features.slice(0, 3).map((f, i) => (
-                  <div key={i} className={styles.featureItem}>
-                    <FiCheckCircle className={styles.checkIcon} />
-                    <div>
-                      <span className={styles.featureTitle}>{f.title}</span>
-                      {f.desc && <span className={styles.featureDesc}> — {f.desc}</span>}
-                    </div>
-                  </div>
-                ))}
+              <div className={styles.navArrows}>
+                <Link
+                  href={`/work/${prevProject.slug}`}
+                  className={styles.navArrowBtn}
+                  title={`Previous: ${prevProject.metadata.title}`}
+                  aria-label={`Previous project: ${prevProject.metadata.title}`}
+                >
+                  <FiChevronLeft />
+                </Link>
+                <Link
+                  href={`/work/${nextProject.slug}`}
+                  className={styles.navArrowBtn}
+                  title={`Next: ${nextProject.metadata.title}`}
+                  aria-label={`Next project: ${nextProject.metadata.title}`}
+                >
+                  <FiChevronRight />
+                </Link>
               </div>
             </div>
-          )}
 
-          {/* Tech Stack */}
-          {post.metadata.techs && post.metadata.techs.length > 0 && (
-            <div className={styles.techsBlock}>
-              <div className={styles.sectionHeading}>Technologies Used</div>
-              <div className={styles.techsList}>
-                {post.metadata.techs.map((tech) => {
-                  const Icon = techIconMap[tech];
-                  const color = techColorMap[tech] || "#FFFFFF";
-                  return (
-                    <div key={tech} className={styles.techPill}>
-                      {Icon && <Icon color={color} className={styles.techIcon} />}
-                      <span>{tech}</span>
-                    </div>
-                  );
-                })}
+            {/* Project Header */}
+            <div className={styles.projectHeader}>
+              <div className={styles.metaRow}>
+                <span className={styles.tagBadge}>Featured Work</span>
+                <span className={styles.dateBadge}>{formatDisplayDate(post.metadata.publishedAt)}</span>
               </div>
+              <h1 className={styles.title}>{post.metadata.title}</h1>
+              {post.metadata.subtitle && (
+                <p className={styles.subtitle}>{post.metadata.subtitle}</p>
+              )}
             </div>
-          )}
 
-          {/* Actions Bar */}
-          <div className={styles.actionsBar}>
-            {post.metadata.demoUrl && (
-              <a
-                href={post.metadata.demoUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={styles.primaryBtn}
-              >
-                <FiPlayCircle className={styles.btnLeadingIcon} />
-                <span>Live Demo</span>
-                <FiArrowUpRight className={styles.btnArrow} />
-              </a>
+            {/* Overview */}
+            <div className={styles.overviewBlock}>
+              <div className={styles.sectionHeading}>Overview</div>
+              <p className={styles.overviewText}>{overview}</p>
+            </div>
+
+            {/* Key Capabilities */}
+            {features.length > 0 && (
+              <div className={styles.featuresBlock}>
+                <div className={styles.sectionHeading}>Key Capabilities</div>
+                <div className={styles.featuresList}>
+                  {features.slice(0, 3).map((f, i) => (
+                    <div key={i} className={styles.featureItem}>
+                      <FiCheckCircle className={styles.checkIcon} />
+                      <div>
+                        <span className={styles.featureTitle}>{f.title}</span>
+                        {f.desc && <span className={styles.featureDesc}> — {f.desc}</span>}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
             )}
-            {post.metadata.githubUrl && (
-              <a
-                href={post.metadata.githubUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={styles.secondaryBtn}
-              >
-                <FiGithub className={styles.btnLeadingIcon} />
-                <span>GitHub Repo</span>
-                <FiArrowUpRight className={styles.btnArrow} />
-              </a>
+
+            {/* Tech Stack */}
+            {post.metadata.techs && post.metadata.techs.length > 0 && (
+              <div className={styles.techsBlock}>
+                <div className={styles.sectionHeading}>Technologies Used</div>
+                <div className={styles.techsList}>
+                  {post.metadata.techs.map((tech) => {
+                    const Icon = techIconMap[tech];
+                    const color = techColorMap[tech] || "#FFFFFF";
+                    return (
+                      <div key={tech} className={styles.techPill}>
+                        {Icon && <Icon color={color} className={styles.techIcon} />}
+                        <span>{tech}</span>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
             )}
+
+            {/* Actions Bar */}
+            <div className={styles.actionsBar}>
+              {post.metadata.demoUrl && (
+                <a
+                  href={post.metadata.demoUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.primaryBtn}
+                >
+                  <FiPlayCircle className={styles.btnLeadingIcon} />
+                  <span>Live Demo</span>
+                  <FiArrowUpRight className={styles.btnArrow} />
+                </a>
+              )}
+              {post.metadata.githubUrl && (
+                <a
+                  href={post.metadata.githubUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.secondaryBtn}
+                >
+                  <FiGithub className={styles.btnLeadingIcon} />
+                  <span>GitHub Repo</span>
+                  <FiArrowUpRight className={styles.btnArrow} />
+                </a>
+              )}
+            </div>
           </div>
         </div>
       </div>
