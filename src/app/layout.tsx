@@ -162,7 +162,7 @@ export default async function RootLayout({
             <Flex fillWidth minHeight="16" s={{ hide: true }} />
             <Column
               zIndex={0}
-              maxWidth="m"
+              maxWidth="xl"
               fillWidth
               style={{
                 backgroundColor: "var(--center-background)",
@@ -175,7 +175,7 @@ export default async function RootLayout({
                   <RouteGuard>{children}</RouteGuard>
                 </Flex>
               </Flex>
-              <Column fillWidth style={{ borderLeft: "1px solid var(--neutral-border-medium)", borderRight: "1px solid var(--neutral-border-medium)" }}>
+              <Column maxWidth="m" fillWidth horizontal="center" style={{ borderLeft: "1px solid var(--neutral-border-medium)", borderRight: "1px solid var(--neutral-border-medium)" }}>
                 <Footer />
               </Column>
             </Column>
