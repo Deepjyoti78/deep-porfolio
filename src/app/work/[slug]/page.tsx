@@ -212,7 +212,7 @@ export default async function Project({
       />
 
       <div className={styles.splitGrid}>
-        {/* LEFT COLUMN: VERTICAL 3-IMAGE REEL */}
+        {/* LEFT COLUMN: SINGLE IMAGE CARD (UN-CROPPED & INTERACTIVE) */}
         <div className={styles.leftColumn}>
           <ProjectMediaGallery
             images={post.metadata.images || (thumbnail ? [thumbnail] : [])}

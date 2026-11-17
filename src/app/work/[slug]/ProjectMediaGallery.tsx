@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import styles from "./ProjectDetail.module.scss";
-import { FiArrowUpRight, FiGithub } from "react-icons/fi";
+import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 
 interface ProjectMediaGalleryProps {
   images: string[];
@@ -11,119 +11,111 @@ interface ProjectMediaGalleryProps {
   githubUrl?: string;
 }
 
-export function ProjectMediaGallery({ images, title, demoUrl, githubUrl }: ProjectMediaGalleryProps) {
-  // Default to index 0 (main featured home page)
-  const hasMultiple = images.length >= 2;
-  const defaultCenter = 0;
-  const [activeIdx, setActiveIdx] = useState(defaultCenter);
+export function ProjectMediaGallery({
+  images,
+  title,
+  demoUrl,
+  githubUrl,
+}: ProjectMediaGalleryProps) {
+  const [activeIdx, setActiveIdx] = useState(0);
 
-  // When activeIdx is 0: top shows 1, bottom shows 2
-  // When activeIdx is 1: top shows 0, bottom shows 2
-  // When activeIdx is 2: top shows 0, bottom shows 1
-  const topIdx = images.length >= 3
-    ? (activeIdx === 0 ? 1 : 0)
-    : (images.length === 2 && activeIdx !== 0 ? 0 : null);
+  const total = images.length;
+  if (total === 0) return null;
 
-  const bottomIdx = images.length >= 3
-    ? (activeIdx === 2 ? 1 : 2)
-    : (images.length === 2 && activeIdx !== 1 ? 1 : null);
+  const currentImage = images[activeIdx] || images[0];
 
-  const topImg = topIdx !== null ? images[topIdx] : null;
-  const centerImg = images[activeIdx] || images[0] || "";
-  const bottomImg = bottomIdx !== null ? images[bottomIdx] : null;
+  const handleNext = (e?: React.MouseEvent) => {
+    if (e) e.stopPropagation();
+    setActiveIdx((prev) => (prev + 1) % total);
+  };
+
+  const handlePrev = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setActiveIdx((prev) => (prev - 1 + total) % total);
+  };
+
+  const handleDotClick = (idx: number, e: React.MouseEvent) => {
+    e.stopPropagation();
+    setActiveIdx(idx);
+  };
 
   return (
-    <div className={styles.verticalGallery}>
-      {/* TOP IMAGE (ABOVE CENTER) */}
-      {topImg && (
-        <div
-          className={styles.secondaryImageWrapper}
-          onClick={() => topIdx !== null && setActiveIdx(topIdx)}
-          title="Click to view in center"
-          role="button"
-          tabIndex={0}
-        >
-          <img src={topImg} alt={`${title} preview top`} loading="eager" />
-          <div className={styles.imageOverlayHint}>
-            <span>View Preview</span>
-          </div>
-        </div>
-      )}
+    <div
+      className={styles.singleImageCard}
+      onClick={() => total > 1 && handleNext()}
+      role="button"
+      tabIndex={0}
+      onKeyDown={(e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          handleNext();
+        } else if (e.key === "ArrowRight") {
+          handleNext();
+        } else if (e.key === "ArrowLeft") {
+          handlePrev(e as any);
+        }
+      }}
+      aria-label={`Project screenshot ${activeIdx + 1} of ${total}. Click to view next.`}
+      title={total > 1 ? "Click to view next screenshot" : title}
+    >
+      {/* SCREENSHOT CONTAINER WITHOUT CROPPING */}
+      <div className={styles.imageDisplayWrapper}>
+        <img
+          key={currentImage}
+          src={currentImage}
+          alt={`${title} screenshot ${activeIdx + 1}`}
+          className={styles.projectScreenshot}
+          loading="eager"
+        />
 
-      {/* CENTER IMAGE (MAIN THUMBNAIL) */}
-      <div className={styles.centerImageWrapper}>
-        <img src={centerImg} alt={title} loading="eager" />
-
-        <div className={styles.badgeRow}>
-          {demoUrl && (
-            <a
-              href={demoUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={styles.liveBadge}
-              aria-label={`Open ${title} live demo`}
+        {/* CHEVRON NAVIGATION (IF MULTIPLE IMAGES) */}
+        {total > 1 && (
+          <>
+            <button
+              type="button"
+              className={`${styles.galleryNavBtn} ${styles.galleryNavPrev}`}
+              onClick={handlePrev}
+              aria-label="Previous screenshot"
+              title="Previous screenshot"
             >
-              <span className={styles.liveDot} />
-              Live Demo
-            </a>
-          )}
-          {githubUrl && (
-            <a
-              href={githubUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={styles.githubBadge}
-              aria-label={`Open ${title} GitHub repository`}
+              <FiChevronLeft />
+            </button>
+            <button
+              type="button"
+              className={`${styles.galleryNavBtn} ${styles.galleryNavNext}`}
+              onClick={handleNext}
+              aria-label="Next screenshot"
+              title="Next screenshot"
             >
-              <FiGithub style={{ fontSize: "11px" }} />
-              GitHub
-            </a>
-          )}
-        </div>
-
-        <div className={styles.imageCaptionBar}>
-          <span className={styles.imageCaptionTitle}>{title}</span>
-          <div className={styles.captionLinks}>
-            {demoUrl && (
-              <a
-                href={demoUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={styles.imageCaptionLink}
-              >
-                Visit Site <FiArrowUpRight />
-              </a>
-            )}
-            {githubUrl && (
-              <a
-                href={githubUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={styles.imageCaptionLink}
-              >
-                <FiGithub style={{ marginRight: '4px' }} /> GitHub <FiArrowUpRight />
-              </a>
-            )}
-          </div>
-        </div>
+              <FiChevronRight />
+            </button>
+          </>
+        )}
       </div>
 
-      {/* BOTTOM IMAGE (BELOW CENTER) */}
-      {bottomImg && (
-        <div
-          className={styles.secondaryImageWrapper}
-          onClick={() => bottomIdx !== null && setActiveIdx(bottomIdx)}
-          title="Click to view in center"
-          role="button"
-          tabIndex={0}
-        >
-          <img src={bottomImg} alt={`${title} preview bottom`} loading="lazy" />
-          <div className={styles.imageOverlayHint}>
-            <span>View Preview</span>
+      {/* BOTTOM PAGINATION & INDICATORS */}
+      {total > 1 && (
+        <div className={styles.galleryFooter}>
+          <div className={styles.dotIndicators}>
+            {images.map((_, idx) => (
+              <button
+                key={idx}
+                type="button"
+                className={`${styles.indicatorDot} ${idx === activeIdx ? styles.indicatorActive : ""}`}
+                onClick={(e) => handleDotClick(idx, e)}
+                aria-label={`Jump to screenshot ${idx + 1}`}
+              />
+            ))}
+          </div>
+
+          <div className={styles.counterBadge}>
+            <span className={styles.counterText}>
+              {activeIdx + 1} / {total}
+            </span>
+            <span className={styles.clickHint}>• Click image for next</span>
           </div>
         </div>
       )}
     </div>
   );
 }
-
