@@ -4,20 +4,79 @@ import { FiCalendar, FiMapPin } from 'react-icons/fi';
 
 const experiences = [
   {
+    title: "Full Stack Engineer",
+    company: "Vellora Healthcare",
+    duration: "2026",
+    location: "Production Web App",
+    badge: "HealthTech",
+    description: "Architected a full-stack in-home clinical care platform connecting patients with 48+ verified medical specialists, doorstep doctor visits, and 3-step clinical booking workflows.",
+    highlights: [
+      "Built multi-role portals for Patients, Clinicians, and Operations with persistent session auth.",
+      "Implemented 4-digit OTP identity verification, real-time doctor availability, and triage booking.",
+      "Engineered high-performance Next.js 15 & React 19 architecture across 50 production-ready routes."
+    ],
+    skills: ["Next.js 15", "React 19", "TypeScript", "Tailwind CSS", "Prisma", "PostgreSQL"],
+    impact: ["50 Production Routes", "Multi-Role Session Auth", "3-Step Booking Pipeline"]
+  },
+  {
+    title: "Distributed Systems Engineer",
+    company: "RelayForge",
+    duration: "2026",
+    location: "Distributed Cloud",
+    badge: "Distributed Systems",
+    description: "Architected a high-throughput webhook delivery and distributed workflow engine with at-least-once delivery guarantees and anti-SSRF protections.",
+    highlights: [
+      "Decoupled high-frequency ingestion APIs from asynchronous BullMQ workers backed by Redis.",
+      "Implemented optimistic worker concurrency via PostgreSQL row locks (SKIP LOCKED) and monotonic leases.",
+      "Hardened HTTP transport against DNS rebinding and SSRF via socket pinning and multi-IP validation."
+    ],
+    skills: ["NestJS", "BullMQ", "Redis", "PostgreSQL", "TypeScript", "Docker"],
+    impact: ["At-Least-Once Delivery", "Anti-SSRF Protection", "Monotonic Lease Claims"]
+  },
+  {
+    title: "Systems & Simulation Engineer",
+    company: "ConcurrencyLab",
+    duration: "2026",
+    location: "Systems & Simulation",
+    badge: "C++20 / OS Core",
+    description: "Developed an interactive operating systems simulator coupling an authoritative C++20 instruction engine to a React 19 time-travel debugger with O(1) state restoration.",
+    highlights: [
+      "Engineered native C++20 simulation core executing 10 concurrency & deadlock experiments.",
+      "Built deterministic time-travel debugger with cycle-by-cycle reverse/forward stepping without drift.",
+      "Created interactive visualizers for Thread Lanes, Resource Allocation Graphs (RAG), and Dining Philosophers."
+    ],
+    skills: ["C++20", "React 19", "TypeScript", "Node.js IPC", "Zustand", "Tailwind CSS"],
+    impact: ["O(1) Snapshot Restoration", "Native C++20 Core", "Formal Deadlock Detection"]
+  },
+  {
+    title: "Creative Frontend Engineer",
+    company: "The Detour",
+    duration: "2026",
+    location: "Self-Drive Platform",
+    badge: "Creative Frontend",
+    description: "Developed a tactile editorial self-drive road trip portal featuring curated scenic route schematics, waypoint elevation profiles, and responsive fleet reservations.",
+    highlights: [
+      "Crafted custom tactile UI physics featuring responsive button press animations and warm typography.",
+      "Built interactive scenic route atlas with elevation profiles, waypoint markers, and packing checklists.",
+      "Engineered multi-hub fleet reservation across major metropolitan transit collection depots."
+    ],
+    skills: ["Next.js", "React 19", "TypeScript", "Tailwind CSS", "Framer Motion", "Figma"],
+    impact: ["Tactile UI Physics", "Curated Route Atlas", "3-Step Fleet Reservation"]
+  },
+  {
     title: "UI/UX Lead",
     company: "RoboGyan Robotics Society",
     duration: "June 2024 – Jan 2025",
     location: "Delhi, India",
     badge: "Leadership",
-    description: "Led the UI/UX team for RoboGyan, creating branding, event assets, and digital experiences across workshops, hackathons, and technical initiatives while collaborating with cross-functional teams.",
+    description: "Led the UI/UX team for RoboGyan, directing design systems, event assets, and digital experiences across workshops and hackathons.",
     highlights: [
-      "Led UI/UX for multiple technical workshops and community events.",
-      "Designed posters, certificates, social media creatives, and branding assets using Figma and Canva.",
-      "Collaborated with technical and event teams to maintain a consistent visual identity.",
-      "Improved the society's digital presence through modern and user-focused design."
+      "Directed creative visual identity and branding across university technical workshops and events.",
+      "Designed promotional creatives, certificates, and presentation decks using Figma and Canva.",
+      "Collaborated with engineering teams to ensure consistent design implementation."
     ],
-    skills: ["Figma", "Canva", "UI Design", "UX Design", "Branding", "Leadership", "Team Collaboration"],
-    impact: ["Leadership Experience", "Cross-functional Collaboration", "Creative Direction", "Community Building"]
+    skills: ["Figma", "UI/UX Design", "Branding", "Creative Direction", "Leadership"],
+    impact: ["Creative Direction", "Cross-Functional Leadership", "Brand Identity"]
   },
   {
     title: "Hackathon Participant",
@@ -25,15 +84,14 @@ const experiences = [
     duration: "2024 – Present",
     location: "Delhi NCR",
     badge: "Hackathons",
-    description: "Participated in multiple hackathons, collaborating with developers to rapidly design and build full-stack solutions under tight deadlines while focusing on usability, teamwork, and product thinking.",
+    description: "Competed in high-intensity national hackathons, rapidly prototyping full-stack solutions and delivering working MVPs under strict 24–48 hour deadlines.",
     highlights: [
-      "Worked with cross-functional teams to build end-to-end project prototypes.",
-      "Designed intuitive user interfaces and user flows using Figma.",
-      "Contributed to frontend implementation using React and modern web technologies.",
-      "Presented solutions and collaborated effectively during competitive development sprints."
+      "Collaborated in multidisciplinary teams to ideate, architect, and deploy end-to-end prototypes.",
+      "Designed intuitive user interfaces and built responsive frontends using React and modern tooling.",
+      "Delivered technical pitches and product demonstrations to industry juries and developer panels."
     ],
-    skills: ["React", "Figma", "Problem Solving", "Rapid Prototyping", "Teamwork", "Presentation", "Frontend Development"],
-    impact: ["Fast-paced Collaboration", "Product Thinking", "UI/UX Design", "Prototype Development"]
+    skills: ["React", "Rapid Prototyping", "Full-Stack Dev", "Teamwork", "Product Strategy"],
+    impact: ["Rapid Prototyping", "Competitive Sprints", "Product Architecture"]
   }
 ];
 
@@ -45,20 +103,20 @@ export function ExperienceCard() {
           <div className={styles.header}>
             <div className={styles.roleInfo}>
               <div className={styles.meta}>
-                <h3 style={{ margin: 0, fontSize: '20px', fontWeight: 600, color: 'var(--neutral-on-background-strong)', letterSpacing: '-0.01em' }}>
+                <h3 style={{ margin: 0, fontSize: '19px', fontWeight: 600, color: 'var(--neutral-on-background-strong)', letterSpacing: '-0.01em' }}>
                   {exp.title}
                 </h3>
-                <div style={{ color: 'var(--neutral-on-background-weak)', fontSize: '15px', marginBottom: '8px', fontWeight: 400 }}>
+                <div style={{ color: 'var(--neutral-on-background-weak)', fontSize: '14px', marginBottom: '6px', fontWeight: 400 }}>
                   {exp.company}
                 </div>
                 <div className={styles.details}>
                   <div className={styles.detailItem} style={{ color: 'var(--neutral-on-background-weak)', opacity: 0.7 }}>
-                    <FiCalendar size={14} />
+                    <FiCalendar size={13} />
                     <span>{exp.duration}</span>
                   </div>
                   <div style={{ width: '4px', height: '4px', borderRadius: '50%', backgroundColor: 'var(--neutral-border-strong)' }} />
                   <div className={styles.detailItem} style={{ color: 'var(--neutral-on-background-weak)', opacity: 0.7 }}>
-                    <FiMapPin size={14} />
+                    <FiMapPin size={13} />
                     <span>{exp.location}</span>
                   </div>
                 </div>
@@ -72,7 +130,7 @@ export function ExperienceCard() {
           <div className={styles.content}>
             <div className={styles.section}>
               <div className={styles.sectionTitle}>Overview</div>
-              <p style={{ color: 'var(--neutral-on-background-medium)', fontSize: '15px', lineHeight: '1.6', marginBottom: '16px' }}>
+              <p style={{ color: 'var(--neutral-on-background-medium)', fontSize: '14px', lineHeight: '1.55', marginBottom: '12px' }}>
                 {exp.description}
               </p>
               <ul className={styles.list}>
@@ -86,7 +144,7 @@ export function ExperienceCard() {
 
             <div className={styles.bottomSplit}>
               <div className={styles.skillsContainer}>
-                <div className={styles.sectionTitle} style={{ marginBottom: '16px' }}>Key Skills</div>
+                <div className={styles.sectionTitle} style={{ marginBottom: '12px' }}>Key Skills</div>
                 <div className={styles.techs}>
                   {exp.skills.map((skill) => (
                     <div key={skill} className={styles.techPill}>
@@ -97,10 +155,10 @@ export function ExperienceCard() {
               </div>
 
               <div className={styles.impactContainer}>
-                <div className={styles.sectionTitle} style={{ marginBottom: '16px' }}>Impact</div>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                <div className={styles.sectionTitle} style={{ marginBottom: '12px' }}>Impact</div>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
                   {exp.impact.map((item, i) => (
-                    <div key={i} style={{ color: 'var(--neutral-on-background-strong)', fontSize: '14px', fontWeight: 500 }}>
+                    <div key={i} style={{ color: 'var(--neutral-on-background-strong)', fontSize: '13px', fontWeight: 500 }}>
                       {item}
                     </div>
                   ))}
