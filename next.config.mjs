@@ -22,6 +22,20 @@ const nextConfig = {
     compiler: "modern",
     silenceDeprecations: ["legacy-js-api"],
   },
+  async redirects() {
+    return [
+      {
+        source: "/resume",
+        destination: "/Deep_Resume.pdf",
+        permanent: false,
+      },
+      {
+        source: "/cv",
+        destination: "/Deep_Resume.pdf",
+        permanent: false,
+      },
+    ];
+  },
 };
 
 export default withMDX(nextConfig);

@@ -293,9 +293,11 @@ export default function Home() {
                 <div className="animate-fade-up animate-delay-4 hero-btn-wrapper" style={{ width: '100%' }}>
                   <Row gap="16" horizontal="start" fillWidth s={{ gap: "8" }}>
                     <Button
-                      id="about"
+                      id="resume"
                       className="hover-btn hero-about-btn"
-                      href={about.path}
+                      href="/Deep_Resume.pdf"
+                      target="_blank"
+                      rel="noopener noreferrer"
                       variant="secondary"
                       size="s"
                       style={{
@@ -305,7 +307,7 @@ export default function Home() {
                         fontSize: "13px"
                       }}
                     >
-                      <span className="mobile-btn-text">About {person.firstName}</span>
+                      <span className="mobile-btn-text">Resume</span>
                       <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="arrow-icon" style={{ marginLeft: "4px", position: "relative", top: "1px" }}><path d="m9 18 6-6-6-6" /></svg>
                     </Button>
                     <Button

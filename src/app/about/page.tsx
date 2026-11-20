@@ -194,6 +194,7 @@ export default function About() {
                 <Row gap="12" wrap horizontal="start" vertical="center" fitWidth data-border="rounded">
                   <a href={social.find(s => s.name === "LinkedIn")?.link} target="_blank" rel="noopener noreferrer" className="cal-btn-primary hover-badge" style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", gap: "8px", padding: "0px 16px", height: "32px", borderRadius: "9999px", fontSize: "13px", fontWeight: 600, textDecoration: "none" }}>Connect</a>
                   <a href={`mailto:${person.email}`} className="cal-btn-secondary force-white-btn hover-badge" style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", gap: "8px", padding: "0px 16px", height: "32px", borderRadius: "9999px", fontSize: "13px", fontWeight: 600, textDecoration: "none" }}>Message</a>
+                  <a href="/Deep_Resume.pdf" target="_blank" rel="noopener noreferrer" className="cal-btn-secondary force-white-btn hover-badge" style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", gap: "6px", padding: "0px 16px", height: "32px", borderRadius: "9999px", fontSize: "13px", fontWeight: 600, textDecoration: "none" }}>Resume</a>
                   <div style={{ width: "1px", height: "24px", backgroundColor: "var(--neutral-border-strong)", margin: "0 4px" }} />
                   {social.filter((item) => item.essential && item.name !== "LinkedIn" && item.name !== "Email").map((item) => item.link && (
                     <IconButton size="m" key={`${item.name}-icon-desktop`} href={item.link} icon={item.icon} variant="secondary" />
@@ -310,6 +311,7 @@ export default function About() {
                 <Row gap="12" horizontal="center" vertical="center" fitWidth>
                   <a href={social.find(s => s.name === "LinkedIn")?.link} target="_blank" rel="noopener noreferrer" className="cal-btn-primary hover-badge" style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", gap: "8px", padding: "0px 16px", height: "32px", borderRadius: "9999px", fontSize: "13px", fontWeight: 600, textDecoration: "none" }}>Connect</a>
                   <a href={`mailto:${person.email}`} className="cal-btn-secondary force-white-btn hover-badge" style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", gap: "8px", padding: "0px 16px", height: "32px", borderRadius: "9999px", fontSize: "13px", fontWeight: 600, textDecoration: "none" }}>Message</a>
+                  <a href="/Deep_Resume.pdf" target="_blank" rel="noopener noreferrer" className="cal-btn-secondary force-white-btn hover-badge" style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", gap: "6px", padding: "0px 16px", height: "32px", borderRadius: "9999px", fontSize: "13px", fontWeight: 600, textDecoration: "none" }}>Resume</a>
                 </Row>
                 <Row gap="12" horizontal="center" vertical="center" fitWidth>
                   {social.filter((item) => item.essential && item.name !== "LinkedIn" && item.name !== "Email").map((item) => item.link && (
