@@ -38,22 +38,28 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
-  padding: 10px 24px;
+  padding: 9px 22px;
   border-radius: 9999px;
-  background: #15161a;
-  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: linear-gradient(180deg, #2D2F34 0%, #222428 100%);
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.18),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.4),
+    0 2px 6px rgba(0, 0, 0, 0.35),
+    0 1px 2px rgba(0, 0, 0, 0.2);
   color: #ffffff !important;
   font-size: 13px;
   font-weight: 600;
   cursor: pointer;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 
   &:hover {
-    background: #202228;
-    border-color: rgba(255, 255, 255, 0.28);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    background: linear-gradient(180deg, #373A41 0%, #292B30 100%);
+    border-color: rgba(255, 255, 255, 0.22);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.25),
+      0 4px 14px rgba(0, 0, 0, 0.45);
+    transform: translateY(-1px);
 
     .viewMoreIcon {
       transform: translateY(2px);
@@ -62,6 +68,24 @@
 
   &:active {
     transform: translateY(0);
+    background: #1C1D21;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.6);
+  }
+}
+
+:global([data-theme="light"]) .viewMoreBtn {
+  background: linear-gradient(180deg, #242529 0%, #16171A 100%);
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.15),
+    0 2px 5px rgba(0, 0, 0, 0.14);
+  color: #ffffff !important;
+
+  &:hover {
+    background: linear-gradient(180deg, #2F3136 0%, #1E1F23 100%);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.2),
+      0 4px 12px rgba(0, 0, 0, 0.2);
   }
 }
 

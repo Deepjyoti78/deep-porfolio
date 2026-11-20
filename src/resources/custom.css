@@ -91,111 +91,198 @@ button {
 }
 
 .cal-btn-primary {
-  background: linear-gradient(to bottom, #2f2f2f 0%, #262626 100%) !important;
-  border: 1px solid rgba(255,255,255,0.08) !important;
+  background: linear-gradient(180deg, #2D2F34 0%, #222428 100%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.13) !important;
   box-shadow: 
-    inset 0 1px 0 rgba(255,255,255,0.10),
-    inset 0 -1px 0 rgba(0,0,0,0.35),
-    0 1px 2px rgba(0,0,0,0.08),
-    0 4px 12px rgba(0,0,0,0.06) !important;
+    inset 0 1px 0 rgba(255, 255, 255, 0.18),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.4),
+    0 2px 6px rgba(0, 0, 0, 0.35),
+    0 1px 2px rgba(0, 0, 0, 0.2) !important;
   color: #ffffff !important;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
 }
+.cal-btn-primary:hover {
+  background: linear-gradient(180deg, #373A41 0%, #292B30 100%) !important;
+  border-color: rgba(255, 255, 255, 0.22) !important;
+  box-shadow: 
+    inset 0 1px 0 rgba(255, 255, 255, 0.25),
+    0 4px 14px rgba(0, 0, 0, 0.45) !important;
+  transform: translateY(-1px);
+}
+.cal-btn-primary:active {
+  transform: translateY(0);
+  background: #1C1D21 !important;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.6) !important;
+}
+.cal-btn-primary,
 .cal-btn-primary * {
   color: #ffffff !important;
 }
 
+/* Secondary Button - Light Mode */
 .cal-btn-secondary {
-  background: linear-gradient(to bottom, #f3f4f6 0%, #e5e7eb 100%) !important;
-  border: 1px solid rgba(0,0,0,0.08) !important;
+  background: linear-gradient(180deg, #ffffff 0%, #f6f7f9 100%) !important;
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
   box-shadow: 
-    inset 0 1px 0 rgba(255,255,255,0.95),
-    inset 0 -1px 0 rgba(0,0,0,0.05),
-    0 1px 2px rgba(0,0,0,0.04),
-    0 6px 16px rgba(0,0,0,0.05) !important;
-  color: #000000 !important;
+    inset 0 1px 0 #ffffff,
+    0 1px 3px rgba(0, 0, 0, 0.05) !important;
+  color: #1f242f !important;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
 }
+.cal-btn-secondary:hover {
+  background: #ffffff !important;
+  border-color: rgba(0, 0, 0, 0.18) !important;
+  box-shadow: 
+    inset 0 1px 0 #ffffff,
+    0 3px 8px rgba(0, 0, 0, 0.08) !important;
+  transform: translateY(-1px);
+}
+.cal-btn-secondary:active {
+  transform: translateY(0);
+}
+.cal-btn-secondary,
 .cal-btn-secondary * {
-  color: #000000 !important;
+  color: #1f242f !important;
 }
 
+/* Secondary Button - Dark Mode (Antigravity 'Verbose' unselected pill style) */
 [data-theme="dark"] .cal-btn-secondary {
-  background: #1C1C1C !important;
-  border: 1px solid rgba(255,255,255,0.07) !important;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.2) !important;
-  color: rgba(255,255,255,0.94) !important;
-  transition: all 0.2s ease !important;
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(255, 255, 255, 0.09) !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2) !important;
+  color: rgba(255, 255, 255, 0.78) !important;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
 }
 [data-theme="dark"] .cal-btn-secondary:hover {
-  background: #242424 !important;
-  border: 1px solid rgba(255,255,255,0.12) !important;
+  background: rgba(255, 255, 255, 0.09) !important;
+  border: 1px solid rgba(255, 255, 255, 0.18) !important;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3) !important;
+  color: #ffffff !important;
+  transform: translateY(-1px);
 }
+[data-theme="dark"] .cal-btn-secondary:active {
+  transform: translateY(0);
+  background: rgba(255, 255, 255, 0.04) !important;
+}
+[data-theme="dark"] .cal-btn-secondary,
 [data-theme="dark"] .cal-btn-secondary * {
-  color: rgba(255,255,255,0.94) !important;
+  color: rgba(255, 255, 255, 0.78) !important;
 }
-
+[data-theme="dark"] .cal-btn-secondary:hover * {
+  color: #ffffff !important;
+}
 
 /* =========================================
-   HERO + SECTION BUTTON DARK MODE FIXES
+   ANTIGRAVITY TACTILE PILL BUTTONS (HERO & SECTIONS)
    ========================================= */
 
-/* "About Deepjyoti" hero button → exactly matches cal-btn-secondary light-mode look in dark mode */
+/* Hero "Resume" Button - Light Mode */
 .hero-about-btn {
-  background: linear-gradient(to bottom, #2f2f2f 0%, #262626 100%) !important;
-  border: 1px solid rgba(255,255,255,0.08) !important;
+  background: linear-gradient(180deg, #242529 0%, #16171A 100%) !important;
+  border: 1px solid rgba(0, 0, 0, 0.2) !important;
   box-shadow:
-    inset 0 1px 0 rgba(255,255,255,0.10),
-    inset 0 -1px 0 rgba(0,0,0,0.35),
-    0 1px 2px rgba(0,0,0,0.08),
-    0 4px 12px rgba(0,0,0,0.06) !important;
+    inset 0 1px 0 rgba(255, 255, 255, 0.15),
+    0 2px 5px rgba(0, 0, 0, 0.14) !important;
   color: #ffffff !important;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
 }
 .hero-about-btn,
 .hero-about-btn * {
   color: #ffffff !important;
 }
-
-[data-theme="dark"] .hero-about-btn {
-  background: linear-gradient(to bottom, #f3f4f6 0%, #e5e7eb 100%) !important;
-  border: 1px solid rgba(0,0,0,0.12) !important;
+.hero-about-btn:hover {
+  background: linear-gradient(180deg, #2F3136 0%, #1E1F23 100%) !important;
   box-shadow:
-    inset 0 1px 0 rgba(255,255,255,0.95),
-    inset 0 -1px 0 rgba(0,0,0,0.08),
-    0 1px 2px rgba(0,0,0,0.12),
-    0 4px 16px rgba(0,0,0,0.1) !important;
+    inset 0 1px 0 rgba(255, 255, 255, 0.2),
+    0 4px 12px rgba(0, 0, 0, 0.2) !important;
+  transform: translateY(-1px);
+}
+.hero-about-btn:active {
+  transform: translateY(0);
+}
+
+/* Hero "Resume" Button - Dark Mode (Antigravity 'Default' selected pill style) */
+[data-theme="dark"] .hero-about-btn {
+  background: linear-gradient(180deg, #2D2F34 0%, #222428 100%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.13) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.18),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.4),
+    0 2px 6px rgba(0, 0, 0, 0.35),
+    0 1px 2px rgba(0, 0, 0, 0.2) !important;
+  color: #ffffff !important;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
 }
 [data-theme="dark"] .hero-about-btn,
 [data-theme="dark"] .hero-about-btn * {
-  color: #111111 !important;
+  color: #ffffff !important;
+}
+[data-theme="dark"] .hero-about-btn:hover {
+  background: linear-gradient(180deg, #373A41 0%, #292B30 100%) !important;
+  border-color: rgba(255, 255, 255, 0.22) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.25),
+    0 4px 14px rgba(0, 0, 0, 0.45) !important;
+  transform: translateY(-1px);
+}
+[data-theme="dark"] .hero-about-btn:active {
+  background: #1C1D21 !important;
+  transform: translateY(0);
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.6) !important;
 }
 
-/* "View All Projects" / "View Full Experience" section buttons → white text in dark mode */
+/* Section Primary Buttons ("View All Projects", etc.) */
 .section-primary-btn {
-  background: linear-gradient(to bottom, #2f2f2f 0%, #262626 100%) !important;
-  border: 1px solid rgba(255,255,255,0.08) !important;
+  background: linear-gradient(180deg, #242529 0%, #16171A 100%) !important;
+  border: 1px solid rgba(0, 0, 0, 0.2) !important;
   box-shadow:
-    inset 0 1px 0 rgba(255,255,255,0.10),
-    inset 0 -1px 0 rgba(0,0,0,0.35),
-    0 1px 2px rgba(0,0,0,0.08),
-    0 4px 12px rgba(0,0,0,0.06) !important;
+    inset 0 1px 0 rgba(255, 255, 255, 0.15),
+    0 2px 5px rgba(0, 0, 0, 0.14) !important;
   color: #ffffff !important;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
 }
 .section-primary-btn,
 .section-primary-btn * {
   color: #ffffff !important;
 }
+.section-primary-btn:hover {
+  background: linear-gradient(180deg, #2F3136 0%, #1E1F23 100%) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.2),
+    0 4px 12px rgba(0, 0, 0, 0.2) !important;
+  transform: translateY(-1px);
+}
+.section-primary-btn:active {
+  transform: translateY(0);
+}
 
+[data-theme="dark"] .section-primary-btn {
+  background: linear-gradient(180deg, #2D2F34 0%, #222428 100%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.13) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.18),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.4),
+    0 2px 6px rgba(0, 0, 0, 0.35),
+    0 1px 2px rgba(0, 0, 0, 0.2) !important;
+  color: #ffffff !important;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
 [data-theme="dark"] .section-primary-btn,
 [data-theme="dark"] .section-primary-btn * {
   color: #ffffff !important;
 }
-
-[data-theme="light"] .section-primary-btn {
-  background: linear-gradient(to bottom, #2f2f2f 0%, #262626 100%) !important;
-  color: #ffffff !important;
+[data-theme="dark"] .section-primary-btn:hover {
+  background: linear-gradient(180deg, #373A41 0%, #292B30 100%) !important;
+  border-color: rgba(255, 255, 255, 0.22) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.25),
+    0 4px 14px rgba(0, 0, 0, 0.45) !important;
+  transform: translateY(-1px);
 }
-[data-theme="light"] .section-primary-btn,
-[data-theme="light"] .section-primary-btn * {
-  color: #ffffff !important;
+[data-theme="dark"] .section-primary-btn:active {
+  background: #1C1D21 !important;
+  transform: translateY(0);
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.6) !important;
 }
 
 /* =========================================
@@ -595,15 +682,34 @@ body::after {
 }
 
 /* Force white button text specifically for the Message button */
-a.force-white-btn,
-[data-theme="dark"] a.force-white-btn,
-a.force-white-btn *,
-[data-theme="dark"] a.force-white-btn * {
-  background: #ffffff !important;
-  border: 1px solid rgba(0,0,0,0.15) !important;
-  color: #000000 !important;
+a.force-white-btn {
+  background: linear-gradient(180deg, #ffffff 0%, #f6f7f9 100%) !important;
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+  box-shadow: inset 0 1px 0 #ffffff, 0 1px 3px rgba(0, 0, 0, 0.05) !important;
+  color: #1f242f !important;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
 }
-a.force-white-btn:hover,
+a.force-white-btn * {
+  color: #1f242f !important;
+}
+a.force-white-btn:hover {
+  background: #ffffff !important;
+  border-color: rgba(0, 0, 0, 0.18) !important;
+  transform: translateY(-1px);
+}
+
+[data-theme="dark"] a.force-white-btn {
+  background: rgba(255, 255, 255, 0.06) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2) !important;
+  color: #ffffff !important;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+[data-theme="dark"] a.force-white-btn * {
+  color: #ffffff !important;
+}
 [data-theme="dark"] a.force-white-btn:hover {
-  background: #f7f7f7 !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+  border-color: rgba(255, 255, 255, 0.2) !important;
+  transform: translateY(-1px);
 }
