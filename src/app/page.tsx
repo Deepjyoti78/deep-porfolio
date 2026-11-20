@@ -15,7 +15,7 @@ import { JetBrains_Mono } from "next/font/google";
 
 const jetbrainsMono = JetBrains_Mono({ subsets: ["latin"], display: "swap" });
 import { home, about, person, baseURL, routes, work } from "@/resources";
-import { Mailchimp, TechMarquee } from "@/components";
+import { TechMarquee, ScrollReveal } from "@/components";
 import { Projects } from "@/components/work/Projects";
 import { GridProjects } from "@/components/work/GridProjects";
 import { ExperienceCard } from "@/components/work/ExperienceCard";
@@ -366,140 +366,137 @@ export default function Home() {
 
       <GridSection paddingY="48" s={{ paddingY: "12" }}>
         <Column gap="16" fillWidth>
-          <Column fillWidth paddingX="l" gap="8" s={{ paddingX: "16" }}>
-            <Row fillWidth vertical="center" horizontal="between" style={{ width: "100%" }}>
-              <Heading as="h2" variant="heading-strong-xl">
-                Featured Work
-              </Heading>
-              {/* Desktop Button */}
-              <Button
-                className="hover-btn section-primary-btn hide-on-mobile"
-                href={work.path}
-                variant="primary"
-                size="s"
-                arrowIcon
-                style={{ borderRadius: '9999px', fontSize: '12px', fontWeight: '500', padding: '0 12px', marginLeft: 'auto', color: '#ffffff' }}
-              >
-                View All Projects
-              </Button>
+          <ScrollReveal delay={0}>
+            <Column fillWidth paddingX="s" gap="8">
+              <Row fillWidth vertical="center" horizontal="between" style={{ width: "100%" }}>
+                <Heading as="h2" variant="heading-strong-xl">
+                  Featured Work
+                </Heading>
+                {/* Desktop Button */}
+                <Button
+                  className="hover-btn section-primary-btn hide-on-mobile"
+                  href={work.path}
+                  variant="primary"
+                  size="s"
+                  arrowIcon
+                  style={{ borderRadius: '9999px', fontSize: '12px', fontWeight: '500', padding: '0 12px', marginLeft: 'auto', color: '#ffffff' }}
+                >
+                  View All Projects
+                </Button>
 
-              {/* Mobile Button */}
-              <a
-                href={work.path}
-                className="hide-on-desktop"
-                style={{ borderRadius: '9999px', fontSize: '12px', fontWeight: '500', padding: '6px 12px', flexShrink: 0, marginLeft: 'auto', background: 'linear-gradient(to bottom, #2a2a2a 0%, #1f1f1f 100%)', color: '#ffffff', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', whiteSpace: 'nowrap', border: '1px solid rgba(255,255,255,0.1)', boxShadow: '0 1px 2px rgba(0,0,0,0.2)' }}
+                {/* Mobile Button */}
+                <a
+                  href={work.path}
+                  className="hide-on-desktop"
+                  style={{ borderRadius: '9999px', fontSize: '12px', fontWeight: '500', padding: '6px 12px', flexShrink: 0, marginLeft: 'auto', background: 'linear-gradient(to bottom, #2a2a2a 0%, #1f1f1f 100%)', color: '#ffffff', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', whiteSpace: 'nowrap', border: '1px solid rgba(255,255,255,0.1)', boxShadow: '0 1px 2px rgba(0,0,0,0.2)' }}
+                >
+                  View All Projects
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ marginLeft: "4px", position: "relative", top: "1px" }}><path d="m9 18 6-6-6-6" /></svg>
+                </a>
+              </Row>
+              <Text
+                variant="body-default-l"
+                className="premium-subtitle"
+                style={{ 
+                  fontWeight: "500", 
+                  lineHeight: "1.2", 
+                  letterSpacing: "-0.03em", 
+                  maxWidth: "620px", 
+                  color: "rgba(255, 255, 255, 0.62)", 
+                  textShadow: "none"
+                }}
               >
-                View All Projects
-                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ marginLeft: "4px", position: "relative", top: "1px" }}><path d="m9 18 6-6-6-6" /></svg>
-              </a>
-            </Row>
-            <Text
-              variant="body-default-l"
-              className="premium-subtitle"
-              style={{ 
-                fontWeight: "500", 
-                lineHeight: "1.2", 
-                letterSpacing: "-0.03em", 
-                maxWidth: "620px", 
-                color: "rgba(255, 255, 255, 0.62)", 
-                textShadow: "none"
-              }}
-            >
-              Built to solve real problems
-            </Text>
-          </Column>
-          <div className="animate-fade-up animate-delay-5" style={{ width: '100%' }}>
+                Built to solve real problems
+              </Text>
+            </Column>
+          </ScrollReveal>
+          <ScrollReveal delay={180}>
             <Row paddingX="s" fillWidth>
-              <GridProjects />
+              <GridProjects initialRows={3} expandable={true} />
             </Row>
-          </div>
+          </ScrollReveal>
         </Column>
       </GridSection>
       <GridSection className="mobile-tight-experience" paddingY="48" s={{ paddingTop: "12", paddingBottom: "0" }}>
         <Column gap="16" s={{ gap: "8" }} fillWidth>
-          <Column fillWidth paddingX="l" gap="8" s={{ paddingX: "16" }}>
-            <Row fillWidth vertical="center" horizontal="between" style={{ width: "100%" }}>
-              <Heading as="h2" variant="heading-strong-xl">
-                Experience
-              </Heading>
-              {/* Desktop Button */}
-              <Button
-                className="hover-btn section-primary-btn hide-on-mobile"
-                href={about.path}
-                variant="primary"
-                size="s"
-                arrowIcon
-                style={{ borderRadius: '9999px', fontSize: '12px', fontWeight: '500', padding: '0 12px', marginLeft: 'auto', color: '#ffffff' }}
+          <ScrollReveal delay={0}>
+            <Column fillWidth paddingX="s" gap="8">
+              <Row fillWidth vertical="center" horizontal="between" style={{ width: "100%" }}>
+                <Heading as="h2" variant="heading-strong-xl">
+                  Experience
+                </Heading>
+                {/* Desktop Button */}
+                <Button
+                  className="hover-btn section-primary-btn hide-on-mobile"
+                  href={about.path}
+                  variant="primary"
+                  size="s"
+                  arrowIcon
+                  style={{ borderRadius: '9999px', fontSize: '12px', fontWeight: '500', padding: '0 12px', marginLeft: 'auto', color: '#ffffff' }}
+                >
+                  View full experience
+                </Button>
+                {/* Mobile Button */}
+                <a
+                  href={about.path}
+                  className="hide-on-desktop"
+                  style={{ borderRadius: '9999px', fontSize: '12px', fontWeight: '500', padding: '6px 12px', flexShrink: 0, marginLeft: 'auto', background: 'linear-gradient(to bottom, #2a2a2a 0%, #1f1f1f 100%)', color: '#ffffff', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', whiteSpace: 'nowrap', border: '1px solid rgba(255,255,255,0.1)', boxShadow: '0 1px 2px rgba(0,0,0,0.2)' }}
+                >
+                  View full experience
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ marginLeft: "4px", position: "relative", top: "1px" }}><path d="m9 18 6-6-6-6" /></svg>
+                </a>
+              </Row>
+              <Text
+                variant="body-default-l"
+                className="premium-subtitle"
+                style={{ 
+                  fontWeight: "500", 
+                  lineHeight: "1.2", 
+                  letterSpacing: "-0.03em", 
+                  maxWidth: "620px", 
+                  color: "rgba(255, 255, 255, 0.62)", 
+                  textShadow: "none"
+                }}
               >
-                View full experience
-              </Button>
-              {/* Mobile Button */}
-              <a
-                href={about.path}
-                className="hide-on-desktop"
-                style={{ borderRadius: '9999px', fontSize: '12px', fontWeight: '500', padding: '6px 12px', flexShrink: 0, marginLeft: 'auto', background: 'linear-gradient(to bottom, #2a2a2a 0%, #1f1f1f 100%)', color: '#ffffff', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', whiteSpace: 'nowrap', border: '1px solid rgba(255,255,255,0.1)', boxShadow: '0 1px 2px rgba(0,0,0,0.2)' }}
-              >
-                View full experience
-                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ marginLeft: "4px", position: "relative", top: "1px" }}><path d="m9 18 6-6-6-6" /></svg>
-              </a>
-            </Row>
-            <Text
-              variant="body-default-l"
-              className="premium-subtitle"
-              style={{ 
-                fontWeight: "500", 
-                lineHeight: "1.2", 
-                letterSpacing: "-0.03em", 
-                maxWidth: "620px", 
-                color: "rgba(255, 255, 255, 0.62)", 
-                textShadow: "none"
-              }}
-            >
-              Where I've made an impact.
-            </Text>
-          </Column>
-          <div className="animate-fade-up animate-delay-5" style={{ width: '100%' }}>
+                Where I've made an impact.
+              </Text>
+            </Column>
+          </ScrollReveal>
+          <ScrollReveal delay={180}>
             <Row paddingX="s" fillWidth>
               <ExperienceCard />
             </Row>
-          </div>
+          </ScrollReveal>
         </Column>
       </GridSection>
-      <GridSection className="mobile-tight-education" paddingY="48" s={{ paddingTop: "0", paddingBottom: "12" }}>
+      <GridSection hideBottomBorder className="mobile-tight-education" paddingY="48" s={{ paddingTop: "0", paddingBottom: "12" }}>
         <Column gap="16" s={{ gap: "8" }} fillWidth>
-          <Column fillWidth paddingX="l" gap="8" s={{ paddingX: "16" }}>
-            <Heading as="h2" variant="heading-strong-xl">
-              Education
-            </Heading>
-            <Text
-              variant="body-default-l"
-              className="premium-subtitle"
-              style={{ 
-                fontWeight: "500", 
-                lineHeight: "1.2", 
-                letterSpacing: "-0.03em", 
-                maxWidth: "620px", 
-                color: "rgba(255, 255, 255, 0.62)", 
-                textShadow: "none"
-              }}
-            >
-              The foundation of my journey.
-            </Text>
-          </Column>
-          <div className="animate-fade-up animate-delay-5" style={{ width: '100%' }}>
+          <ScrollReveal delay={0}>
+            <Column fillWidth paddingX="s" gap="8">
+              <Heading as="h2" variant="heading-strong-xl">
+                Education
+              </Heading>
+              <Text
+                variant="body-default-l"
+                className="premium-subtitle"
+                style={{ 
+                  fontWeight: "500", 
+                  lineHeight: "1.2", 
+                  letterSpacing: "-0.03em", 
+                  maxWidth: "620px", 
+                  color: "rgba(255, 255, 255, 0.62)", 
+                  textShadow: "none"
+                }}
+              >
+                The foundation of my journey.
+              </Text>
+            </Column>
+          </ScrollReveal>
+          <ScrollReveal delay={180}>
             <Row paddingX="s" fillWidth>
               <EducationCard />
             </Row>
-          </div>
-        </Column>
-      </GridSection>
-      <GridSection hideBottomBorder paddingY="48" s={{ paddingTop: "0", paddingBottom: "12" }}>
-        <Column fillWidth>
-          <div className="animate-fade-up animate-delay-6" style={{ width: '100%' }}>
-            <Row paddingX="s" fillWidth>
-              <Mailchimp />
-            </Row>
-          </div>
+          </ScrollReveal>
         </Column>
       </GridSection>
     </Column>

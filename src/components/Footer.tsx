@@ -6,12 +6,13 @@ export const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <Row as="footer" fillWidth padding="8" horizontal="center" s={{ direction: "column" }}>
+    <Row as="footer" fillWidth padding="8" horizontal="center" vertical="center" s={{ direction: "column" }}>
       <Row
         className={styles.mobile}
         maxWidth="m"
-        paddingY="8"
-        paddingX="16"
+        fillWidth
+        paddingY="12"
+        paddingX="24"
         gap="16"
         horizontal="between"
         vertical="center"
@@ -19,12 +20,13 @@ export const Footer = () => {
           direction: "column",
           horizontal: "center",
           align: "center",
+          gap: "12",
         }}
       >
         <Text variant="body-default-s" onBackground="neutral-strong">
           <Text onBackground="neutral-weak">© {currentYear} /</Text> {person.name}
         </Text>
-        <Row gap="16">
+        <Row gap="16" vertical="center" horizontal="center">
           {social.map(
             (item) =>
               item.link && (

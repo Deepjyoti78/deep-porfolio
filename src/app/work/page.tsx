@@ -56,7 +56,7 @@ export default function Work() {
         <Heading marginBottom="l" variant="heading-strong-xl" align="center">
           {work.title}
         </Heading>
-        <GridProjects />
+        <GridProjects expandable={false} />
       </GridSection>
     </Column>
   );
