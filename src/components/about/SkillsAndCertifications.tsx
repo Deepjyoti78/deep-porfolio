@@ -253,7 +253,7 @@ export function SkillsAndCertifications() {
                     onClick={() => setSelectedCert(cert)}
                   >
                     <FiEye size={13} />
-                    <span>Preview</span>
+                    <span>Unlock Certificate</span>
                   </button>
 
                   {cert.pdfUrl && (
@@ -288,7 +288,7 @@ export function SkillsAndCertifications() {
         </div>
       </div>
 
-      {/* ================= CERTIFICATE LIGHTBOX MODAL ================= */}
+      {/* ================= CERTIFICATE POPUP MODAL (MINIMAL BOUNDARY) ================= */}
       {selectedCert && (
         <div
           className={styles.modalBackdrop}
@@ -301,27 +301,17 @@ export function SkillsAndCertifications() {
             className={styles.modalBox}
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Modal Header */}
-            <div className={styles.modalHeader}>
-              <div className={styles.modalTitleArea}>
-                <h3 id="cert-modal-title" className={styles.modalTitle}>
-                  {selectedCert.title}
-                </h3>
-                <p className={styles.modalSubtitle}>
-                  {selectedCert.issuer} • {selectedCert.date}
-                </p>
-              </div>
-              <button
-                type="button"
-                className={styles.modalCloseBtn}
-                onClick={() => setSelectedCert(null)}
-                aria-label="Close certificate preview"
-              >
-                <FiX />
-              </button>
-            </div>
+            {/* Minimal Floating Close Button */}
+            <button
+              type="button"
+              className={styles.modalCloseBtn}
+              onClick={() => setSelectedCert(null)}
+              aria-label="Close certificate preview"
+            >
+              <FiX size={16} />
+            </button>
 
-            {/* Modal Image Body */}
+            {/* Certificate Image Body - Zero / Minimal Boundary */}
             <div className={styles.modalBody}>
               <img
                 src={selectedCert.image}
@@ -330,20 +320,8 @@ export function SkillsAndCertifications() {
               />
             </div>
 
-            {/* Modal Footer */}
-            <div className={styles.modalFooter}>
-              {selectedCert.externalUrl && (
-                <a
-                  href={selectedCert.externalUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={styles.actionBtn}
-                  style={{ color: "#9ca3af", gap: "6px" }}
-                >
-                  <FiExternalLink size={13} />
-                  <span>Verify on Unstop</span>
-                </a>
-              )}
+            {/* Minimal Floating Action Bar (Download & Verify) */}
+            <div className={styles.floatingActionBar}>
               {selectedCert.pdfUrl && (
                 <a
                   href={selectedCert.pdfUrl}
@@ -353,7 +331,18 @@ export function SkillsAndCertifications() {
                   className={styles.modalDownloadBtn}
                 >
                   <FiDownload size={14} />
-                  <span>Open / Download Full Certificate</span>
+                  <span>Download Certificate</span>
+                </a>
+              )}
+              {selectedCert.externalUrl && (
+                <a
+                  href={selectedCert.externalUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.modalVerifyBtn}
+                >
+                  <FiExternalLink size={13} />
+                  <span>Verify</span>
                 </a>
               )}
             </div>

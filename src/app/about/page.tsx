@@ -86,17 +86,17 @@ export default function About() {
   ];
   return (
     <Column
-      maxWidth="m"
+      maxWidth="l"
       style={{}}
     >
       <style>{`
         .mobile-about-card {
-          width: calc(100% - 32px);
+          width: 100%;
           margin: 0 auto;
         }
         @media (max-width: 768px) {
           .mobile-about-card {
-            width: calc(100% - 16px) !important;
+            width: 100% !important;
           }
           .mobile-about-card-padding {
             padding-left: 12px !important;

@@ -347,7 +347,7 @@ export default function Home() {
         <Row 
           fillWidth 
           vertical="center" 
-          paddingX="l" 
+          paddingX="s" 
           s={{ direction: "column", gap: "12", alignItems: "center", paddingX: "16" }}
         >
           {/* Desktop Text */}
