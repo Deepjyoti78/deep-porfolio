@@ -20,6 +20,7 @@ import React from "react";
 import { ExperienceCard } from "@/components/work/ExperienceCard";
 import { EducationCard } from "@/components/work/EducationCard";
 import { SkillsAndCertifications } from "@/components/about/SkillsAndCertifications";
+import { ScheduleCallButton } from "@/components/about/ScheduleCallButton";
 import Image from "next/image";
 
 export async function generateMetadata() {
@@ -149,37 +150,7 @@ export default function About() {
             {/* Left Column */}
             <Column flex={6} gap="24" horizontal="start">
               <Column gap="12" horizontal="start">
-                {about.calendar.display && (
-                  <a
-                    href={about.calendar.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{
-                      display: "inline-flex",
-                      alignItems: "center",
-                      gap: "6px",
-                      padding: "8px 16px",
-                      borderRadius: "9999px",
-                      fontSize: "13px",
-                      fontWeight: 600,
-                      letterSpacing: "-0.01em",
-                      textDecoration: "none",
-                      background: "linear-gradient(to bottom, #2f2f2f 0%, #1e1e1e 100%)",
-                      border: "1px solid rgba(255,255,255,0.08)",
-                      boxShadow: "inset 0 1px 0 rgba(255,255,255,0.10), inset 0 -1px 0 rgba(0,0,0,0.35), 0 2px 4px rgba(0,0,0,0.15)",
-                      color: "#ffffff",
-                      whiteSpace: "nowrap"
-                    }}
-                  >
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ opacity: 0.8 }}>
-                      <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
-                      <line x1="16" y1="2" x2="16" y2="6"/>
-                      <line x1="8" y1="2" x2="8" y2="6"/>
-                      <line x1="3" y1="10" x2="21" y2="10"/>
-                    </svg>
-                    Schedule a call
-                  </a>
-                )}
+                {about.calendar.display && <ScheduleCallButton />}
                 <Column gap="12">
                   <Heading variant="display-strong-s" style={{ whiteSpace: "nowrap", fontSize: "40px", lineHeight: "1.1" }}>{person.name}</Heading>
                   <Text variant="heading-default-m" onBackground="neutral-weak">{person.role}</Text>
@@ -239,39 +210,7 @@ export default function About() {
                 <Heading variant="display-strong-s" style={{ whiteSpace: "nowrap", fontSize: "clamp(26px, 4vw, 32px)", lineHeight: "1.1" }}>{person.name}</Heading>
                 <Text variant="heading-default-s" onBackground="neutral-weak" style={{ fontSize: "clamp(15px, 2vw, 18px)" }}>{person.role}</Text>
               </Column>
-              {about.calendar.display && (
-                <a
-                  href={about.calendar.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{
-                    display: "inline-flex",
-                    alignItems: "center",
-                    gap: "5px",
-                    padding: "7px 14px",
-                    borderRadius: "9999px",
-                    fontSize: "12px",
-                    fontWeight: 600,
-                    letterSpacing: "-0.01em",
-                    textDecoration: "none",
-                    background: "linear-gradient(to bottom, #2f2f2f 0%, #1e1e1e 100%)",
-                    border: "1px solid rgba(255,255,255,0.08)",
-                    boxShadow: "inset 0 1px 0 rgba(255,255,255,0.10), inset 0 -1px 0 rgba(0,0,0,0.35), 0 2px 4px rgba(0,0,0,0.12)",
-                    color: "#ffffff",
-                    whiteSpace: "nowrap",
-                    flexShrink: 0,
-                    marginLeft: "12px"
-                  }}
-                >
-                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ opacity: 0.8 }}>
-                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
-                    <line x1="16" y1="2" x2="16" y2="6"/>
-                    <line x1="8" y1="2" x2="8" y2="6"/>
-                    <line x1="3" y1="10" x2="21" y2="10"/>
-                  </svg>
-                  Schedule a call
-                </a>
-              )}
+              {about.calendar.display && <ScheduleCallButton isMobile />}
             </div>
 
 
