@@ -7,14 +7,14 @@ const person: Person = {
   name: `Deepjyoti Das`,
   role: "Full Stack Developer",
   avatar: "/images/gallery/ChatGPT Image Jul 26, 2026, 03_26_05 PM.png",
-  email: "example@gmail.com",
+  email: "deepjyoti478@gmail.com",
   location: "Asia/Kolkata", // Used for time display logic. The UI will explicitly say "Delhi, India"
   languages: ["Assamese", "English", "Hindi", "Bengali"],
   locale: "en",
 };
 
 const newsletter: Newsletter = {
-  display: true,
+  display: false,
   title: <>Subscribe to {person.firstName}'s Newsletter</>,
   description: <>My weekly newsletter about creativity and engineering</>,
 };
@@ -39,25 +39,6 @@ const social: Social = [
     name: "Instagram",
     icon: "instagram",
     link: "https://www.instagram.com/deepjyoti__78?igsh=MW9vbzZveXBhbTJpbA==",
-    essential: false,
-  },
-  {
-    name: "Threads",
-    icon: "threads",
-    link: "https://www.threads.com/@once_ui",
-    essential: true,
-  },
-
-  {
-    name: "Discord",
-    icon: "discord",
-    link: "https://discord.com",
-    essential: true,
-  },
-  {
-    name: "Telegram",
-    icon: "telegram",
-    link: "https://telegram.org",
     essential: true,
   },
   {
@@ -112,7 +93,7 @@ const about: About = {
   },
   calendar: {
     display: true,
-    link: "https://cal.com",
+    link: `mailto:${person.email}`,
   },
   intro: {
     display: true,
@@ -130,41 +111,85 @@ const about: About = {
     title: "Work Experience",
     experiences: [
       {
-        company: "FLY",
-        timeframe: "2022 - Present",
-        role: "Senior Design Engineer",
+        company: "Vellora Healthcare",
+        timeframe: "2026",
+        role: "Frontend Engineer (Client Project)",
         achievements: [
           <>
-            Redesigned the UI/UX for the FLY platform, resulting in a 20% increase in user
-            engagement and 30% faster load times.
+            Designed and built an interactive clinical care frontend with React 19, Next.js, and Tailwind CSS.
           </>,
           <>
-            Spearheaded the integration of AI tools into design workflows, enabling designers to
-            iterate 50% faster.
+            Implemented faceted doctor filtering, appointment scheduling UI, and responsive patient workflows with backend services in active development.
           </>,
         ],
-        images: [
-          // optional: leave the array empty if you don't want to display images
-          {
-            src: "/images/projects/project-01/cover-01.jpg",
-            alt: "Project Cover",
-            width: 16,
-            height: 9,
-          },
-        ],
+        images: [],
       },
       {
-        company: "Creativ3",
-        timeframe: "2018 - 2022",
-        role: "Lead Designer",
+        company: "RelayForge",
+        timeframe: "2026",
+        role: "Distributed Systems Engineer",
         achievements: [
           <>
-            Developed a design system that unified the brand across multiple platforms, improving
-            design consistency by 40%.
+            Architected a high-throughput webhook delivery and distributed workflow engine with at-least-once delivery guarantees.
           </>,
           <>
-            Led a cross-functional team to launch a new product line, contributing to a 15% increase
-            in overall company revenue.
+            Decoupled high-frequency ingestion APIs from asynchronous BullMQ workers backed by Redis and PostgreSQL row locks.
+          </>,
+        ],
+        images: [],
+      },
+      {
+        company: "ConcurrencyLab",
+        timeframe: "2026",
+        role: "Systems & Simulation Engineer",
+        achievements: [
+          <>
+            Developed an operating systems simulator coupling a C++20 instruction engine with a React 19 time-travel debugger.
+          </>,
+          <>
+            Implemented deterministic reverse/forward stepping with O(1) state restoration and formal deadlock detection.
+          </>,
+        ],
+        images: [],
+      },
+      {
+        company: "The Detour",
+        timeframe: "2026",
+        role: "Creative Frontend Engineer",
+        achievements: [
+          <>
+            Developed an editorial self-drive road trip portal featuring curated scenic route schematics and waypoint elevation profiles.
+          </>,
+          <>
+            Crafted responsive tactile UI interactions and multi-hub fleet reservation interfaces.
+          </>,
+        ],
+        images: [],
+      },
+      {
+        company: "RoboGyan Robotics Society",
+        timeframe: "June 2024 – Jan 2025",
+        role: "UI/UX Lead",
+        achievements: [
+          <>
+            Led creative visual identity, UI/UX design systems, and digital assets across university technical workshops and events.
+          </>,
+          <>
+            Designed promotional assets, certificates, and presentation decks using Figma and Canva.
+          </>,
+        ],
+        images: [],
+      },
+      {
+        company: "National Hackathons",
+        timeframe: "2024 – Present",
+        role: "Hackathon Participant",
+        achievements: [
+          <>
+            Competed in competitive national hackathons, rapidly prototyping full-stack solutions and delivering working MVPs under strict deadlines.
+          </>,
+          <>
+            Collaborated in multidisciplinary teams to ideate, architect, and deploy end-to-end prototypes.
           </>,
         ],
         images: [],
@@ -176,12 +201,16 @@ const about: About = {
     title: "Studies",
     institutions: [
       {
-        name: "University of Jakarta",
-        description: <>Studied software engineering.</>,
+        name: "Guru Gobind Singh Indraprastha University (GGSIPU), Delhi",
+        description: <>Bachelor of Technology in Computer Science and Engineering (July 2023 – Present) • CGPA: 8.0</>,
       },
       {
-        name: "Build the Future",
-        description: <>Studied online marketing and personal branding.</>,
+        name: "Kendriya Vidyalaya No.1, Tezpur",
+        description: <>Class XII (2022) • Percentage: 72%</>,
+      },
+      {
+        name: "Kendriya Vidyalaya No.1, Tezpur",
+        description: <>Class X (2020) • Percentage: 80%</>,
       },
     ],
   },
@@ -190,60 +219,42 @@ const about: About = {
     title: "Technical skills",
     skills: [
       {
-        title: "Figma",
+        title: "Full Stack Development",
         description: (
-          <>Able to prototype in Figma with high speed and precision.</>
+          <>Building scalable web applications with React, Next.js, Node.js, and TypeScript.</>
         ),
         tags: [
           {
-            name: "Figma",
-            icon: "figma",
-          },
-        ],
-        // optional: leave the array empty if you don't want to display images
-        images: [
-          {
-            src: "/images/projects/project-01/cover-02.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
-          },
-          {
-            src: "/images/projects/project-01/cover-03.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
-          },
-        ],
-      },
-      {
-        title: "Next.js",
-        description: (
-          <>Building next gen apps with Next.js + React + Supabase.</>
-        ),
-        tags: [
-          {
-            name: "JavaScript",
-            icon: "javascript",
+            name: "React",
+            icon: "react",
           },
           {
             name: "Next.js",
             icon: "nextjs",
           },
           {
-            name: "Supabase",
-            icon: "supabase",
+            name: "TypeScript",
+            icon: "typescript",
           },
         ],
-        // optional: leave the array empty if you don't want to display images
-        images: [
+        images: [],
+      },
+      {
+        title: "Backend & Systems",
+        description: (
+          <>Developing resilient backend services and database architectures with PostgreSQL and Redis.</>
+        ),
+        tags: [
           {
-            src: "/images/projects/project-01/cover-04.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
+            name: "PostgreSQL",
+            icon: "postgresql",
+          },
+          {
+            name: "Python",
+            icon: "python",
           },
         ],
+        images: [],
       },
     ],
   },
@@ -272,49 +283,7 @@ const gallery: Gallery = {
   label: "Gallery",
   title: `Photo gallery – ${person.name}`,
   description: `A photo collection by ${person.name}`,
-  // These are placeholder images, replace with your own
-  images: [
-    {
-      src: "/images/gallery/horizontal-1.jpg",
-      alt: "image",
-      orientation: "horizontal",
-    },
-    {
-      src: "/images/gallery/vertical-4.jpg",
-      alt: "image",
-      orientation: "vertical",
-    },
-    {
-      src: "/images/gallery/horizontal-3.jpg",
-      alt: "image",
-      orientation: "horizontal",
-    },
-    {
-      src: "/images/gallery/vertical-1.jpg",
-      alt: "image",
-      orientation: "vertical",
-    },
-    {
-      src: "/images/gallery/vertical-2.jpg",
-      alt: "image",
-      orientation: "vertical",
-    },
-    {
-      src: "/images/gallery/horizontal-2.jpg",
-      alt: "image",
-      orientation: "horizontal",
-    },
-    {
-      src: "/images/gallery/horizontal-4.jpg",
-      alt: "image",
-      orientation: "horizontal",
-    },
-    {
-      src: "/images/gallery/vertical-3.jpg",
-      alt: "image",
-      orientation: "vertical",
-    },
-  ],
+  images: [],
 };
 
 export { person, social, newsletter, home, about, blog, work, gallery };

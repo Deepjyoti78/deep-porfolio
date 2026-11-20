@@ -4,19 +4,20 @@ import { FiCalendar, FiMapPin } from 'react-icons/fi';
 
 const experiences = [
   {
-    title: "Full Stack Engineer",
+    title: "Frontend Engineer (Client Project)",
     company: "Vellora Healthcare",
     duration: "2026",
-    location: "Production Web App",
-    badge: "HealthTech",
-    description: "Architected a full-stack in-home clinical care platform connecting patients with 48+ verified medical specialists, doorstep doctor visits, and 3-step clinical booking workflows.",
+    location: "Frontend Web App (Backend in Progress)",
+    badge: "HealthTech (Frontend Prototype)",
+    description: "Engineered an in-home clinical care frontend web application for patient specialist consultations and 3-step appointment booking, with backend API integration in active development.",
     highlights: [
-      "Built multi-role portals for Patients, Clinicians, and Operations with persistent session auth.",
-      "Implemented 4-digit OTP identity verification, real-time doctor availability, and triage booking.",
-      "Engineered high-performance Next.js 15 & React 19 architecture across 50 production-ready routes."
+      "Built responsive client portals for Patients and Clinicians with modern component design.",
+      "Implemented instant specialist discovery with faceted department filtering and simulated availability.",
+      "Engineered high-performance Next.js 15 & React 19 interface with interactive booking flows.",
+      "Full-stack backend architecture (database schema, auth & clinical APIs) currently in active development."
     ],
-    skills: ["Next.js 15", "React 19", "TypeScript", "Tailwind CSS", "Prisma", "PostgreSQL"],
-    impact: ["50 Production Routes", "Multi-Role Session Auth", "3-Step Booking Pipeline"]
+    skills: ["React 19", "Next.js 15", "TypeScript", "Tailwind CSS", "UI/UX", "REST APIs (In Progress)"],
+    impact: ["Interactive Client UI", "Faceted Doctor Filter", "Backend In Progress"]
   },
   {
     title: "Distributed Systems Engineer",
