@@ -47,11 +47,12 @@
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
   overflow: hidden;
   min-height: 360px;
+  transition: background-color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
 
   :global([data-theme="light"]) & {
-    background-color: #0d1117;
-    border-color: rgba(0, 0, 0, 0.1);
-    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.12);
+    background-color: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.07), 0 2px 6px rgba(0, 0, 0, 0.03);
   }
 
   @media (min-width: 960px) {
@@ -89,7 +90,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease, box-shadow 0.25s ease;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
+
+  :global([data-theme="light"]) & {
+    background-color: #f8fafc;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.04);
+  }
 
   @media (min-width: 960px) {
     min-height: 440px;
@@ -98,6 +105,11 @@
   &:hover {
     border-color: rgba(255, 255, 255, 0.2);
     box-shadow: 0 14px 40px rgba(0, 0, 0, 0.6);
+
+    :global([data-theme="light"]) & {
+      border-color: rgba(0, 0, 0, 0.18);
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.08);
+    }
 
     .galleryNavBtn {
       opacity: 1;
@@ -133,6 +145,10 @@
   -webkit-backdrop-filter: blur(6px);
   z-index: 20;
   animation: fadeIn 0.2s ease-out;
+
+  :global([data-theme="light"]) & {
+    background: rgba(255, 255, 255, 0.82);
+  }
 }
 
 .loadingSpinner {
@@ -142,6 +158,11 @@
   border: 3px solid rgba(255, 255, 255, 0.15);
   border-top-color: #6366f1;
   animation: spin 0.7s linear infinite;
+
+  :global([data-theme="light"]) & {
+    border-color: rgba(0, 0, 0, 0.1);
+    border-top-color: #6366f1;
+  }
 }
 
 @keyframes spin {
@@ -155,6 +176,10 @@
   font-weight: 500;
   color: #e5e7eb;
   letter-spacing: -0.01em;
+
+  :global([data-theme="light"]) & {
+    color: #111827;
+  }
 }
 
 @keyframes fadeIn {
@@ -186,13 +211,27 @@
   cursor: pointer;
   font-size: 19px;
   opacity: 0;
-  transition: opacity 0.2s ease, background 0.2s ease, transform 0.2s ease;
+  transition: opacity 0.2s ease, background 0.2s ease, transform 0.2s ease, color 0.2s ease;
   z-index: 10;
+
+  :global([data-theme="light"]) & {
+    background: rgba(255, 255, 255, 0.9);
+    border-color: rgba(0, 0, 0, 0.12);
+    color: #111827;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  }
 
   &:hover {
     background: rgba(30, 34, 45, 0.95);
     border-color: rgba(255, 255, 255, 0.35);
     transform: translateY(-50%) scale(1.08);
+
+    :global([data-theme="light"]) & {
+      background: #ffffff;
+      border-color: rgba(0, 0, 0, 0.25);
+      color: #000000;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+    }
   }
 
   @media (max-width: 959px) {
@@ -232,14 +271,26 @@
   cursor: pointer;
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 
+  :global([data-theme="light"]) & {
+    background-color: rgba(0, 0, 0, 0.18);
+  }
+
   &:hover {
     background-color: rgba(255, 255, 255, 0.55);
+
+    :global([data-theme="light"]) & {
+      background-color: rgba(0, 0, 0, 0.4);
+    }
   }
 }
 
 .indicatorActive {
   width: 24px;
   background-color: #ffffff;
+
+  :global([data-theme="light"]) & {
+    background-color: #111827;
+  }
 }
 
 .counterBadge {
@@ -252,16 +303,29 @@
   border: 1px solid rgba(255, 255, 255, 0.08);
   padding: 4px 12px;
   border-radius: 9999px;
+
+  :global([data-theme="light"]) & {
+    background: rgba(0, 0, 0, 0.04);
+    border-color: rgba(0, 0, 0, 0.08);
+  }
 }
 
 .counterText {
   font-weight: 600;
   color: #e5e7eb;
+
+  :global([data-theme="light"]) & {
+    color: #111827;
+  }
 }
 
 .clickHint {
   color: #9ca3af;
   font-size: 11px;
+
+  :global([data-theme="light"]) & {
+    color: #6b7280;
+  }
 }
 
 /* ================= RIGHT COLUMN: PROJECT DETAILS CARD ================= */
