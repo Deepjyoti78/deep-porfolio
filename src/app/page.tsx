@@ -11,9 +11,6 @@ import {
   Line,
   Icon,
 } from "@once-ui-system/core";
-import { JetBrains_Mono } from "next/font/google";
-
-const jetbrainsMono = JetBrains_Mono({ subsets: ["latin"], display: "swap" });
 import { home, about, person, baseURL, routes, work } from "@/resources";
 import { TechMarquee, ScrollReveal } from "@/components";
 import { Projects } from "@/components/work/Projects";
@@ -57,7 +54,7 @@ const GridSection = ({ children, hideBottomBorder = false, isFirst = false, styl
 );
 
 const TerminalWindow = () => (
-  <div className={`terminal-wrapper terminal-bg ${jetbrainsMono.className}`} style={{
+  <div className="terminal-wrapper terminal-bg font-code" style={{
     width: "100%",
     borderRadius: "12px",
     border: "1px solid rgba(255,255,255,0.03)",
@@ -72,7 +69,7 @@ const TerminalWindow = () => (
   }}>
     <style dangerouslySetInnerHTML={{ __html: `
       .terminal-wrapper, .terminal-wrapper * {
-        font-family: ${jetbrainsMono.style.fontFamily} !important;
+        font-family: var(--font-code) !important;
       }
       .terminal-bg {
         background-color: #0d1117;

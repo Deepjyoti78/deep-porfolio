@@ -36,32 +36,30 @@ const protectedRoutes: ProtectedRoutesConfig = {
   "/work/automate-design-handovers-with-a-figma-to-code-pipeline": true,
 };
 
-// Import and set font for each variant
-import { Geist, JetBrains_Mono } from "next/font/google";
+// Font definitions for each variant (standard web/CSS fonts compatible with all edge & cloud runtimes)
+const heading = {
+  variable: "font-heading",
+  className: "font-heading",
+  style: { fontFamily: "var(--font-heading)" },
+};
 
-const heading = Geist({
-  variable: "--font-heading",
-  subsets: ["latin"],
-  display: "swap",
-});
+const body = {
+  variable: "font-body",
+  className: "font-body",
+  style: { fontFamily: "var(--font-body)" },
+};
 
-const body = Geist({
-  variable: "--font-body",
-  subsets: ["latin"],
-  display: "swap",
-});
+const label = {
+  variable: "font-label",
+  className: "font-label",
+  style: { fontFamily: "var(--font-label)" },
+};
 
-const label = Geist({
-  variable: "--font-label",
-  subsets: ["latin"],
-  display: "swap",
-});
-
-const code = JetBrains_Mono({
-  variable: "--font-code",
-  subsets: ["latin"],
-  display: "swap",
-});
+const code = {
+  variable: "font-code",
+  className: "font-code",
+  style: { fontFamily: "var(--font-code)" },
+};
 
 const fonts: FontsConfig = {
   heading: heading,
