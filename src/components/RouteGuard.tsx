@@ -12,50 +12,54 @@ interface RouteGuardProps {
 
 const RouteGuard: React.FC<RouteGuardProps> = ({ children }) => {
   const pathname = usePathname();
-  const [isRouteEnabled, setIsRouteEnabled] = useState(false);
+  const [isRouteEnabled, setIsRouteEnabled] = useState(true);
   const [isPasswordRequired, setIsPasswordRequired] = useState(false);
   const [password, setPassword] = useState("");
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [error, setError] = useState<string | undefined>(undefined);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const performChecks = async () => {
-      setLoading(true);
-      setIsRouteEnabled(false);
-      setIsPasswordRequired(false);
-      setIsAuthenticated(false);
+      const cleanPath = pathname ? pathname.replace(/\/$/, "") || "/" : "/";
 
       const checkRouteEnabled = () => {
-        if (!pathname) return false;
+        if (!cleanPath) return true;
 
-        if (pathname in routes) {
-          return routes[pathname as keyof typeof routes];
+        if (cleanPath in routes) {
+          return routes[cleanPath as keyof typeof routes] !== false;
         }
 
         const dynamicRoutes = ["/blog", "/work"] as const;
         for (const route of dynamicRoutes) {
-          if (pathname?.startsWith(route) && routes[route]) {
-            return true;
+          if (cleanPath.startsWith(route)) {
+            return routes[route] !== false;
           }
         }
 
-        return false;
+        return true;
       };
 
       const routeEnabled = checkRouteEnabled();
       setIsRouteEnabled(routeEnabled);
 
-      if (protectedRoutes[pathname as keyof typeof protectedRoutes]) {
+      if (protectedRoutes[cleanPath as keyof typeof protectedRoutes]) {
         setIsPasswordRequired(true);
+        setLoading(true);
 
-        const response = await fetch("/api/check-auth");
-        if (response.ok) {
-          setIsAuthenticated(true);
+        try {
+          const response = await fetch("/api/check-auth");
+          if (response.ok) {
+            setIsAuthenticated(true);
+          }
+        } catch {
+          // ignore network error
+        } finally {
+          setLoading(false);
         }
+      } else {
+        setIsPasswordRequired(false);
       }
-
-      setLoading(false);
     };
 
     performChecks();
