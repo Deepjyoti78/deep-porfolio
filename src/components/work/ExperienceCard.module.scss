@@ -1,18 +1,25 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 12px;
+  width: 100%;
+
+  @media (max-width: 640px) {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+}
+
 .card {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   background-color: var(--surface-background);
   border: 1px solid var(--neutral-border-strong);
   border-radius: 12px;
-  overflow: hidden;
-  transition: all 0.25s ease;
-  position: relative;
-  width: 100%;
-  padding: 20px;
-
-  @media (max-width: 768px) {
-    padding: 16px;
-  }
+  padding: 16px;
+  transition: all 0.2s ease;
+  min-height: 180px;
 
   &:hover {
     border-color: var(--neutral-border-strong);
@@ -20,258 +27,102 @@
   }
 }
 
+.cardTop {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
 .header {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin-bottom: 16px;
-
-  @media (max-width: 768px) {
-    flex-direction: column;
-    gap: 12px;
-  }
+  gap: 8px;
 }
 
 .roleInfo {
-  display: flex;
-  gap: 16px;
-  align-items: center;
-}
-
-.avatar {
-  width: 48px;
-  height: 48px;
-  border-radius: 8px;
-  background-color: var(--page-background);
-  border: 1px solid var(--neutral-border-strong);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  @media (max-width: 768px) {
-    width: 48px;
-    height: 48px;
-  }
-}
-
-.meta {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.details {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  flex-wrap: wrap;
-  color: var(--neutral-on-background-medium);
-  font-size: 13px;
-}
-
-.detailItem {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.badge {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  padding: 2px 8px;
-  border-radius: 9999px;
-  background: var(--neutral-alpha-weak);
-  border: 1px solid var(--neutral-border-medium);
-  color: var(--neutral-on-background-strong);
-  font-size: 11px;
-  font-weight: 400;
-}
-
-.content {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.section {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.sectionTitle {
-  font-size: 15px;
-  font-weight: 600;
-  color: var(--neutral-on-background-strong);
-}
-
-.list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.listItem {
-  display: flex;
-  gap: 10px;
-  color: var(--neutral-on-background-medium);
-  font-size: 13.5px;
-  line-height: 1.5;
-  align-items: flex-start;
-
-  &::before {
-    content: "•";
-    color: #8a2be2;
-    font-size: 18px;
-    line-height: 1.3;
-  }
-}
-
-.bottomSplit {
-  display: flex;
-  gap: 24px;
-  border-top: 1px solid var(--neutral-border-strong);
-  padding-top: 16px;
-  margin-top: 4px;
-
-  @media (max-width: 1024px) {
-    flex-direction: column;
-    gap: 16px;
-  }
-}
-
-.skillsContainer {
-  flex: 1;
-}
-
-.techs {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-.techPill {
-  display: flex;
-  align-items: center;
-  padding: 4px 12px;
-  border-radius: 9999px;
-  background-color: var(--page-background);
-  border: 1px solid var(--neutral-border-strong);
-  font-size: 13px;
-  color: var(--neutral-on-background-strong);
-}
-
-.impactContainer {
-  flex: 1;
-}
-
-.metrics {
-  display: flex;
-  gap: 16px;
-  flex-wrap: wrap;
-}
-
-.metricCard {
   display: flex;
   flex-direction: column;
   gap: 2px;
 }
 
-.metricValue {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 16px;
+.title {
+  margin: 0;
+  font-size: 15px;
   font-weight: 600;
   color: var(--neutral-on-background-strong);
+  letter-spacing: -0.01em;
+  line-height: 1.25;
 }
 
-.metricLabel {
+.company {
   color: var(--neutral-on-background-weak);
-  font-size: 12px;
-  line-height: 1.4;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.3;
 }
 
-/* ===== MOBILE ONLY ===== */
-@media (max-width: 767px) {
-  .card {
-    padding: 12px;
-    border-radius: 12px;
-  }
+.details {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 4px;
+  color: var(--neutral-on-background-weak);
+  opacity: 0.75;
+  font-size: 11.5px;
+}
 
-  .header {
-    flex-direction: row;
-    align-items: flex-start;
-    gap: 8px;
-    margin-bottom: 8px;
-  }
+.detailItem {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
 
-  .meta h3 {
-    font-size: 17px !important;
-  }
+.dot {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background-color: var(--neutral-border-strong);
+}
 
-  .meta > div {
-    font-size: 13px !important;
-    margin-bottom: 4px !important;
-  }
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 7px;
+  border-radius: 9999px;
+  background: var(--neutral-alpha-weak);
+  border: 1px solid var(--neutral-border-medium);
+  color: var(--neutral-on-background-strong);
+  font-size: 10.5px;
+  font-weight: 500;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
 
-  .details {
-    font-size: 12px;
-    gap: 6px;
-  }
+.description {
+  margin: 0;
+  color: var(--neutral-on-background-medium);
+  font-size: 12.5px;
+  line-height: 1.45;
+}
 
-  .badge {
-    font-size: 11px;
-    padding: 4px 10px;
-    white-space: nowrap;
-  }
+.techs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px solid var(--neutral-border-medium);
+}
 
-  .sectionTitle {
-    font-size: 15px;
-  }
-
-  .listItem {
-    font-size: 13px;
-    line-height: 1.4;
-  }
-
-  .list {
-    gap: 6px;
-  }
-
-  .bottomSplit {
-    flex-direction: column;
-    gap: 12px;
-    padding-top: 10px;
-    margin-top: 16px;
-  }
-
-  .techPill {
-    font-size: 12px;
-    padding: 4px 10px;
-  }
-
-  .techs {
-    gap: 6px;
-  }
-
-  .metrics {
-    gap: 12px;
-  }
-
-  .metricValue {
-    font-size: 15px;
-  }
-
-  .metricLabel {
-    font-size: 11px;
-  }
-
-  .sectionTitle[style] {
-    margin-bottom: 10px !important;
-  }
+.techPill {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 7px;
+  border-radius: 9999px;
+  background-color: var(--page-background);
+  border: 1px solid var(--neutral-border-medium);
+  font-size: 11px;
+  color: var(--neutral-on-background-weak);
+  letter-spacing: -0.01em;
 }

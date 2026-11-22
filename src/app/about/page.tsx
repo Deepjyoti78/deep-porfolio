@@ -80,24 +80,26 @@ export default function About() {
       items: about.studies.institutions.map((institution) => institution.name),
     },
     {
-      title: about.technical.title,
-      display: about.technical.display,
-      items: about.technical.skills.map((skill) => skill.title),
+      title: "Certifications",
+      display: true,
+      items: [],
     },
   ];
   return (
     <Column
-      maxWidth="l"
+      maxWidth="m"
+      fillWidth
+      horizontal="center"
       style={{}}
     >
       <style>{`
         .mobile-about-card {
-          width: 100%;
+          width: calc(100% - 32px);
           margin: 0 auto;
         }
         @media (max-width: 768px) {
           .mobile-about-card {
-            width: 100% !important;
+            width: calc(100% - 16px) !important;
           }
           .mobile-about-card-padding {
             padding-left: 12px !important;
@@ -295,12 +297,12 @@ export default function About() {
 
       <GridSection paddingY="32" hideBottomBorder className="mobile-tight-section">
         <Column className={`${styles.blockAlign} mobile-about-card`} fillWidth>
-          <Heading as="h2" id="skills-certifications" variant="display-strong-s" marginBottom="m">
-            Skills & Certifications
+          <Heading as="h2" id="certifications" variant="display-strong-s" marginBottom="m">
+            Certifications
           </Heading>
           <Column fillWidth gap="l" marginBottom="40">
             <Text variant="body-default-m" onBackground="neutral-weak">
-              My technical skills and professional certifications.
+              My professional certifications and achievements.
             </Text>
             <SkillsAndCertifications />
           </Column>
