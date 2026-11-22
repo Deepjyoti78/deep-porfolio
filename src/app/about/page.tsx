@@ -150,16 +150,16 @@ export default function About() {
           {/* --- DESKTOP VIEW --- */}
           <Row className="hide-on-mobile" fillWidth gap="24" vertical="center" paddingX="16" paddingY="16">
             {/* Left Column */}
-            <Column flex={6} gap="24" horizontal="start">
-              <Column gap="12" horizontal="start">
+            <Column flex={6} gap="20" horizontal="start" style={{ height: "100%", justifyContent: "center" }}>
+              <Column gap="8" horizontal="start" style={{ marginTop: "-14px" }}>
                 {about.calendar.display && <ScheduleCallButton />}
-                <Column gap="12">
+                <Column gap="4">
                   <Heading variant="display-strong-s" style={{ whiteSpace: "nowrap", fontSize: "40px", lineHeight: "1.1" }}>{person.name}</Heading>
                   <Text variant="heading-default-m" onBackground="neutral-weak">{person.role}</Text>
                 </Column>
               </Column>
               {about.intro.display && (
-                <Text onBackground="neutral-weak" style={{ fontSize: "clamp(0.9375rem, 1.1vw, 1rem)", lineHeight: '1.6', textAlign: 'left', marginTop: '4px', marginBottom: '8px' }}>
+                <Text onBackground="neutral-weak" style={{ fontSize: "clamp(0.9375rem, 1.1vw, 1rem)", lineHeight: '1.6', textAlign: 'left', marginTop: '2px', marginBottom: '6px' }}>
                   {about.intro.description}
                 </Text>
               )}
@@ -208,7 +208,7 @@ export default function About() {
           <Column className="hide-on-desktop" fillWidth gap="20">
             {/* Name left, Schedule button pinned to right */}
             <div style={{ display: 'flex', width: '100%', justifyContent: 'space-between', alignItems: 'center' }}>
-              <Column gap="12">
+              <Column gap="4">
                 <Heading variant="display-strong-s" style={{ whiteSpace: "nowrap", fontSize: "clamp(26px, 4vw, 32px)", lineHeight: "1.1" }}>{person.name}</Heading>
                 <Text variant="heading-default-s" onBackground="neutral-weak" style={{ fontSize: "clamp(15px, 2vw, 18px)" }}>{person.role}</Text>
               </Column>
