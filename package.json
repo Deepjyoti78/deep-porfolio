@@ -4,7 +4,7 @@
   "scripts": {
     "dev": "next dev",
     "export": "next export",
-    "build": "next build && opennextjs-cloudflare build --skipNextBuild",
+    "build": "next build && opennextjs-cloudflare build --skipNextBuild && node scripts/post-build.js",
     "cf-build": "opennextjs-cloudflare build",
     "deploy": "opennextjs-cloudflare build && wrangler deploy",
     "preview": "opennextjs-cloudflare build && wrangler dev",
