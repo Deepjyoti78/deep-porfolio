@@ -32,20 +32,14 @@ export type RoutesConfig = Record<`/${string}`, boolean>;
  */
 export type ProtectedRoutesConfig = Record<`/${string}`, boolean>;
 
-export type FontItem = NextFontWithVariable | {
-  variable: string;
-  className: string;
-  style: { fontFamily: string; fontWeight?: number; fontStyle?: string };
-};
-
 /**
  * Font configuration for each variant.
  */
 export type FontsConfig = {
-  heading: FontItem;
-  body: FontItem;
-  label: FontItem;
-  code: FontItem;
+  heading: NextFontWithVariable;
+  body: NextFontWithVariable;
+  label: NextFontWithVariable;
+  code: NextFontWithVariable;
 };
 
 /**

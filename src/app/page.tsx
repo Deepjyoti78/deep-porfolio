@@ -11,6 +11,9 @@ import {
   Line,
   Icon,
 } from "@once-ui-system/core";
+import { JetBrains_Mono } from "next/font/google";
+
+const jetbrainsMono = JetBrains_Mono({ subsets: ["latin"], display: "swap" });
 import { home, about, person, baseURL, routes, work } from "@/resources";
 import { TechMarquee, ScrollReveal } from "@/components";
 import { Projects } from "@/components/work/Projects";
@@ -54,7 +57,7 @@ const GridSection = ({ children, hideBottomBorder = false, isFirst = false, styl
 );
 
 const TerminalWindow = () => (
-  <div className="terminal-wrapper terminal-bg font-code" style={{
+  <div className={`terminal-wrapper terminal-bg ${jetbrainsMono.className}`} style={{
     width: "100%",
     borderRadius: "12px",
     border: "1px solid rgba(255,255,255,0.03)",
@@ -62,14 +65,14 @@ const TerminalWindow = () => (
     overflow: "hidden",
     fontSize: "13px",
     color: "#E6EDF3",
-    marginTop: "0px",
+    marginTop: "16px",
     textAlign: "left",
     fontWeight: 500,
     letterSpacing: "-0.2px"
   }}>
     <style dangerouslySetInnerHTML={{ __html: `
       .terminal-wrapper, .terminal-wrapper * {
-        font-family: var(--font-code) !important;
+        font-family: ${jetbrainsMono.style.fontFamily} !important;
       }
       .terminal-bg {
         background-color: #0d1117;
@@ -200,19 +203,12 @@ export default function Home() {
             radius="l" 
             border="neutral-medium" 
             gap="24"
-            vertical="stretch"
+            vertical="center"
             className="premium-shadow mobile-tight-card"
-            style={{ alignItems: "stretch" }}
             s={{ direction: "column" }}
           >
             {/* Left Column (Text & Buttons) */}
-            <Column 
-              style={{ flex: 1.2, height: "100%" }} 
-              gap="0" 
-              position="relative" 
-              horizontal="start" 
-              align="start"
-            >
+            <Column style={{ flex: 1.2 }} gap="20" position="relative" horizontal="start" align="start">
               <div style={{
                 position: "absolute",
                 top: "50%",
@@ -225,68 +221,58 @@ export default function Home() {
                 pointerEvents: "none"
               }} />
               
-              <div className="hero-left-col" style={{ 
-                zIndex: 1, 
-                width: "100%", 
-                height: "100%", 
-                display: "flex", 
-                flexDirection: "column", 
-                justifyContent: "space-between" 
-              }}>
-                {/* Top: Available for work badge & Headline */}
-                <div className="hero-top-block" style={{ width: "100%" }}>
-                  {home.featured.display && (
-                    <div className="animate-fade-up animate-delay-1" style={{ width: '100%', marginBottom: "14px" }}>
-                      <a
-                        href={home.featured.href}
-                        style={{
-                          display: "inline-flex",
-                          alignItems: "center",
-                          gap: "4px",
-                          padding: "2px 8px",
-                          borderRadius: "9999px",
-                          border: "1px solid rgba(0, 0, 0, 0.12)",
-                          backgroundColor: "var(--neutral-alpha-weak)",
-                          color: "var(--neutral-on-background-strong)",
-                          fontSize: "11px",
-                          fontWeight: "400",
-                          textDecoration: "none",
-                          transition: "all 0.2s ease",
-                          boxShadow: "0 4px 12px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.04)"
-                        }}
-                        className="hover-badge"
-                      >
-                        {home.featured.title} <span style={{ color: "var(--neutral-on-background-weak)" }}>›</span>
-                      </a>
-                    </div>
-                  )}
-                  <div className="animate-fade-up animate-delay-2" style={{ width: '100%' }}>
-                    <Heading
-                      align="start"
-                      variant="display-strong-xl"
-                      className="mobile-h2-match"
+              <div style={{ zIndex: 1 }}>
+                {home.featured.display && (
+                  <div className="animate-fade-up animate-delay-1" style={{ width: '100%' }}>
+                    <a
+                      href={home.featured.href}
                       style={{
-                        fontSize: "clamp(2rem, 3.5vw, 3.2rem)",
-                        lineHeight: "1.05",
-                        letterSpacing: "-0.04em",
-                        fontWeight: "700",
-                        textAlign: "left"
+                        display: "inline-flex",
+                        alignItems: "center",
+                        gap: "4px",
+                        padding: "2px 8px",
+                        borderRadius: "9999px",
+                        border: "1px solid rgba(0, 0, 0, 0.12)",
+                        backgroundColor: "var(--neutral-alpha-weak)",
+                        color: "var(--neutral-on-background-strong)",
+                        fontSize: "11px",
+                        fontWeight: "400",
+                        textDecoration: "none",
+                        transition: "all 0.2s ease",
+                        marginBottom: "16px",
+                        boxShadow: "0 4px 12px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.04)"
                       }}
+                      className="hover-badge"
                     >
-                      {home.headline}
-                    </Heading>
+                      {home.featured.title} <span style={{ color: "var(--neutral-on-background-weak)" }}>›</span>
+                    </a>
                   </div>
+                )}
+                <div className="animate-fade-up animate-delay-2" style={{ width: '100%' }}>
+                  <Heading
+                    align="start"
+                    variant="display-strong-xl"
+                    className="mobile-h2-match"
+                    style={{
+                      fontSize: "clamp(2rem, 3.5vw, 3.2rem)",
+                      lineHeight: "1.05",
+                      letterSpacing: "-0.04em",
+                      fontWeight: "700",
+                      textAlign: "left"
+                    }}
+                  >
+                    {home.headline}
+                  </Heading>
                 </div>
 
                 {/* Mobile Terminal */}
-                <div className="hide-on-desktop" style={{ width: "100%", marginTop: "14px", marginBottom: "14px" }}>
+                <div className="hide-on-desktop" style={{ width: "100%", marginTop: "12px", marginBottom: "12px" }}>
                   <div className="animate-fade-up animate-delay-3" style={{ width: '100%' }}>
                     <TerminalWindow />
                   </div>
                 </div>
 
-                {/* Middle: Subheading / Description with comfortable spacing */}
-                <div className="animate-fade-up animate-delay-3 hero-desc-wrapper" style={{ width: '100%', marginTop: "22px", marginBottom: "26px" }}>
+                <div className="animate-fade-up animate-delay-3 hero-desc-wrapper" style={{ width: '100%' }}>
                   <Text
                     wrap="balance"
                     onBackground="neutral-weak"
@@ -295,6 +281,8 @@ export default function Home() {
                       fontSize: "clamp(0.875rem, 1vw, 0.9375rem)",
                       lineHeight: "1.65",
                       fontWeight: "400",
+                      marginTop: "20px",
+                      marginBottom: "8px",
                       maxWidth: "800px",
                       textAlign: "left",
                     }}
@@ -302,36 +290,50 @@ export default function Home() {
                     {home.subline}
                   </Text>
                 </div>
-
-                {/* Bottom: Resume & View Projects buttons sitting at the bottom */}
-                <div className="animate-fade-up animate-delay-4 hero-btn-wrapper" style={{ width: '100%', marginTop: "auto", paddingTop: "8px" }}>
-                  <Row gap="12" horizontal="start" fillWidth s={{ gap: "8" }}>
-                    <a
+                <div className="animate-fade-up animate-delay-4 hero-btn-wrapper" style={{ width: '100%' }}>
+                  <Row gap="16" horizontal="start" fillWidth s={{ gap: "8" }}>
+                    <Button
                       id="resume"
-                      className="hero-pill-btn hero-pill-primary hover-btn"
+                      className="hover-btn hero-about-btn"
                       href="/Deep_Resume.pdf"
                       target="_blank"
                       rel="noopener noreferrer"
+                      variant="secondary"
+                      size="s"
+                      style={{
+                        borderRadius: "9999px",
+                        fontWeight: "500",
+                        padding: "0 14px",
+                        fontSize: "13px"
+                      }}
                     >
-                      <span>Resume</span>
-                      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" className="hero-pill-arrow"><path d="m9 18 6-6-6-6" /></svg>
-                    </a>
-                    <a
+                      <span className="mobile-btn-text">Resume</span>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="arrow-icon" style={{ marginLeft: "4px", position: "relative", top: "1px" }}><path d="m9 18 6-6-6-6" /></svg>
+                    </Button>
+                    <Button
                       id="work"
-                      className="hero-pill-btn hero-pill-secondary hover-btn"
+                      className="hover-btn cal-btn-secondary"
                       href="/work"
+                      variant="secondary"
+                      size="s"
+                      style={{
+                        borderRadius: "9999px",
+                        fontWeight: "500",
+                        padding: "0 14px",
+                        fontSize: "13px"
+                      }}
                     >
-                      <span>View Projects</span>
-                      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" className="hero-pill-arrow"><path d="m9 18 6-6-6-6" /></svg>
-                    </a>
+                      View Projects
+                      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="arrow-icon" style={{ marginLeft: "4px", position: "relative", top: "1px" }}><path d="m9 18 6-6-6-6" /></svg>
+                    </Button>
                   </Row>
                 </div>
               </div>
             </Column>
 
             {/* Right Column (Terminal) */}
-            <Column className="hide-on-mobile" style={{ flex: 1.1, height: "100%" }} fillWidth position="relative" horizontal="end" align="end" s={{ align: "center" }}>
-              <div className="animate-fade-up animate-delay-3" style={{ width: '100%', height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+            <Column className="hide-on-mobile" style={{ flex: 1.1 }} fillWidth position="relative" horizontal="end" align="end" s={{ align: "center" }}>
+              <div className="animate-fade-up animate-delay-3" style={{ width: '100%' }}>
                 <div style={{ width: "100%", maxWidth: "480px", marginLeft: "auto" }}>
                   <TerminalWindow />
                 </div>
