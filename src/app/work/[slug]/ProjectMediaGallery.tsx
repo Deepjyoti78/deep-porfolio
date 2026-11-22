@@ -18,25 +18,32 @@ export function ProjectMediaGallery({
   githubUrl,
 }: ProjectMediaGalleryProps) {
   const [activeIdx, setActiveIdx] = useState(0);
+  const [isLoading, setIsLoading] = useState(false);
 
   const total = images.length;
   if (total === 0) return null;
 
   const currentImage = images[activeIdx] || images[0];
 
+  const changeImage = (newIdx: number) => {
+    if (newIdx === activeIdx) return;
+    setIsLoading(true);
+    setActiveIdx(newIdx);
+  };
+
   const handleNext = (e?: React.MouseEvent) => {
     if (e) e.stopPropagation();
-    setActiveIdx((prev) => (prev + 1) % total);
+    changeImage((activeIdx + 1) % total);
   };
 
   const handlePrev = (e: React.MouseEvent) => {
     e.stopPropagation();
-    setActiveIdx((prev) => (prev - 1 + total) % total);
+    changeImage((activeIdx - 1 + total) % total);
   };
 
   const handleDotClick = (idx: number, e: React.MouseEvent) => {
     e.stopPropagation();
-    setActiveIdx(idx);
+    changeImage(idx);
   };
 
   return (
@@ -58,15 +65,24 @@ export function ProjectMediaGallery({
       aria-label={`Project screenshot ${activeIdx + 1} of ${total}. Click to view next.`}
       title={total > 1 ? "Click to view next screenshot" : title}
     >
-      {/* SCREENSHOT CONTAINER WITHOUT CROPPING */}
+      {/* SCREENSHOT CONTAINER (GUARANTEED STABLE ASPECT RATIO) */}
       <div className={styles.imageDisplayWrapper}>
         <img
           key={currentImage}
           src={currentImage}
           alt={`${title} screenshot ${activeIdx + 1}`}
-          className={styles.projectScreenshot}
+          className={`${styles.projectScreenshot} ${isLoading ? styles.imgLoading : ""}`}
           loading="eager"
+          onLoad={() => setIsLoading(false)}
         />
+
+        {/* LOADING OVERLAY CONFINED EXCLUSIVELY TO LEFT IMAGE */}
+        {isLoading && (
+          <div className={styles.imageLoadingOverlay}>
+            <div className={styles.loadingSpinner} />
+            <span className={styles.loadingLabel}>Loading screenshot...</span>
+          </div>
+        )}
 
         {/* CHEVRON NAVIGATION (IF MULTIPLE IMAGES) */}
         {total > 1 && (
