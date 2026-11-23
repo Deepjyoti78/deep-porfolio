@@ -148,18 +148,15 @@ export default function About() {
         >
           {/* Desktop absolute button removed */}
           {/* --- DESKTOP VIEW --- */}
-          <Row className="hide-on-mobile" fillWidth gap="24" vertical="center" paddingX="16" paddingY="16">
+          <Row className="hide-on-mobile" fillWidth gap="24" vertical="start" paddingX="16" paddingY="16">
             {/* Left Column */}
-            <Column flex={6} gap="20" horizontal="start" style={{ height: "100%", justifyContent: "center" }}>
-              <Column gap="8" horizontal="start" style={{ marginTop: "-14px" }}>
-                {about.calendar.display && <ScheduleCallButton />}
-                <Column gap="4">
-                  <Heading variant="display-strong-s" style={{ whiteSpace: "nowrap", fontSize: "40px", lineHeight: "1.1" }}>{person.name}</Heading>
-                  <Text variant="heading-default-m" onBackground="neutral-weak">{person.role}</Text>
-                </Column>
+            <Column flex={6} horizontal="start" style={{ height: "100%", minHeight: "320px", justifyContent: "space-between" }}>
+              <Column gap="4" horizontal="start">
+                <Heading variant="display-strong-s" style={{ whiteSpace: "nowrap", fontSize: "40px", lineHeight: "1.1", margin: 0, marginTop: "2px" }}>{person.name}</Heading>
+                <Text variant="body-default-l" onBackground="neutral-weak" style={{ fontSize: "16px", fontWeight: 500, lineHeight: "1.3" }}>{person.role}</Text>
               </Column>
               {about.intro.display && (
-                <Text onBackground="neutral-weak" style={{ fontSize: "clamp(0.9375rem, 1.1vw, 1rem)", lineHeight: '1.6', textAlign: 'left', marginTop: '2px', marginBottom: '6px' }}>
+                <Text onBackground="neutral-weak" style={{ fontSize: "clamp(0.9375rem, 1.1vw, 1rem)", lineHeight: '1.6', textAlign: 'left', margin: "6px 0" }}>
                   {about.intro.description}
                 </Text>
               )}
@@ -177,7 +174,7 @@ export default function About() {
             </Column>
 
             {/* Right Column */}
-            <Column flex={5} gap="16" horizontal="center" align="center">
+            <Column flex={5} gap="16" horizontal="center" vertical="start" align="center">
               {about.avatar.display && (
                 <div style={{ 
                   position: "relative",
@@ -210,7 +207,7 @@ export default function About() {
             <div style={{ display: 'flex', width: '100%', justifyContent: 'space-between', alignItems: 'center' }}>
               <Column gap="4">
                 <Heading variant="display-strong-s" style={{ whiteSpace: "nowrap", fontSize: "clamp(26px, 4vw, 32px)", lineHeight: "1.1" }}>{person.name}</Heading>
-                <Text variant="heading-default-s" onBackground="neutral-weak" style={{ fontSize: "clamp(15px, 2vw, 18px)" }}>{person.role}</Text>
+                <Text variant="body-default-m" onBackground="neutral-weak" style={{ fontSize: "14px", fontWeight: 500 }}>{person.role}</Text>
               </Column>
               {about.calendar.display && <ScheduleCallButton isMobile />}
             </div>
