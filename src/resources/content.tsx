@@ -100,8 +100,8 @@ const about: About = {
     title: "Introduction",
     description: (
       <>
-        {person.firstName} is a Delhi-based {person.role.toLowerCase()} with a passion for transforming complex challenges
-        into simple, elegant design solutions. Their work spans digital interfaces, interactive
+        Hi, I'm {person.firstName}, a Delhi-based {person.role.toLowerCase()} with a passion for transforming complex challenges
+        into simple, elegant design solutions. My work spans digital interfaces, interactive
         experiences, and the convergence of design and technology.
       </>
     ),

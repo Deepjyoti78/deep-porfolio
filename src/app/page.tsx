@@ -221,7 +221,7 @@ export default function Home() {
                 pointerEvents: "none"
               }} />
               
-              <div style={{ zIndex: 1 }}>
+              <div style={{ zIndex: 1, marginTop: "-10px" }}>
                 {home.featured.display && (
                   <div className="animate-fade-up animate-delay-1" style={{ width: '100%' }}>
                     <a
@@ -239,7 +239,7 @@ export default function Home() {
                         fontWeight: "400",
                         textDecoration: "none",
                         transition: "all 0.2s ease",
-                        marginBottom: "16px",
+                        marginBottom: "12px",
                         boxShadow: "0 4px 12px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.04)"
                       }}
                       className="hover-badge"
@@ -281,8 +281,8 @@ export default function Home() {
                       fontSize: "clamp(0.875rem, 1vw, 0.9375rem)",
                       lineHeight: "1.65",
                       fontWeight: "400",
-                      marginTop: "20px",
-                      marginBottom: "8px",
+                      marginTop: "28px",
+                      marginBottom: "12px",
                       maxWidth: "800px",
                       textAlign: "left",
                     }}
