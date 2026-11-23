@@ -191,86 +191,48 @@ export function SkillsAndCertifications() {
         ))}
       </div>
 
-      {/* ================= CENTERED LIGHTBOX MODAL ================= */}
+      {/* ================= PURE IMAGE LIGHTBOX WITH DOWNLOAD OPTION ================= */}
       {selectedCert && (
         <div
-          className={styles.modalBackdrop}
+          className={styles.lightboxBackdrop}
           onClick={() => setSelectedCert(null)}
           role="dialog"
           aria-modal="true"
           aria-label={selectedCert.title}
         >
-          <div
-            className={styles.modalBox}
-            onClick={(e) => e.stopPropagation()}
-          >
-            {/* Modal Header */}
-            <div className={styles.modalHeader}>
-              <div className={styles.modalHeaderInfo}>
-                <div className={styles.modalBadgeRow}>
-                  <span
-                    className={styles.pillDot}
-                    style={{ backgroundColor: selectedCert.badgeColor }}
-                  />
-                  <span className={styles.modalBadgeText}>
-                    {selectedCert.badge}
-                  </span>
-                </div>
-                <h3 className={styles.modalTitle}>{selectedCert.title}</h3>
-                <span className={styles.modalSubtitle}>
-                  Issued by {selectedCert.issuer} • {selectedCert.date}
-                </span>
-              </div>
+          {/* Top Floating Controls */}
+          <div className={styles.lightboxTopBar} onClick={(e) => e.stopPropagation()}>
+            {selectedCert.pdfUrl && (
+              <a
+                href={selectedCert.pdfUrl}
+                download={`${selectedCert.id}-certificate.pdf`}
+                className={styles.lightboxDownloadBtn}
+                title="Download Certificate"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FiDownload size={14} />
+                <span>Download</span>
+              </a>
+            )}
+            <button
+              type="button"
+              onClick={() => setSelectedCert(null)}
+              className={styles.lightboxCloseBtn}
+              aria-label="Close"
+              title="Close"
+            >
+              <FiX size={18} />
+            </button>
+          </div>
 
-              <div className={styles.modalHeaderActions}>
-                {selectedCert.pdfUrl && (
-                  <a
-                    href={selectedCert.pdfUrl}
-                    download={`${selectedCert.id}-certificate.pdf`}
-                    className={styles.modalDownloadBtn}
-                    title="Download Certificate"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <FiDownload size={13} />
-                    <span>Download</span>
-                  </a>
-                )}
-                <button
-                  type="button"
-                  onClick={() => setSelectedCert(null)}
-                  className={styles.modalCloseBtn}
-                  aria-label="Close modal"
-                >
-                  <FiX size={16} />
-                </button>
-              </div>
-            </div>
-
-            {/* Modal Image Body (Centered) */}
-            <div className={styles.modalBody}>
-              <img
-                src={selectedCert.image}
-                alt={selectedCert.title}
-                className={styles.modalImg}
-              />
-            </div>
-
-            {/* Modal Footer */}
-            <div className={styles.modalFooter}>
-              <p className={styles.modalDesc}>{selectedCert.description}</p>
-              {selectedCert.externalUrl && (
-                <a
-                  href={selectedCert.externalUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={styles.modalVerifyLink}
-                >
-                  <FiExternalLink size={12} />
-                  <span>Verify Credential</span>
-                </a>
-              )}
-            </div>
+          {/* Centered Image Only */}
+          <div className={styles.lightboxImageContainer} onClick={(e) => e.stopPropagation()}>
+            <img
+              src={selectedCert.image}
+              alt={selectedCert.title}
+              className={styles.lightboxImg}
+            />
           </div>
         </div>
       )}

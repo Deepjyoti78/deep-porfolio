@@ -78,15 +78,16 @@ export function ExperienceCard() {
                     <FiCalendar size={12} />
                     <span>{exp.duration}</span>
                   </div>
-                  <div className={styles.dot} />
-                  <div className={styles.detailItem}>
-                    <FiMapPin size={12} />
-                    <span>{exp.location}</span>
-                  </div>
                 </div>
               </div>
-              <div className={styles.badge}>
-                {exp.badge}
+              <div className={styles.metaRight}>
+                <div className={styles.badge}>
+                  {exp.badge}
+                </div>
+                <div className={styles.locationItem}>
+                  <FiMapPin size={11} />
+                  <span>{exp.location}</span>
+                </div>
               </div>
             </div>
 
