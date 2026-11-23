@@ -1,4 +1,4 @@
-import { Column, Heading, Meta, Schema } from "@once-ui-system/core";
+import { Column, Meta, Schema } from "@once-ui-system/core";
 import { baseURL, about, person, work } from "@/resources";
 import { GridProjects } from "@/components/work/GridProjects";
 
@@ -53,9 +53,6 @@ export default function Work() {
             image: `${baseURL}${person.avatar}`,
           }}
         />
-        <Heading marginBottom="l" variant="heading-strong-xl" align="center">
-          {work.title}
-        </Heading>
         <GridProjects expandable={false} />
       </GridSection>
     </Column>
