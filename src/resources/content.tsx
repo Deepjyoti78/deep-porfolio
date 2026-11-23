@@ -206,11 +206,7 @@ const about: About = {
       },
       {
         name: "Kendriya Vidyalaya No.1, Tezpur",
-        description: <>Class XII (2022) • Percentage: 72%</>,
-      },
-      {
-        name: "Kendriya Vidyalaya No.1, Tezpur",
-        description: <>Class X (2020) • Percentage: 80%</>,
+        description: <>Class XII (2022) • Percentage: 72% | Class X (2020) • Percentage: 80%</>,
       },
     ],
   },

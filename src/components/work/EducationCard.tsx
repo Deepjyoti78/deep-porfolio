@@ -25,32 +25,25 @@ export function EducationCard() {
           </div>
         </div>
 
-        {/* Item 2 */}
+        {/* Item 2: Kendriya Vidyalaya No.1, Tezpur (Combined) */}
         <div className={styles.timelineItem}>
           <div className={styles.contentRow}>
-            <div className={styles.leftContent}>
+            <div className={styles.fullWidthContent}>
               <h3 className={styles.institution}>Kendriya Vidyalaya No.1, Tezpur</h3>
-              <div className={styles.degree}>
-                Class XII <span className={styles.separator}>|</span> Percentage - 72%
+              <div className={styles.subRows}>
+                <div className={styles.subRow}>
+                  <div className={styles.degree}>
+                    Class XII <span className={styles.separator}>|</span> Percentage - 72%
+                  </div>
+                  <div className={styles.year}>2022</div>
+                </div>
+                <div className={styles.subRow}>
+                  <div className={styles.degree}>
+                    Class X <span className={styles.separator}>|</span> Percentage - 80%
+                  </div>
+                  <div className={styles.year}>2020</div>
+                </div>
               </div>
-            </div>
-            <div className={styles.rightContent}>
-              <div className={styles.year}>2022</div>
-            </div>
-          </div>
-        </div>
-
-        {/* Item 3 */}
-        <div className={styles.timelineItem}>
-          <div className={styles.contentRow}>
-            <div className={styles.leftContent}>
-              <h3 className={styles.institution}>Kendriya Vidyalaya No.1, Tezpur</h3>
-              <div className={styles.degree}>
-                Class X <span className={styles.separator}>|</span> Percentage - 80%
-              </div>
-            </div>
-            <div className={styles.rightContent}>
-              <div className={styles.year}>2020</div>
             </div>
           </div>
         </div>
